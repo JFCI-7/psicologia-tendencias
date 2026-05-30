@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psicología en YouTube México — Tendencias Abril/Mayo 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', system-ui, sans-serif; }
+    .trend-bar { transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+    .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15); }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0.4); }
+      50% { box-shadow: 0 0 20px 4px rgba(124,58,237,0.2); }
+    }
+    .pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen">
+
+  <!-- Hero -->
+  <header class="relative overflow-hidden bg-gradient-to-br from-violet-950 via-gray-950 to-gray-900 border-b border-violet-900/30">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50"></div>
+    <div class="max-w-6xl mx-auto px-4 py-10 sm:py-14 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 bg-violet-600/20 border border-violet-500/30 rounded-full px-4 py-1.5 text-violet-300 text-sm font-medium mb-4">
+        📊 Datos extraídos el 30 de mayo 2026
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-black tracking-tight bg-gradient-to-r from-violet-300 via-white to-violet-300 bg-clip-text text-transparent">
+        Psicología en YouTube México
+      </h1>
+      <p class="text-lg sm:text-xl text-gray-400 mt-3 font-medium">
+        Top 10 temas en tendencia • <span class="text-violet-400">Abril – Mayo 2026</span>
+      </p>
+      <div class="flex flex-wrap justify-center gap-2 mt-5">
+        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">🇲🇽 México</span>
+        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">🔍 YouTube Search</span>
+        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">📈 Orden ascendente</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-10">
+
+    <!-- Panel de resumen -->
+    <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center">
+        <div class="text-3xl mb-1">❤️</div>
+        <div class="text-sm text-gray-400">Tema dominante</div>
+        <div class="text-white font-semibold text-sm mt-1">Amor propio y autoestima</div>
+        <div class="text-violet-400 font-bold mt-1">~1.15M vistas</div>
+      </div>
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center">
+        <div class="text-3xl mb-1">🧔</div>
+        <div class="text-sm text-gray-400">Tema emergente</div>
+        <div class="text-white font-semibold text-sm mt-1">Salud mental masculina</div>
+        <div class="text-amber-400 font-bold mt-1">~70 vistas</div>
+      </div>
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center">
+        <div class="text-3xl mb-1">🚀</div>
+        <div class="text-sm text-gray-400">Mayor crecimiento</div>
+        <div class="text-white font-semibold text-sm mt-1">Depresión y ansiedad</div>
+        <div class="text-red-400 font-bold mt-1">~345K vistas</div>
+      </div>
+    </section>
+
+    <!-- Gráfica principal: Barras horizontales -->
+    <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 sm:p-7">
+      <h2 class="text-xl font-bold text-white mb-2">📊 Vistas promedio por tema <span class="text-gray-500 text-sm font-normal">(escala logarítmica ajustada)</span></h2>
+      <p class="text-gray-500 text-sm mb-6">Orden ascendente: del #10 (menor) al #1 (mayor tendencia)</p>
+      <div class="relative h-[520px] sm:h-[560px]">
+        <canvas id="mainChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Gráfica de torta: Distribución por categoría de tendencia -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 sm:p-7">
+        <h2 class="text-xl font-bold text-white mb-4">🏷️ Distribución por tipo de tendencia</h2>
+        <div class="relative h-[320px]">
+          <canvas id="trendChart"></canvas>
+        </div>
+      </div>
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 sm:p-7">
+        <h2 class="text-xl font-bold text-white mb-4">🎯 Comparativa rápida</h2>
+        <div class="space-y-3" id="miniBars"></div>
+      </div>
+    </section>
+
+    <!-- Tarjetas detalladas -->
+    <section>
+      <h2 class="text-xl font-bold text-white mb-5">📋 Detalle completo de los 10 temas</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="topicCards"></div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-gray-800 mt-12 py-6 text-center text-gray-600 text-sm">
+    Fuente: Búsquedas directas en YouTube México • Datos al 30 de mayo 2026 • Las vistas son acumuladas por video
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // ── Cargar datos del JSON embebido ──
+    const DATA = {
+      "meta": {
+        "titulo": "Top 10 Temas de Psicología en YouTube México",
+        "periodo": "Abril - Mayo 2026",
+        "fecha_extraccion": "2026-05-30",
+        "region": "México",
+        "orden": "ascendente (#10 menor tendencia → #1 mayor tendencia)"
+      },
+      "topics": [
+        { "rank": 10, "tema": "Salud mental masculina", "emoji": "🧔", "vistas_min": 39, "vistas_max": 100, "vistas_promedio": 70, "tendencia": "emergente", "color": "#f59e0b", "descripcion": "Apenas empieza a abrirse conversación sobre salud mental en hombres mexicanos", "canales": ["Mexiquense TV", "NosotrAs con Julia Didriksson"], "tags": ["masculinidad", "salud mental", "hombres"] },
+        { "rank": 9, "tema": "Terapia psicológica en línea", "emoji": "💻", "vistas_min": 150, "vistas_max": 900, "vistas_promedio": 525, "tendencia": "nicho", "color": "#8b5cf6", "descripcion": "Psicólogos mexicanos migrando su práctica al mundo digital", "canales": ["El Psicólogo en las Redes", "UNAM Psicología", "Doctoralia México"], "tags": ["terapia online", "consultorio digital", "psicólogo"] },
+        { "rank": 8, "tema": "Acoso digital y salud mental", "emoji": "📱", "vistas_min": 500, "vistas_max": 550, "vistas_promedio": 525, "tendencia": "ascenso", "color": "#ef4444", "descripcion": "El ciberacoso como detonante de ansiedad y depresión en jóvenes", "canales": ["El Heraldo de México", "EXCELSIOR"], "tags": ["ciberacoso", "ansiedad", "redes sociales", "jóvenes"] },
+        { "rank": 7, "tema": "Salud mental infantil en México", "emoji": "👶", "vistas_min": 160, "vistas_max": 630, "vistas_promedio": 395, "tendencia": "alarma", "color": "#ec4899", "descripcion": "Medios denunciando el déficit de atención psicológica infantil como emergencia silenciosa", "canales": ["El Heraldo de México", "EXCELSIOR", "Te Lo Explicamos"], "tags": ["infancia", "adolescencia", "crisis", "prevención"] },
+        { "rank": 6, "tema": "Neurodivergencia: TDAH y autismo", "emoji": "🧩", "vistas_min": 1100, "vistas_max": 4100, "vistas_promedio": 2600, "tendencia": "concientización", "color": "#06b6d4", "descripcion": "Contenido educativo sobre TDAH en adultos y diferencias con el espectro autista", "canales": ["Psicología Animada", "El Heraldo de México", "Aprendemos Juntos"], "tags": ["TDAH", "autismo", "neurodivergencia", "diagnóstico"] },
+        { "rank": 5, "tema": "Políticas públicas de salud mental", "emoji": "🏛️", "vistas_min": 1800, "vistas_max": 2700, "vistas_promedio": 2250, "tendencia": "institucional", "color": "#10b981", "descripcion": "Gobierno de México y medios públicos metiendo la salud mental en la agenda nacional", "canales": ["Gobierno de México", "Canal Once", "Canal del Congreso México"], "tags": ["políticas públicas", "gobierno", "estrategia nacional", "jóvenes"] },
+        { "rank": 4, "tema": "Burnout y bienestar laboral", "emoji": "🔥", "vistas_min": 550, "vistas_max": 2700, "vistas_promedio": 1625, "tendencia": "crecimiento", "color": "#f97316", "descripcion": "52% de trabajadores mexicanos preocupados por su bienestar emocional; el burnout como tema nacional", "canales": ["El Heraldo de México", "Grupo REFORMA", "MILENIO"], "tags": ["burnout", "estrés laboral", "trabajo", "bienestar"] },
+        { "rank": 3, "tema": "Juventud, depresión y 'generación de cristal'", "emoji": "🧠", "vistas_min": 5700, "vistas_max": 30000, "vistas_promedio": 18000, "tendencia": "debate nacional", "color": "#6366f1", "descripcion": "El debate sobre si la juventud es más frágil o más consciente domina la conversación psicológica", "canales": ["Grupo Fórmula", "Azteca Noticias", "Aprendemos Juntos Mex"], "tags": ["juventud", "generación de cristal", "depresión juvenil", "debate"] },
+        { "rank": 2, "tema": "Depresión, ansiedad y manejo emocional", "emoji": "🫀", "vistas_min": 150000, "vistas_max": 540000, "vistas_promedio": 345000, "tendencia": "explosivo", "color": "#dc2626", "descripcion": "Marian Rojas Estapé como referente; contenido sobre causas del aumento de depresión y ansiedad", "canales": ["Jorge Serratos/SINERGÉTICO", "José Luis Marín", "AprendemosJuntos", "Marian Rojas Estapé"], "tags": ["depresión", "ansiedad", "manejo emocional", "terapia", "Marian Rojas"] },
+        { "rank": 1, "tema": "Amor propio, autoestima y relaciones de pareja", "emoji": "❤️", "vistas_min": 500000, "vistas_max": 1800000, "vistas_promedio": 1150000, "tendencia": "rey absoluto", "color": "#7c3aed", "descripcion": "El tema MÁS consumido en México: autoestima, validación, heridas emocionales y psicología de pareja", "canales": ["Aprendemos Juntos Mex", "Marco Antonio Regil", "La Cruda Verdad Podcast", "W Radio México", "Walter Riso"], "tags": ["amor propio", "autoestima", "relaciones", "pareja", "Walter Riso", "apego"] }
+      ]
+    };
+
+    const topics = DATA.topics;
+
+    // ── CHART 1: Barras horizontales (vistas promedio) ──
+    const ctx1 = document.getElementById('mainChart').getContext('2d');
+    const labels = topics.map(t => `#${t.rank} ${t.emoji} ${t.tema}`);
+    const values = topics.map(t => t.vistas_promedio);
+    const colors = topics.map(t => t.color);
+
+    new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: labels.reverse(),
+        datasets: [{
+          label: 'Vistas promedio',
+          data: values.reverse(),
+          backgroundColor: colors.reverse().map(c => c + 'CC'),
+          borderColor: colors.reverse().map(c => c),
+          borderWidth: 2,
+          borderRadius: 8,
+          borderSkipped: false,
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => ` ${ctx.raw.toLocaleString('es-MX')} vistas promedio`
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'logarithmic',
+            title: { display: true, text: 'Vistas (escala log)', color: '#9ca3af' },
+            ticks: { color: '#9ca3af', callback: v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v },
+            grid: { color: '#1f2937' }
+          },
+          y: {
+            ticks: { color: '#d1d5db', font: { size: 12 } },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+
+    // ── CHART 2: Donut de tendencias ──
+    const trendCounts = {};
+    topics.forEach(t => {
+      trendCounts[t.tendencia] = (trendCounts[t.tendencia] || 0) + 1;
+    });
+    const trendLabels = Object.keys(trendCounts);
+    const trendColors = {
+      'emergente': '#f59e0b', 'nicho': '#8b5cf6', 'ascenso': '#ef4444',
+      'alarma': '#ec4899', 'concientización': '#06b6d4', 'institucional': '#10b981',
+      'crecimiento': '#f97316', 'debate nacional': '#6366f1', 'explosivo': '#dc2626',
+      'rey absoluto': '#7c3aed'
+    };
+
+    const ctx2 = document.getElementById('trendChart').getContext('2d');
+    new Chart(ctx2, {
+      type: 'doughnut',
+      data: {
+        labels: trendLabels,
+        datasets: [{
+          data: Object.values(trendCounts),
+          backgroundColor: trendLabels.map(l => trendColors[l] + 'DD'),
+          borderColor: trendLabels.map(l => trendColors[l]),
+          borderWidth: 2,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { color: '#d1d5db', padding: 16, font: { size: 12 } } }
+        }
+      }
+    });
+
+    // ── Mini barras rápidas ──
+    const miniContainer = document.getElementById('miniBars');
+    const maxViews = topics[topics.length - 1].vistas_promedio;
+    topics.forEach(t => {
+      const pct = Math.max((t.vistas_promedio / maxViews * 100), 2);
+      const div = document.createElement('div');
+      div.className = 'flex items-center gap-2 text-sm';
+      div.innerHTML = `
+        <span class="w-6 text-right text-gray-500 font-mono text-xs">#${t.rank}</span>
+        <span class="text-base">${t.emoji}</span>
+        <span class="flex-1 bg-gray-800 rounded-full h-6 relative overflow-hidden">
+          <span class="absolute inset-0 rounded-full trend-bar opacity-80" style="width:${pct}%;background:${t.color}"></span>
+          <span class="absolute inset-0 flex items-center px-3 text-xs font-medium text-white truncate">${t.tema}</span>
+        </span>
+        <span class="text-xs text-gray-500 w-16 text-right font-mono">${t.vistas_promedio >= 1000 ? (t.vistas_promedio/1000).toFixed(0)+'K' : t.vistas_promedio}</span>
+      `;
+      miniContainer.appendChild(div);
+    });
+
+    // ── Tarjetas detalladas ──
+    const cardsContainer = document.getElementById('topicCards');
+    topics.forEach(t => {
+      const card = document.createElement('div');
+      card.className = 'card-hover bg-gray-900 border border-gray-800 rounded-2xl p-5 flex flex-col gap-3';
+      card.innerHTML = `
+        <div class="flex items-center justify-between">
+          <span class="text-4xl">${t.emoji}</span>
+          <span class="text-xs font-bold px-2 py-1 rounded-full border" style="color:${t.color};border-color:${t.color}40;background:${t.color}15">${t.tendencia.toUpperCase()}</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xl font-bold" style="color:${t.color}">#${t.rank}</span>
+            <h3 class="text-base font-semibold text-white leading-tight">${t.tema}</h3>
+          </div>
+          <p class="text-gray-400 text-sm">${t.descripcion}</p>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-gray-500">
+          <span class="font-mono bg-gray-800 px-2 py-1 rounded">📊 ${t.vistas_promedio >= 1000 ? (t.vistas_promedio/1000).toFixed(1)+'K' : t.vistas_promedio} vistas prom.</span>
+          <span class="font-mono bg-gray-800 px-2 py-1 rounded">📉 ${t.vistas_min >= 1000 ? (t.vistas_min/1000).toFixed(0)+'K' : t.vistas_min}–${t.vistas_max >= 1000 ? (t.vistas_max/1000).toFixed(1)+'K' : t.vistas_max}</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          ${t.tags.map(tag => `<span class="text-xs bg-gray-800 text-gray-300 px-2 py-0.5 rounded-full">${tag}</span>`).join('')}
+        </div>
+        <div class="text-xs text-gray-600 mt-1">
+          📺 ${t.canales.join(' · ')}
+        </div>
+      `;
+      cardsContainer.appendChild(card);
+    });
+  </script>
+</body>
+</html>

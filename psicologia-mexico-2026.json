@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "titulo": "Top 10 Temas de Psicología en YouTube México",
+    "periodo": "Abril - Mayo 2026",
+    "fecha_extraccion": "2026-05-30",
+    "region": "México",
+    "orden": "ascendente (#10 menor tendencia → #1 mayor tendencia)"
+  },
+  "topics": [
+    {
+      "rank": 10,
+      "tema": "Salud mental masculina",
+      "emoji": "🧔",
+      "vistas_min": 39,
+      "vistas_max": 100,
+      "vistas_promedio": 70,
+      "tendencia": "emergente",
+      "color": "#f59e0b",
+      "descripcion": "Apenas empieza a abrirse conversación sobre salud mental en hombres mexicanos",
+      "canales": ["Mexiquense TV", "NosotrAs con Julia Didriksson"],
+      "tags": ["masculinidad", "salud mental", "hombres"]
+    },
+    {
+      "rank": 9,
+      "tema": "Terapia psicológica en línea",
+      "emoji": "💻",
+      "vistas_min": 150,
+      "vistas_max": 900,
+      "vistas_promedio": 525,
+      "tendencia": "nicho",
+      "color": "#8b5cf6",
+      "descripcion": "Psicólogos mexicanos migrando su práctica al mundo digital",
+      "canales": ["El Psicólogo en las Redes", "UNAM Psicología", "Doctoralia México"],
+      "tags": ["terapia online", "consultorio digital", "psicólogo"]
+    },
+    {
+      "rank": 8,
+      "tema": "Acoso digital y salud mental",
+      "emoji": "📱",
+      "vistas_min": 500,
+      "vistas_max": 550,
+      "vistas_promedio": 525,
+      "tendencia": "ascenso",
+      "color": "#ef4444",
+      "descripcion": "El ciberacoso como detonante de ansiedad y depresión en jóvenes",
+      "canales": ["El Heraldo de México", "EXCELSIOR"],
+      "tags": ["ciberacoso", "ansiedad", "redes sociales", "jóvenes"]
+    },
+    {
+      "rank": 7,
+      "tema": "Salud mental infantil en México",
+      "emoji": "👶",
+      "vistas_min": 160,
+      "vistas_max": 630,
+      "vistas_promedio": 395,
+      "tendencia": "alarma",
+      "color": "#ec4899",
+      "descripcion": "Medios denunciando el déficit de atención psicológica infantil como emergencia silenciosa",
+      "canales": ["El Heraldo de México", "EXCELSIOR", "Te Lo Explicamos"],
+      "tags": ["infancia", "adolescencia", "crisis", "prevención"]
+    },
+    {
+      "rank": 6,
+      "tema": "Neurodivergencia: TDAH y autismo",
+      "emoji": "🧩",
+      "vistas_min": 1100,
+      "vistas_max": 4100,
+      "vistas_promedio": 2600,
+      "tendencia": "concientización",
+      "color": "#06b6d4",
+      "descripcion": "Contenido educativo sobre TDAH en adultos y diferencias con el espectro autista",
+      "canales": ["Psicología Animada", "El Heraldo de México", "Aprendemos Juntos"],
+      "tags": ["TDAH", "autismo", "neurodivergencia", "diagnóstico"]
+    },
+    {
+      "rank": 5,
+      "tema": "Políticas públicas de salud mental",
+      "emoji": "🏛️",
+      "vistas_min": 1800,
+      "vistas_max": 2700,
+      "vistas_promedio": 2250,
+      "tendencia": "institucional",
+      "color": "#10b981",
+      "descripcion": "Gobierno de México y medios públicos metiendo la salud mental en la agenda nacional",
+      "canales": ["Gobierno de México", "Canal Once", "Canal del Congreso México"],
+      "tags": ["políticas públicas", "gobierno", "estrategia nacional", "jóvenes"]
+    },
+    {
+      "rank": 4,
+      "tema": "Burnout y bienestar laboral",
+      "emoji": "🔥",
+      "vistas_min": 550,
+      "vistas_max": 2700,
+      "vistas_promedio": 1625,
+      "tendencia": "crecimiento",
+      "color": "#f97316",
+      "descripcion": "52% de trabajadores mexicanos preocupados por su bienestar emocional; el burnout como tema nacional",
+      "canales": ["El Heraldo de México", "Grupo REFORMA", "MILENIO"],
+      "tags": ["burnout", "estrés laboral", "trabajo", "bienestar"]
+    },
+    {
+      "rank": 3,
+      "tema": "Juventud, depresión y 'generación de cristal'",
+      "emoji": "🧠",
+      "vistas_min": 5700,
+      "vistas_max": 30000,
+      "vistas_promedio": 18000,
+      "tendencia": "debate nacional",
+      "color": "#6366f1",
+      "descripcion": "El debate sobre si la juventud es más frágil o más consciente domina la conversación psicológica",
+      "canales": ["Grupo Fórmula", "Azteca Noticias", "Aprendemos Juntos Mex"],
+      "tags": ["juventud", "generación de cristal", "depresión juvenil", "debate"]
+    },
+    {
+      "rank": 2,
+      "tema": "Depresión, ansiedad y manejo emocional",
+      "emoji": "🫀",
+      "vistas_min": 150000,
+      "vistas_max": 540000,
+      "vistas_promedio": 345000,
+      "tendencia": "explosivo",
+      "color": "#dc2626",
+      "descripcion": "Marian Rojas Estapé como referente; contenido sobre causas del aumento de depresión y ansiedad",
+      "canales": ["Jorge Serratos/SINERGÉTICO", "José Luis Marín", "AprendemosJuntos", "Marian Rojas Estapé"],
+      "tags": ["depresión", "ansiedad", "manejo emocional", "terapia", "Marian Rojas"]
+    },
+    {
+      "rank": 1,
+      "tema": "Amor propio, autoestima y relaciones de pareja",
+      "emoji": "❤️",
+      "vistas_min": 500000,
+      "vistas_max": 1800000,
+      "vistas_promedio": 1150000,
+      "tendencia": "rey absoluto",
+      "color": "#7c3aed",
+      "descripcion": "El tema MÁS consumido en México: autoestima, validación, heridas emocionales y psicología de pareja",
+      "canales": ["Aprendemos Juntos Mex", "Marco Antonio Regil", "La Cruda Verdad Podcast", "W Radio México", "Walter Riso"],
+      "tags": ["amor propio", "autoestima", "relaciones", "pareja", "Walter Riso", "apego"]
+    }
+  ],
+  "resumen_vistas": {
+    "total_combinado": "~2,350,000 vistas",
+    "tema_dominante": "Amor propio, autoestima y relaciones de pareja",
+    "tema_emergente": "Salud mental masculina",
+    "crecimiento_mas_rapido": "Depresión, ansiedad y manejo emocional"
+  }
+}
