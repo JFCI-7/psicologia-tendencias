@@ -3,251 +3,310 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Psicología en YouTube México — Tendencias Abril/Mayo 2026</title>
+  <title>RAPSI — Tendencias de Psicología en YouTube México</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            rapsi: {
+              mint: '#AAF0C3',
+              sky: '#79BCD7',
+              dark: '#42708A',
+              teal: '#8DD7C2',
+              light: '#F0FAF5',
+              cream: '#F8FBFA'
+            }
+          }
         }
       }
     }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * { font-family: 'Inter', system-ui, sans-serif; }
-    .trend-bar { transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
-    .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15); }
-    .video-card { transition: transform 0.2s ease; }
-    .video-card:hover { transform: scale(1.02); }
-    .tab-active { background: #7c3aed; color: white; }
-    .tab-inactive { background: #1f2937; color: #9ca3af; }
-    .tab-inactive:hover { background: #374151; color: #d1d5db; }
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0.4); }
-      50% { box-shadow: 0 0 20px 4px rgba(124,58,237,0.2); }
+    body { background: #F8FBFA; }
+    .card-hover { 
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1); 
+      border: 1px solid #E8F4F0;
     }
-    .pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
-    .calendar-day { min-height: 80px; }
-    .hook-card { transition: all 0.2s ease; border-left: 3px solid transparent; }
-    .hook-card:hover { border-left-color: #7c3aed; background: #111827; }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #111827; }
-    ::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+    .card-hover:hover { 
+      transform: translateY(-6px); 
+      box-shadow: 0 24px 48px -12px rgba(66,112,138,0.15);
+      border-color: #8DD7C2;
+    }
+    .video-card { transition: all 0.3s ease; }
+    .video-card:hover { transform: scale(1.03); box-shadow: 0 12px 32px -8px rgba(66,112,138,0.2); }
+    .tab-active { 
+      background: linear-gradient(135deg, #42708A 0%, #79BCD7 100%); 
+      color: white; 
+      box-shadow: 0 4px 16px -4px rgba(66,112,138,0.3);
+    }
+    .tab-inactive { 
+      background: white; 
+      color: #42708A; 
+      border: 1px solid #E8F4F0;
+    }
+    .tab-inactive:hover { 
+      background: #F0FAF5; 
+      border-color: #8DD7C2;
+    }
+    .hook-card { 
+      transition: all 0.2s ease; 
+      border-left: 3px solid transparent;
+      background: white;
+    }
+    .hook-card:hover { 
+      border-left-color: #79BCD7; 
+      background: #F0FAF5;
+      transform: translateX(4px);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #42708A 0%, #79BCD7 50%, #8DD7C2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #F0FAF5 0%, #E8F4F0 50%, #D4EFE5 100%);
+    }
+    .badge {
+      background: linear-gradient(135deg, #AAF0C3 0%, #8DD7C2 100%);
+      color: #42708A;
+    }
+    .trend-bar-rapsi {
+      background: linear-gradient(90deg, #79BCD7 0%, #AAF0C3 100%);
+      border-radius: 999px;
+      transition: width 1s ease;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #F0FAF5; }
+    ::-webkit-scrollbar-thumb { background: #8DD7C2; border-radius: 3px; }
+    .pattern-bg {
+      background-image: url('pattern-brain.png');
+      background-repeat: no-repeat;
+      background-position: bottom right;
+      background-size: 400px;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .float-anim { animation: float 4s ease-in-out infinite; }
   </style>
 </head>
-<body class="bg-gray-950 text-gray-100 min-h-screen">
+<body class="text-gray-700 min-h-screen">
 
   <!-- Navegación -->
-  <nav class="sticky top-0 z-50 bg-gray-950/90 backdrop-blur-md border-b border-gray-800">
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-rapsi-mint/30 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="text-2xl">🧠</span>
-        <span class="font-bold text-lg hidden sm:inline">Psicología Tendencias</span>
+      <div class="flex items-center gap-3">
+        <img src="logo-icon.png" alt="RAPSI" class="w-10 h-10 rounded-full float-anim" onerror="this.style.display='none'">
+        <div>
+          <span class="font-bold text-lg text-rapsi-dark">RAPSI</span>
+          <span class="hidden sm:inline text-xs text-rapsi-sky ml-2 font-medium">Tendencias de Psicología</span>
+        </div>
       </div>
-      <div class="flex gap-1 sm:gap-2 text-xs sm:text-sm">
-        <button onclick="showSection('temas')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-active" data-tab="temas">Temas</button>
-        <button onclick="showSection('videos')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-inactive" data-tab="videos">Videos</button>
-        <button onclick="showSection('calendario')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-inactive" data-tab="calendario">Calendario</button>
-        <button onclick="showSection('hooks')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-inactive" data-tab="hooks">Redes</button>
-        <button onclick="showSection('trends')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-inactive" data-tab="trends">Google Trends</button>
+      <div class="flex gap-1.5 text-xs sm:text-sm">
+        <button onclick="showSection('temas')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all" data-tab="temas">Temas</button>
+        <button onclick="showSection('videos')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="videos">Videos</button>
+        <button onclick="showSection('calendario')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="calendario">Calendario</button>
+        <button onclick="showSection('hooks')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="hooks">Redes</button>
+        <button onclick="showSection('trends')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="trends">Trends</button>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <header class="relative overflow-hidden bg-gradient-to-br from-violet-950 via-gray-950 to-gray-900 border-b border-violet-900/30">
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50"></div>
-    <div class="max-w-7xl mx-auto px-4 py-10 sm:py-14 relative z-10 text-center">
-      <div class="inline-flex items-center gap-2 bg-violet-600/20 border border-violet-500/30 rounded-full px-4 py-1.5 text-violet-300 text-sm font-medium mb-4">
-        📊 Datos actualizados — 31 de mayo 2026
-      </div>
-      <h1 class="text-3xl sm:text-5xl font-black tracking-tight bg-gradient-to-r from-violet-300 via-white to-violet-300 bg-clip-text text-transparent">
-        Psicología en YouTube México
-      </h1>
-      <p class="text-lg sm:text-xl text-gray-400 mt-3 font-medium">
-        Tendencias, videos virales y calendario editorial • <span class="text-violet-400">Abril – Mayo 2026</span>
-      </p>
-      <div class="flex flex-wrap justify-center gap-2 mt-5">
-        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">🇲🇽 México</span>
-        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">🔍 YouTube + DuckDuckGo</span>
-        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">📈 Google Trends API</span>
-        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">17 temas analizados</span>
+  <header class="hero-gradient pattern-bg relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-rapsi-mint/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-72 h-72 bg-rapsi-sky/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center gap-8">
+        <div class="flex-1 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 badge rounded-full px-4 py-1.5 text-xs font-bold mb-5">
+            📊 Datos actualizados — 31 mayo 2026
+          </div>
+          <h1 class="text-4xl sm:text-6xl font-black tracking-tight gradient-text mb-4">
+            Tendencias de<br>Psicología en México
+          </h1>
+          <p class="text-lg text-gray-500 mt-4 font-medium max-w-xl">
+            Análisis completo de YouTube + Google Trends • Abril – Mayo 2026 • 
+            <span class="text-rapsi-dark font-semibold">17 temas</span> en tendencia
+          </p>
+          <div class="flex flex-wrap justify-center lg:justify-start gap-2 mt-6">
+            <span class="bg-white text-rapsi-dark text-xs px-4 py-2 rounded-full border border-rapsi-mint/50 shadow-sm font-medium">🇲🇽 México</span>
+            <span class="bg-white text-rapsi-dark text-xs px-4 py-2 rounded-full border border-rapsi-mint/50 shadow-sm font-medium">🔍 YouTube + DuckDuckGo</span>
+            <span class="bg-white text-rapsi-dark text-xs px-4 py-2 rounded-full border border-rapsi-mint/50 shadow-sm font-medium">📈 Google Trends API</span>
+          </div>
+        </div>
+        <div class="flex-shrink-0">
+          <img src="logo-full.png" alt="RAPSI Logo" class="w-64 h-auto drop-shadow-2xl" onerror="this.outerHTML='<div class=\'w-48 h-48 rounded-full bg-gradient-to-br from-rapsi-mint to-rapsi-sky flex items-center justify-center text-4xl\'>🧠</div>'">
+        </div>
       </div>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-4 py-8 space-y-10">
+  <main class="max-w-7xl mx-auto px-4 py-10 space-y-12">
 
     <!-- SECCIÓN TEMAS -->
     <div id="section-temas" class="section-content">
       
       <!-- Panel de resumen -->
-      <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center">
-          <div class="text-3xl mb-1">🔥</div>
-          <div class="text-sm text-gray-400">Tema más viral</div>
-          <div class="text-white font-semibold text-sm mt-1">Amor propio y autoestima</div>
-          <div class="text-violet-400 font-bold mt-1">~1.15M vistas</div>
+      <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+        <div class="bg-white border border-rapsi-mint/30 rounded-2xl p-6 text-center shadow-sm card-hover">
+          <div class="text-3xl mb-2">🔥</div>
+          <div class="text-sm text-gray-400 mb-1">Tema más viral</div>
+          <div class="text-rapsi-dark font-bold text-sm">Amor propio y autoestima</div>
+          <div class="text-rapsi-sky font-bold mt-1 text-lg">~1.15M vistas</div>
         </div>
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center">
-          <div class="text-3xl mb-1">⚡</div>
-          <div class="text-sm text-gray-400">Mayor crecimiento</div>
-          <div class="text-white font-semibold text-sm mt-1">Depresión y ansiedad</div>
-          <div class="text-red-400 font-bold mt-1">~345K vistas</div>
+        <div class="bg-white border border-rapsi-mint/30 rounded-2xl p-6 text-center shadow-sm card-hover">
+          <div class="text-3xl mb-2">⚡</div>
+          <div class="text-sm text-gray-400 mb-1">Mayor crecimiento</div>
+          <div class="text-rapsi-dark font-bold text-sm">Depresión y ansiedad</div>
+          <div class="text-rapsi-teal font-bold mt-1 text-lg">~345K vistas</div>
         </div>
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center">
-          <div class="text-3xl mb-1">🆕</div>
-          <div class="text-sm text-gray-400">Temas nuevos agregados</div>
-          <div class="text-white font-semibold text-sm mt-1">7 categorías + videos</div>
-          <div class="text-amber-400 font-bold mt-1">Hoy</div>
+        <div class="bg-white border border-rapsi-mint/30 rounded-2xl p-6 text-center shadow-sm card-hover">
+          <div class="text-3xl mb-2">🆕</div>
+          <div class="text-sm text-gray-400 mb-1">Datos Google Trends</div>
+          <div class="text-rapsi-dark font-bold text-sm">Disfunción eréctil líder</div>
+          <div class="text-rapsi-dark font-bold mt-1 text-lg">51.48/100</div>
         </div>
       </section>
 
       <!-- Gráfica principal -->
-      <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 sm:p-7 mb-8">
-        <h2 class="text-xl font-bold text-white mb-2">📊 Vistas promedio por tema <span class="text-gray-500 text-sm font-normal">(Top 10 originales)</span></h2>
-        <p class="text-gray-500 text-sm mb-6">Orden ascendente: del #10 (menor) al #1 (mayor tendencia)</p>
-        <div class="relative h-[520px] sm:h-[560px]">
+      <section class="bg-white border border-rapsi-mint/30 rounded-3xl p-6 sm:p-8 shadow-sm mb-10">
+        <h2 class="text-xl font-bold text-rapsi-dark mb-2">📊 Vistas promedio por tema</h2>
+        <p class="text-gray-400 text-sm mb-6">Orden ascendente: del #10 al #1 (Top 10 original)</p>
+        <div class="relative h-[480px] sm:h-[520px]">
           <canvas id="mainChart"></canvas>
         </div>
       </section>
 
-      <!-- Temas Originales (10) -->
-      <section class="mb-10">
-        <h2 class="text-2xl font-bold text-white mb-2">📋 Top 10 Temas Originales</h2>
-        <p class="text-gray-400 mb-5">Datos extraídos de búsquedas directas en YouTube México</p>
+      <!-- Temas Originales -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-rapsi-dark mb-2">📋 Top 10 Temas Originales</h2>
+        <p class="text-gray-400 mb-6">Datos extraídos de búsquedas en YouTube México</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="topicCardsOriginal"></div>
       </section>
 
-      <!-- NUEVOS TEMAS (7 categorías) -->
-      <section class="mb-10">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="bg-amber-500/20 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/30">NUEVO</span>
-          <h2 class="text-2xl font-bold text-white">🆕 7 Categorías Adicionales en Tendencia</h2>
+      <!-- NUEVOS TEMAS -->
+      <section class="mb-12">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="bg-gradient-to-r from-rapsi-mint to-rapsi-teal text-rapsi-dark text-xs font-bold px-4 py-1.5 rounded-full">7 CATEGORÍAS NUEVAS</span>
+          <h2 class="text-2xl font-bold text-rapsi-dark">Psicología Aplicada en Tendencia</h2>
         </div>
-        <p class="text-gray-400 mb-5">Investigación complementaria abril-mayo 2025 — Psicología aplicada</p>
+        <p class="text-gray-400 mb-6">Investigación complementaria abril-mayo 2025</p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="newTopicCards"></div>
       </section>
     </div>
 
     <!-- SECCIÓN VIDEOS -->
     <div id="section-videos" class="section-content hidden">
-      <h2 class="text-2xl font-bold text-white mb-2">🎬 Videos Reales de YouTube por Tema</h2>
-      <p class="text-gray-400 mb-6">Enlaces directos a contenido viral y educativo verificado</p>
-      
-      <div class="space-y-8" id="videosContainer">
-        <!-- Videos se generan por JS -->
-      </div>
+      <h2 class="text-2xl font-bold text-rapsi-dark mb-2">🎬 Videos Reales de YouTube</h2>
+      <p class="text-gray-400 mb-8">Enlaces directos a contenido viral y educativo verificado</p>
+      <div class="space-y-8" id="videosContainer"></div>
     </div>
 
-    <!-- SECCIÓN CALENDARIO EDITORIAL -->
+    <!-- SECCIÓN CALENDARIO -->
     <div id="section-calendario" class="section-content hidden">
-      <h2 class="text-2xl font-bold text-white mb-2">📅 Calendario Editorial Semanal</h2>
-      <p class="text-gray-400 mb-6">Plan de contenido sugerido para YouTube México — 8 semanas</p>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="calendarContainer">
-        <!-- Calendario por JS -->
-      </div>
+      <h2 class="text-2xl font-bold text-rapsi-dark mb-2">📅 Calendario Editorial Semanal</h2>
+      <p class="text-gray-400 mb-8">Plan de contenido sugerido para YouTube México — 8 semanas</p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="calendarContainer"></div>
     </div>
 
-    <!-- SECCIÓN HOOKS REDES SOCIALES -->
+    <!-- SECCIÓN HOOKS -->
     <div id="section-hooks" class="section-content hidden">
-      <h2 class="text-2xl font-bold text-white mb-2">🚀 Hooks para Redes Sociales</h2>
-      <p class="text-gray-400 mb-6">Copia y pega para Instagram, TikTok, X/Twitter y YouTube Shorts</p>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="hooksContainer">
-        <!-- Hooks por JS -->
-      </div>
+      <h2 class="text-2xl font-bold text-rapsi-dark mb-2">🚀 Hooks para Redes Sociales</h2>
+      <p class="text-gray-400 mb-8">Copia y pega para Instagram, TikTok, X/Twitter y YouTube Shorts</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="hooksContainer"></div>
     </div>
 
     <!-- SECCIÓN GOOGLE TRENDS -->
     <div id="section-trends" class="section-content hidden">
-      <h2 class="text-2xl font-bold text-white mb-2">📈 Datos Reales de Google Trends México</h2>
-      <p class="text-gray-400 mb-6">Interés de búsqueda Abril-Mayo 2025 • Escala 0-100</p>
+      <h2 class="text-2xl font-bold text-rapsi-dark mb-2">📈 Datos Reales de Google Trends México</h2>
+      <p class="text-gray-400 mb-8">Interés de búsqueda Abril-Mayo 2025 • Escala 0-100</p>
       
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <!-- Ranking de tendencias -->
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6">
-          <h3 class="text-lg font-bold text-white mb-4">🏆 Ranking de Interés de Búsqueda</h3>
-          <div class="space-y-3" id="trendsRanking">
-            <!-- Se genera por JS -->
-          </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+        <div class="bg-white border border-rapsi-mint/30 rounded-3xl p-6 shadow-sm">
+          <h3 class="text-lg font-bold text-rapsi-dark mb-5">🏆 Ranking de Interés de Búsqueda</h3>
+          <div class="space-y-3" id="trendsRanking"></div>
         </div>
         
-        <!-- Insights -->
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6">
-          <h3 class="text-lg font-bold text-white mb-4">💡 Insights Clave</h3>
+        <div class="bg-white border border-rapsi-mint/30 rounded-3xl p-6 shadow-sm">
+          <h3 class="text-lg font-bold text-rapsi-dark mb-5">💡 Insights Clave</h3>
           <div class="space-y-4">
-            <div class="bg-gray-800/50 rounded-lg p-4">
+            <div class="bg-rapsi-light rounded-xl p-4 border border-rapsi-mint/20">
               <div class="flex items-center gap-2 mb-2">
-                <span class="text-2xl">🔥</span>
-                <span class="font-semibold text-white">Tema Estrella</span>
+                <span class="text-xl">🔥</span>
+                <span class="font-semibold text-rapsi-dark">Tema Estrella</span>
               </div>
-              <p class="text-gray-400 text-sm"><strong class="text-red-400">Disfunción eréctil (51.48/100)</strong> — Tema explosivo con más búsquedas que "depresión" o "ansiedad". Relacionado directamente con consumo de pornografía.</p>
+              <p class="text-gray-500 text-sm"><strong class="text-rapsi-dark">Disfunción eréctil (51.48/100)</strong> — Tema explosivo. Relacionado directamente con consumo de pornografía.</p>
             </div>
-            <div class="bg-gray-800/50 rounded-lg p-4">
+            <div class="bg-rapsi-light rounded-xl p-4 border border-rapsi-mint/20">
               <div class="flex items-center gap-2 mb-2">
-                <span class="text-2xl">🩸</span>
-                <span class="font-semibold text-white">Sorpresa del Ranking</span>
+                <span class="text-xl">🩸</span>
+                <span class="font-semibold text-rapsi-dark">Sorpresa del Ranking</span>
               </div>
-              <p class="text-gray-400 text-sm"><strong class="text-pink-400">TPM (43.95/100)</strong> — Más buscada que "depresión postparto" o "salud mental LGBT". Oportunidad de contenido educativo grande.</p>
+              <p class="text-gray-500 text-sm"><strong class="text-rapsi-dark">TPM (43.95/100)</strong> — Más buscada que "depresión postparto". Oportunidad de contenido educativo grande.</p>
             </div>
-            <div class="bg-gray-800/50 rounded-lg p-4">
+            <div class="bg-rapsi-light rounded-xl p-4 border border-rapsi-mint/20">
               <div class="flex items-center gap-2 mb-2">
-                <span class="text-2xl">📊</span>
-                <span class="font-semibold text-white">Dato SEO</span>
+                <span class="text-xl">📊</span>
+                <span class="font-semibold text-rapsi-dark">Dato SEO</span>
               </div>
-              <p class="text-gray-400 text-sm">El público busca <strong class="text-amber-400">"homosexualidad"</strong> (31.9/100) más que <strong>"salud mental LGBT"</strong> (1.64/100). Usa ambos términos para maximizar alcance.</p>
+              <p class="text-gray-500 text-sm">El público busca <strong class="text-rapsi-dark">"homosexualidad"</strong> (31.9/100) más que <strong>"salud mental LGBT"</strong> (1.64/100). Usa ambos términos.</p>
             </div>
           </div>
         </div>
       </div>
       
-      <!-- Tabla detallada -->
-      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6">
-        <h3 class="text-lg font-bold text-white mb-4">📋 Detalle Completo por Categoría</h3>
+      <div class="bg-white border border-rapsi-mint/30 rounded-3xl p-6 shadow-sm">
+        <h3 class="text-lg font-bold text-rapsi-dark mb-5">📋 Detalle Completo por Categoría</h3>
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
             <thead>
-              <tr class="border-b border-gray-800">
-                <th class="text-left text-gray-400 py-3 px-4">Categoría</th>
-                <th class="text-left text-gray-400 py-3 px-4">Keyword</th>
-                <th class="text-center text-gray-400 py-3 px-4">Interés Prom.</th>
-                <th class="text-center text-gray-400 py-3 px-4">Máx.</th>
-                <th class="text-left text-gray-400 py-3 px-4">Consultas Relacionadas</th>
+              <tr class="border-b border-rapsi-mint/30">
+                <th class="text-left text-gray-400 py-3 px-4 font-medium">Categoría</th>
+                <th class="text-left text-gray-400 py-3 px-4 font-medium">Keyword</th>
+                <th class="text-center text-gray-400 py-3 px-4 font-medium">Interés Prom.</th>
+                <th class="text-center text-gray-400 py-3 px-4 font-medium">Máx.</th>
+                <th class="text-left text-gray-400 py-3 px-4 font-medium">Consultas Relacionadas</th>
               </tr>
             </thead>
-            <tbody id="trendsTableBody">
-              <!-- Se genera por JS -->
-            </tbody>
+            <tbody id="trendsTableBody"></tbody>
           </table>
         </div>
       </div>
       
-      <!-- Metodología -->
-      <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-6 mt-6">
-        <h3 class="text-lg font-bold text-white mb-2">🔬 Metodología</h3>
-        <ul class="text-gray-400 text-sm space-y-1">
+      <div class="bg-rapsi-light/50 border border-rapsi-mint/20 rounded-2xl p-6 mt-6">
+        <h3 class="text-lg font-bold text-rapsi-dark mb-2">🔬 Metodología</h3>
+        <ul class="text-gray-500 text-sm space-y-1">
           <li>• Fuente: Google Trends API via PyTrends</li>
           <li>• Período: Abril 1 - Mayo 31, 2025</li>
           <li>• Región: México (nacional)</li>
-          <li>• Idioma: Español (México)</li>
-          <li>• Nota: Google bloquea peticiones masivas; datos representan muestra de keywords prioritarias</li>
+          <li>• Nota: Google limita peticiones masivas; datos representan muestra de keywords prioritarias</li>
         </ul>
       </div>
     </div>
 
   </main>
 
-  <footer class="border-t border-gray-800 mt-12 py-6 text-center text-gray-600 text-sm">
-    <p>Fuente: Búsquedas en YouTube México + DuckDuckGo • Datos al 31 de mayo 2026</p>
-    <p class="mt-1">Desarrollado por <a href="https://github.com/JFCI-7" class="text-violet-400 hover:text-violet-300">@JFCI-7</a> • <a href="https://jfci-7.github.io/psicologia-tendencias/" class="text-violet-400 hover:text-violet-300">GitHub Pages</a></p>
+  <footer class="bg-gradient-to-r from-rapsi-dark to-rapsi-sky mt-16 py-10 text-center">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <img src="logo-icon.png" alt="RAPSI" class="w-12 h-12 rounded-full bg-white/10" onerror="this.style.display='none'">
+        <span class="text-white font-bold text-xl">RAPSI</span>
+      </div>
+      <p class="text-white/70 text-sm">Tendencias de Psicología en YouTube México</p>
+      <p class="text-white/50 text-xs mt-2">Datos al 31 de mayo 2026 • Fuente: YouTube + DuckDuckGo + Google Trends</p>
+      <p class="text-white/40 text-xs mt-1">Desarrollado por <a href="https://github.com/JFCI-7" class="text-rapsi-mint hover:text-white transition-colors">@JFCI-7</a></p>
+    </div>
   </footer>
 
   <!-- SCRIPTS -->
@@ -409,12 +468,11 @@
       }
     ];
 
-    // ── CHART 1: Barras horizontales ──
+    // ── CHART 1 ──
     const ctx1 = document.getElementById('mainChart')?.getContext('2d');
     if (ctx1) {
       const labels = TOPICS_ORIGINAL.map(t => `#${t.rank} ${t.emoji} ${t.tema}`);
       const values = TOPICS_ORIGINAL.map(t => t.vistas_promedio);
-      const colors = TOPICS_ORIGINAL.map(t => t.color);
       new Chart(ctx1, {
         type: 'bar',
         data: {
@@ -422,10 +480,10 @@
           datasets: [{
             label: 'Vistas promedio',
             data: values.reverse(),
-            backgroundColor: colors.reverse().map(c => c + 'CC'),
-            borderColor: colors.reverse().map(c => c),
+            backgroundColor: '#79BCD7CC',
+            borderColor: '#79BCD7',
             borderWidth: 2,
-            borderRadius: 8,
+            borderRadius: 12,
             borderSkipped: false,
           }]
         },
@@ -436,20 +494,22 @@
           plugins: {
             legend: { display: false },
             tooltip: {
+              backgroundColor: '#42708A',
+              titleColor: '#AAF0C3',
               callbacks: {
-                label: (ctx) => ` ${ctx.raw.toLocaleString('es-MX')} vistas promedio`
+                label: (ctx) => ` ${ctx.raw.toLocaleString('es-MX')} vistas`
               }
             }
           },
           scales: {
             x: {
               type: 'logarithmic',
-              title: { display: true, text: 'Vistas (escala log)', color: '#9ca3af' },
-              ticks: { color: '#9ca3af', callback: v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v },
-              grid: { color: '#1f2937' }
+              title: { display: true, text: 'Vistas (escala log)', color: '#79BCD7' },
+              ticks: { color: '#42708A', callback: v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v },
+              grid: { color: '#E8F4F0' }
             },
             y: {
-              ticks: { color: '#d1d5db', font: { size: 11 } },
+              ticks: { color: '#42708A', font: { size: 11 } },
               grid: { display: false }
             }
           }
@@ -462,83 +522,77 @@
     if (cardsOriginal) {
       TOPICS_ORIGINAL.forEach(t => {
         const card = document.createElement('div');
-        card.className = 'card-hover bg-gray-900 border border-gray-800 rounded-2xl p-5 flex flex-col gap-3';
+        card.className = 'card-hover bg-white rounded-2xl p-5 flex flex-col gap-3';
         card.innerHTML = `
           <div class="flex items-center justify-between">
             <span class="text-4xl">${t.emoji}</span>
-            <span class="text-xs font-bold px-2 py-1 rounded-full border" style="color:${t.color};border-color:${t.color}40;background:${t.color}15">${t.tendencia.toUpperCase()}</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full" style="color:${t.color};border:1px solid ${t.color}40;background:${t.color}10">${t.tendencia.toUpperCase()}</span>
           </div>
           <div>
             <div class="flex items-center gap-2 mb-1">
               <span class="text-xl font-bold" style="color:${t.color}">#${t.rank}</span>
-              <h3 class="text-base font-semibold text-white leading-tight">${t.tema}</h3>
+              <h3 class="text-base font-semibold text-gray-800 leading-tight">${t.tema}</h3>
             </div>
-            <p class="text-gray-400 text-sm">${t.descripcion}</p>
+            <p class="text-gray-500 text-sm">${t.descripcion}</p>
           </div>
-          <div class="flex items-center gap-2 text-xs text-gray-500">
-            <span class="font-mono bg-gray-800 px-2 py-1 rounded">📊 ${t.vistas_promedio >= 1000 ? (t.vistas_promedio/1000).toFixed(1)+'K' : t.vistas_promedio} vistas</span>
+          <div class="flex items-center gap-2 text-xs text-gray-400">
+            <span class="font-mono bg-rapsi-light px-2 py-1 rounded-lg">📊 ${t.vistas_promedio >= 1000 ? (t.vistas_promedio/1000).toFixed(1)+'K' : t.vistas_promedio} vistas</span>
           </div>
           <div class="flex flex-wrap gap-1.5">
-            ${t.tags.map(tag => `<span class="text-xs bg-gray-800 text-gray-300 px-2 py-0.5 rounded-full">${tag}</span>`).join('')}
-          </div>
-          <div class="text-xs text-gray-600 mt-1">
-            📺 ${t.canales.join(' · ')}
+            ${t.tags.map(tag => `<span class="text-xs bg-rapsi-light text-rapsi-dark px-2 py-0.5 rounded-full">${tag}</span>`).join('')}
           </div>
         `;
         cardsOriginal.appendChild(card);
       });
     }
 
-    // ── Nuevas tarjetas de categorías ──
+    // ── Nuevas tarjetas ──
     const newCards = document.getElementById('newTopicCards');
     if (newCards) {
       NEW_TOPICS.forEach(cat => {
         const card = document.createElement('div');
-        card.className = 'card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6';
-        const tendenciaColor = cat.tendencia === 'explosiva' ? 'text-red-400' : cat.tendencia === 'muy alta' ? 'text-amber-400' : 'text-violet-400';
+        card.className = 'card-hover bg-white rounded-2xl p-6';
+        const tendenciaColor = cat.tendencia === 'explosiva' ? 'text-red-500' : cat.tendencia === 'muy alta' ? 'text-amber-500' : 'text-rapsi-dark';
         card.innerHTML = `
           <div class="flex items-center gap-3 mb-4">
             <span class="text-3xl">${cat.emoji}</span>
             <div>
-              <h3 class="text-lg font-bold text-white">${cat.categoria}</h3>
-              <span class="text-xs ${tendenciaColor} font-semibold uppercase tracking-wider">🔥 Tendencia ${cat.tendencia}</span>
+              <h3 class="text-lg font-bold text-gray-800">${cat.categoria}</h3>
+              <span class="text-xs ${tendenciaColor} font-bold uppercase tracking-wider">🔥 Tendencia ${cat.tendencia}</span>
             </div>
           </div>
           <ul class="space-y-2 mb-4">
-            ${cat.temas.map(tema => `<li class="flex items-start gap-2 text-sm text-gray-300"><span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:${cat.color}"></span>${tema}</li>`).join('')}
+            ${cat.temas.map(tema => `<li class="flex items-start gap-2 text-sm text-gray-600"><span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:${cat.color}"></span>${tema}</li>`).join('')}
           </ul>
-          <div class="bg-gray-800/50 rounded-xl p-3 mb-3">
-            <p class="text-xs text-gray-400 italic">💡 ${cat.contexto}</p>
-          </div>
-          <div class="flex items-center gap-2 text-xs text-gray-500">
-            <span class="bg-gray-800 px-2 py-1 rounded">🎬 ${cat.videos.length} videos referenciados</span>
+          <div class="bg-rapsi-light rounded-xl p-3 mb-3 border border-rapsi-mint/20">
+            <p class="text-xs text-gray-500 italic">💡 ${cat.contexto}</p>
           </div>
         `;
         newCards.appendChild(card);
       });
     }
 
-    // ── SECCIÓN VIDEOS ──
+    // ── Videos ──
     const videosContainer = document.getElementById('videosContainer');
     if (videosContainer) {
       NEW_TOPICS.forEach(cat => {
         const section = document.createElement('div');
-        section.className = 'bg-gray-900 border border-gray-800 rounded-2xl p-6';
+        section.className = 'bg-white border border-rapsi-mint/20 rounded-2xl p-6 shadow-sm';
         section.innerHTML = `
           <div class="flex items-center gap-3 mb-5">
             <span class="text-2xl">${cat.emoji}</span>
-            <h3 class="text-lg font-bold text-white">${cat.categoria}</h3>
+            <h3 class="text-lg font-bold text-gray-800">${cat.categoria}</h3>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             ${cat.videos.map(v => `
-              <div class="video-card bg-gray-800 rounded-xl overflow-hidden cursor-pointer" onclick="window.open('https://youtube.com/watch?v=${v.id}', '_blank')">
-                <div class="bg-gradient-to-br from-gray-700 to-gray-800 h-32 flex items-center justify-center relative">
+              <div class="video-card bg-rapsi-light rounded-xl overflow-hidden cursor-pointer border border-rapsi-mint/20" onclick="window.open('https://youtube.com/watch?v=${v.id}', '_blank')">
+                <div class="bg-gradient-to-br from-rapsi-sky to-rapsi-mint h-32 flex items-center justify-center relative">
                   <span class="text-4xl">▶️</span>
-                  <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">YouTube</div>
+                  <div class="absolute bottom-2 right-2 bg-white/90 text-rapsi-dark text-xs px-2 py-0.5 rounded-full font-medium shadow-sm">YouTube</div>
                 </div>
                 <div class="p-3">
-                  <h4 class="text-sm font-semibold text-white line-clamp-2 mb-1">${v.titulo}</h4>
-                  <p class="text-xs text-gray-500">📺 ${v.canal}</p>
+                  <h4 class="text-sm font-semibold text-gray-800 line-clamp-2 mb-1">${v.titulo}</h4>
+                  <p class="text-xs text-gray-400">📺 ${v.canal}</p>
                 </div>
               </div>
             `).join('')}
@@ -548,111 +602,79 @@
       });
     }
 
-    // ── CALENDARIO EDITORIAL ──
+    // ── Calendario ──
     const CALENDAR_WEEKS = [
-      {
-        semana: "Semana 1",
-        fecha: "1–7 de junio",
-        temas: [
-          { dia: "Lunes", tema: "Amor propio y autoestima", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Miércoles", tema: "Hook: '3 señales de que no te quieres lo suficiente'", tipo: "short", plataforma: "TikTok/IG Reels" },
-          { dia: "Viernes", tema: "Depresión y ansiedad: causas actuales", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Domingo", tema: "Hook: '¿Por qué todos están ansiosos?'", tipo: "carrusel", plataforma: "Instagram" }
-        ]
-      },
-      {
-        semana: "Semana 2",
-        fecha: "8–14 de junio",
-        temas: [
-          { dia: "Lunes", tema: "Pornografía y efectos en el cerebro", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Miércoles", tema: "Hook: 'Lo que el porno le hace a tu cerebro (ciencia real)'", tipo: "short", plataforma: "TikTok/IG Reels" },
-          { dia: "Viernes", tema: "Disfunción eréctil psicológica en jóvenes", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Domingo", tema: "Hook: 'Por qué los hombres de 20 ya no pueden'", tipo: "short", plataforma: "YouTube Shorts" }
-        ]
-      },
-      {
-        semana: "Semana 3",
-        fecha: "15–21 de junio",
-        temas: [
-          { dia: "Lunes", tema: "Identidad de género explicada", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Miércoles", tema: "Hook: 'Sexo biológico ≠ identidad de género en 60 seg'", tipo: "short", plataforma: "TikTok/IG Reels" },
-          { dia: "Viernes", tema: "Salud mental en personas trans", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Domingo", tema: "Hook: 'Lo que nadie te dice sobre ser trans en México'", tipo: "carrusel", plataforma: "Instagram" }
-        ]
-      },
-      {
-        semana: "Semana 4",
-        fecha: "22–28 de junio",
-        temas: [
-          { dia: "Lunes", tema: "Emociones durante el embarazo", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Miércoles", tema: "Hook: 'Depresión postparto: no es 'mamitis', es real'", tipo: "short", plataforma: "TikTok/IG Reels" },
-          { dia: "Viernes", tema: "Menstruación y salud mental", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Domingo", tema: "Hook: 'SPM no es un invento, es tu cerebro cambiando de química'", tipo: "short", plataforma: "YouTube Shorts" }
-        ]
-      },
-      {
-        semana: "Semana 5",
-        fecha: "29 junio – 5 julio",
-        temas: [
-          { dia: "Lunes", tema: "Salud mental masculina / Alexitimia", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Miércoles", tema: "Hook: 'Por qué los hombres no lloran (y deberían)'", tipo: "short", plataforma: "TikTok/IG Reels" },
-          { dia: "Viernes", tema: "Terapia de pareja: cuándo acudir", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Domingo", tema: "Hook: '5 señales de que tu relación necesita terapia YA'", tipo: "carrusel", plataforma: "Instagram" }
-        ]
-      },
-      {
-        semana: "Semana 6",
-        fecha: "6–12 de julio",
-        temas: [
-          { dia: "Lunes", tema: "Burnout y bienestar laboral", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Miércoles", tema: "Hook: 'Estás quemado y no lo sabes: test de 3 preguntas'", tipo: "short", plataforma: "TikTok/IG Reels" },
-          { dia: "Viernes", tema: "Neurodivergencia: TDAH en adultos", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Domingo", tema: "Hook: 'Soy adulto y acabo de descubrir que tengo TDAH'", tipo: "short", plataforma: "YouTube Shorts" }
-        ]
-      },
-      {
-        semana: "Semana 7",
-        fecha: "13–19 de julio",
-        temas: [
-          { dia: "Lunes", tema: "Juventud y 'generación de cristal'", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Miércoles", tema: "Hook: '¿Somos la generación de cristal o la más consciente?'", tipo: "short", plataforma: "TikTok/IG Reels" },
-          { dia: "Viernes", tema: "Salud mental infantil en México", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Domingo", tema: "Hook: 'Tu hijo no es 'difícil', necesita ayuda psicológica'", tipo: "carrusel", plataforma: "Instagram" }
-        ]
-      },
-      {
-        semana: "Semana 8",
-        fecha: "20–26 de julio",
-        temas: [
-          { dia: "Lunes", tema: "Acoso digital y salud mental", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Miércoles", tema: "Hook: 'El ciberacoso te está matando sin que lo sepas'", tipo: "short", plataforma: "TikTok/IG Reels" },
-          { dia: "Viernes", tema: "Terapia psicológica en línea", tipo: "video largo", plataforma: "YouTube" },
-          { dia: "Domingo", tema: "Hook: 'Cómo elegir psicólogo online sin que te estafen'", tipo: "short", plataforma: "YouTube Shorts" }
-        ]
-      }
+      { semana: "Semana 1", fecha: "1–7 de junio", temas: [
+        { dia: "Lunes", tema: "Amor propio y autoestima", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Miércoles", tema: "Hook: '3 señales de que no te quieres lo suficiente'", tipo: "short", plataforma: "TikTok/IG" },
+        { dia: "Viernes", tema: "Depresión y ansiedad: causas actuales", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Domingo", tema: "Hook: '¿Por qué todos están ansiosos?'", tipo: "carrusel", plataforma: "Instagram" }
+      ]},
+      { semana: "Semana 2", fecha: "8–14 de junio", temas: [
+        { dia: "Lunes", tema: "Pornografía y efectos en el cerebro", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Miércoles", tema: "Hook: 'Lo que el porno le hace a tu cerebro'", tipo: "short", plataforma: "TikTok/IG" },
+        { dia: "Viernes", tema: "Disfunción eréctil psicológica en jóvenes", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Domingo", tema: "Hook: 'Por qué los hombres de 20 ya no pueden'", tipo: "short", plataforma: "YouTube Shorts" }
+      ]},
+      { semana: "Semana 3", fecha: "15–21 de junio", temas: [
+        { dia: "Lunes", tema: "Identidad de género explicada", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Miércoles", tema: "Hook: 'Sexo biológico ≠ identidad de género'", tipo: "short", plataforma: "TikTok/IG" },
+        { dia: "Viernes", tema: "Salud mental en personas trans", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Domingo", tema: "Hook: 'Lo que nadie te dice sobre ser trans en México'", tipo: "carrusel", plataforma: "Instagram" }
+      ]},
+      { semana: "Semana 4", fecha: "22–28 de junio", temas: [
+        { dia: "Lunes", tema: "Emociones durante el embarazo", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Miércoles", tema: "Hook: 'Depresión postparto: no es mamitis'", tipo: "short", plataforma: "TikTok/IG" },
+        { dia: "Viernes", tema: "Menstruación y salud mental", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Domingo", tema: "Hook: 'SPM no es invento, es tu cerebro'", tipo: "short", plataforma: "YouTube Shorts" }
+      ]},
+      { semana: "Semana 5", fecha: "29 junio – 5 julio", temas: [
+        { dia: "Lunes", tema: "Salud mental masculina / Alexitimia", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Miércoles", tema: "Hook: 'Por qué los hombres no lloran'", tipo: "short", plataforma: "TikTok/IG" },
+        { dia: "Viernes", tema: "Terapia de pareja: cuándo acudir", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Domingo", tema: "Hook: '5 señales de que tu relación necesita terapia'", tipo: "carrusel", plataforma: "Instagram" }
+      ]},
+      { semana: "Semana 6", fecha: "6–12 de julio", temas: [
+        { dia: "Lunes", tema: "Burnout y bienestar laboral", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Miércoles", tema: "Hook: 'Test de 3 preguntas: ¿estás quemado?'", tipo: "short", plataforma: "TikTok/IG" },
+        { dia: "Viernes", tema: "Neurodivergencia: TDAH en adultos", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Domingo", tema: "Hook: 'Soy adulto y acabo de descubrir TDAH'", tipo: "short", plataforma: "YouTube Shorts" }
+      ]},
+      { semana: "Semana 7", fecha: "13–19 de julio", temas: [
+        { dia: "Lunes", tema: "Juventud y 'generación de cristal'", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Miércoles", tema: "Hook: '¿Generación de cristal o más consciente?'", tipo: "short", plataforma: "TikTok/IG" },
+        { dia: "Viernes", tema: "Salud mental infantil en México", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Domingo", tema: "Hook: 'Tu hijo no es difícil, necesita ayuda'", tipo: "carrusel", plataforma: "Instagram" }
+      ]},
+      { semana: "Semana 8", fecha: "20–26 de julio", temas: [
+        { dia: "Lunes", tema: "Acoso digital y salud mental", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Miércoles", tema: "Hook: 'El ciberacoso te mata sin que lo sepas'", tipo: "short", plataforma: "TikTok/IG" },
+        { dia: "Viernes", tema: "Terapia psicológica en línea", tipo: "video largo", plataforma: "YouTube" },
+        { dia: "Domingo", tema: "Hook: 'Cómo elegir psicólogo online sin estafas'", tipo: "short", plataforma: "YouTube Shorts" }
+      ]}
     ];
 
     const calendarContainer = document.getElementById('calendarContainer');
     if (calendarContainer) {
-      CALENDAR_WEEKS.forEach((week, idx) => {
+      CALENDAR_WEEKS.forEach((week) => {
         const weekCard = document.createElement('div');
-        weekCard.className = 'bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden';
+        weekCard.className = 'bg-white border border-rapsi-mint/20 rounded-2xl overflow-hidden shadow-sm';
         weekCard.innerHTML = `
-          <div class="bg-gradient-to-r from-violet-900/50 to-gray-900 p-4 border-b border-gray-800">
+          <div class="bg-gradient-to-r from-rapsi-mint/30 to-rapsi-sky/20 p-4 border-b border-rapsi-mint/20">
             <div class="flex items-center justify-between">
-              <h3 class="text-lg font-bold text-white">${week.semana}</h3>
-              <span class="text-xs text-violet-400 bg-violet-900/30 px-3 py-1 rounded-full">${week.fecha}</span>
+              <h3 class="text-lg font-bold text-rapsi-dark">${week.semana}</h3>
+              <span class="text-xs text-rapsi-dark bg-white/70 px-3 py-1 rounded-full font-medium">${week.fecha}</span>
             </div>
           </div>
-          <div class="divide-y divide-gray-800">
+          <div class="divide-y divide-rapsi-mint/10">
             ${week.temas.map(d => `
-              <div class="p-4 flex items-start gap-3 hover:bg-gray-800/30 transition-colors">
-                <div class="flex-shrink-0 w-20 text-xs font-bold text-gray-500 pt-0.5">${d.dia}</div>
+              <div class="p-4 flex items-start gap-3 hover:bg-rapsi-light/50 transition-colors">
+                <div class="flex-shrink-0 w-20 text-xs font-bold text-rapsi-sky pt-0.5">${d.dia}</div>
                 <div class="flex-1">
-                  <p class="text-sm text-white font-medium">${d.tema}</p>
+                  <p class="text-sm text-gray-700 font-medium">${d.tema}</p>
                   <div class="flex items-center gap-2 mt-1">
-                    <span class="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-400">${d.tipo}</span>
-                    <span class="text-xs text-gray-600">📱 ${d.plataforma}</span>
+                    <span class="text-xs px-2 py-0.5 rounded-full bg-rapsi-light text-rapsi-dark border border-rapsi-mint/20">${d.tipo}</span>
+                    <span class="text-xs text-gray-400">📱 ${d.plataforma}</span>
                   </div>
                 </div>
               </div>
@@ -663,105 +685,70 @@
       });
     }
 
-    // ── HOOKS PARA REDES SOCIALES ──
+    // ── Hooks ──
     const HOOKS_DATA = [
-      {
-        categoria: "Identidad de Género",
-        emoji: "🏳️‍🌈",
-        color: "#ec4899",
-        hooks: [
-          "Tu hijo te dijo que se siente del otro género. No reacciones, ESCUCHA. Te explico qué hacer según la psicología 🧵",
-          "Sexo biológico e identidad de género NO son lo mismo. Si no entiendes la diferencia, este video es para ti.",
-          "3 mitos sobre personas trans que la psicología ya desmontó (y la gente sigue creyendo)",
-          "Mi paciente de 14 años me dijo: 'No me siento ni niña ni niño'. Esto es lo que aprendí de la terapia."
-        ]
-      },
-      {
-        categoria: "Salud Mental LGBT+",
-        emoji: "💜",
-        color: "#8b5cf6",
-        hooks: [
-          "El rechazo familiar mata más que la homofobia en la calle. Así destruye la salud mental de personas LGBT+",
-          "¿Por qué las personas trans tienen más depresión? No es por ser trans. Es por VIVIR en un mundo hostil.",
-          "Estrés minoritario: el trauma que sufres por ser quien eres en un mundo que no te acepta",
-          "A mi paciente le dijeron 'es una etapa'. Tiene 35 años y sigue esperando que 'pase'."
-        ]
-      },
-      {
-        categoria: "Pornografía",
-        emoji: "🔞",
-        color: "#dc2626",
-        hooks: [
-          "A los 25 años, Juan ya no puede tener relaciones 'reales'. El diagnóstico: pornografía desde los 12. Hilo sobre PIED 👇",
-          "Tu cerebro con pornografía = tu cerebro con cocaína. La neurociencia no miente.",
-          "'No tengo adicción, solo la veo los fines de semana'. Escucho esto cada semana en consulta. Abramos el tema.",
-          "5 efectos de la pornografía que NADIE te contó (y la ciencia ya confirmó)"
-        ]
-      },
-      {
-        categoria: "Sexualidad y Pareja",
-        emoji: "💑",
-        color: "#f97316",
-        hooks: [
-          "Llevan 3 años juntos y ya no se tocan. No es que no se aman: es que no saben hablar de sexo.",
-          "'No tengo ganas' puede ser depresión, medicamento o rabia acumulada. Te explico cómo saber cuál es.",
-          "El vaginismo existe y NO es 'que no te dejas'. Es tu cuerpo protegiéndote del trauma. 🧵",
-          "Celos 'porque te amo' = dependencia emocional disfrazada. Y es más común de lo que crees."
-        ]
-      },
-      {
-        categoria: "Embarazo",
-        emoji: "🤰",
-        color: "#ec4899",
-        hooks: [
-          "Depresión postparto NO es 'tristeza de mamá'. Es la causa #1 de muerte materna en México. Hablemos de esto.",
-          "A la semana 32, mi paciente quería desaparecer. 'Pero estás embarazada, debes estar feliz'. NO.",
-          "El embarazo no es solo físico. Tu cerebro cambia MÁS que tu cuerpo. Te explico la neurociencia.",
-          "5 señales de que tu embarazo necesita apoyo psicológico (y no es que 'estás hormonal')"
-        ]
-      },
-      {
-        categoria: "Menstruación",
-        emoji: "🩸",
-        color: "#f43f5e",
-        hooks: [
-          "'Es solo el periodo'. NO. Tu cerebro cambia de química 4 veces al mes y eso afecta TODO. Hilo 🧵",
-          "SPM leve = cambios de humor. TPM severa = no puedes trabajar. La diferencia importa.",
-          "El 90% de las mujeres con dismenorrea severa también tienen ansiedad. No es coincidencia.",
-          "Ciclo menstrual = mapa de tu salud mental. Aprende a leerlo."
-        ]
-      },
-      {
-        categoria: "Salud Mental Masculina",
-        emoji: "👨",
-        color: "#3b82f6",
-        hooks: [
-          "Alexitimia: el trastorno que hace que los hombres NO puedan nombrar lo que sienten. Más común de lo que crees.",
-          "La depresión en hombres NO se ve como tristeza. Se ve como irritabilidad, aislamiento y rabia.",
-          "El hombre que 'todo lo aguanta' no es fuerte. Es un candidato a infarto, suicidio o explosión.",
-          "'Los hombres no lloran' es la mentira más cara que le hemos vendido a la humanidad."
-        ]
-      }
+      { categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899", hooks: [
+        "Tu hijo te dijo que se siente del otro género. No reacciones, ESCUCHA. Te explico qué hacer según la psicología 🧵",
+        "Sexo biológico e identidad de género NO son lo mismo. Si no entiendes la diferencia, este video es para ti.",
+        "3 mitos sobre personas trans que la psicología ya desmontó (y la gente sigue creyendo)",
+        "Mi paciente de 14 años me dijo: 'No me siento ni niña ni niño'. Esto es lo que aprendí de la terapia."
+      ]},
+      { categoria: "Salud Mental LGBT+", emoji: "💜", color: "#8b5cf6", hooks: [
+        "El rechazo familiar mata más que la homofobia en la calle. Así destruye la salud mental de personas LGBT+",
+        "¿Por qué las personas trans tienen más depresión? No es por ser trans. Es por VIVIR en un mundo hostil.",
+        "Estrés minoritario: el trauma que sufres por ser quien eres en un mundo que no te acepta",
+        "A mi paciente le dijeron 'es una etapa'. Tiene 35 años y sigue esperando que 'pase'."
+      ]},
+      { categoria: "Pornografía", emoji: "🔞", color: "#dc2626", hooks: [
+        "A los 25 años, Juan ya no puede tener relaciones 'reales'. El diagnóstico: pornografía desde los 12. Hilo sobre PIED 👇",
+        "Tu cerebro con pornografía = tu cerebro con cocaína. La neurociencia no miente.",
+        "'No tengo adicción, solo la veo los fines de semana'. Escucho esto cada semana en consulta.",
+        "5 efectos de la pornografía que NADIE te contó (y la ciencia ya confirmó)"
+      ]},
+      { categoria: "Sexualidad y Pareja", emoji: "💑", color: "#f97316", hooks: [
+        "Llevan 3 años juntos y ya no se tocan. No es que no se aman: es que no saben hablar de sexo.",
+        "'No tengo ganas' puede ser depresión, medicamento o rabia acumulada. Te explico cómo saber cuál es.",
+        "El vaginismo existe y NO es 'que no te dejas'. Es tu cuerpo protegiéndote del trauma. 🧵",
+        "Celos 'porque te amo' = dependencia emocional disfrazada. Y es más común de lo que crees."
+      ]},
+      { categoria: "Embarazo", emoji: "🤰", color: "#ec4899", hooks: [
+        "Depresión postparto NO es 'tristeza de mamá'. Es la causa #1 de muerte materna en México. Hablemos de esto.",
+        "A la semana 32, mi paciente quería desaparecer. 'Pero estás embarazada, debes estar feliz'. NO.",
+        "El embarazo no es solo físico. Tu cerebro cambia MÁS que tu cuerpo. Te explico la neurociencia.",
+        "5 señales de que tu embarazo necesita apoyo psicológico (y no es que 'estás hormonal')"
+      ]},
+      { categoria: "Menstruación", emoji: "🩸", color: "#f43f5e", hooks: [
+        "'Es solo el periodo'. NO. Tu cerebro cambia de química 4 veces al mes y eso afecta TODO. Hilo 🧵",
+        "SPM leve = cambios de humor. TPM severa = no puedes trabajar. La diferencia importa.",
+        "El 90% de las mujeres con dismenorrea severa también tienen ansiedad. No es coincidencia.",
+        "Ciclo menstrual = mapa de tu salud mental. Aprende a leerlo."
+      ]},
+      { categoria: "Salud Mental Masculina", emoji: "👨", color: "#3b82f6", hooks: [
+        "Alexitimia: el trastorno que hace que los hombres NO puedan nombrar lo que sienten. Más común de lo que crees.",
+        "La depresión en hombres NO se ve como tristeza. Se ve como irritabilidad, aislamiento y rabia.",
+        "El hombre que 'todo lo aguanta' no es fuerte. Es un candidato a infarto, suicidio o explosión.",
+        "'Los hombres no lloran' es la mentira más cara que le hemos vendido a la humanidad."
+      ]}
     ];
 
     const hooksContainer = document.getElementById('hooksContainer');
     if (hooksContainer) {
       HOOKS_DATA.forEach(cat => {
         const card = document.createElement('div');
-        card.className = 'bg-gray-900 border border-gray-800 rounded-2xl p-6';
+        card.className = 'bg-white border border-rapsi-mint/20 rounded-2xl p-6 shadow-sm';
         card.innerHTML = `
           <div class="flex items-center gap-3 mb-4">
             <span class="text-2xl">${cat.emoji}</span>
-            <h3 class="text-lg font-bold text-white">${cat.categoria}</h3>
+            <h3 class="text-lg font-bold text-gray-800">${cat.categoria}</h3>
           </div>
           <div class="space-y-3">
             ${cat.hooks.map((hook, idx) => `
-              <div class="hook-card bg-gray-800/50 rounded-lg p-4 cursor-pointer" onclick="copyHook(this)">
+              <div class="hook-card rounded-lg p-4 cursor-pointer border border-gray-100" onclick="copyHook(this)">
                 <div class="flex items-start gap-3">
-                  <span class="text-xs font-bold px-2 py-1 rounded" style="background:${cat.color}30;color:${cat.color}">#${idx + 1}</span>
-                  <p class="text-sm text-gray-300 leading-relaxed">${hook}</p>
+                  <span class="text-xs font-bold px-2 py-1 rounded-lg flex-shrink-0" style="background:${cat.color}15;color:${cat.color}">#${idx + 1}</span>
+                  <p class="text-sm text-gray-600 leading-relaxed">${hook}</p>
                 </div>
-                <div class="text-xs text-gray-600 mt-2 text-right">Click para copiar</div>
+                <div class="text-xs text-gray-400 mt-2 text-right">Click para copiar</div>
               </div>
             `).join('')}
           </div>
@@ -774,8 +761,8 @@
     const TRENDS_DATA = {
       ranking: [
         { keyword: "disfuncion erectil", interes: 51.48, categoria: "Sexualidad y Pareja", emoji: "💑", color: "#f97316" },
-        { keyword: "TPM", interes: 43.95, categoria: "Menstruación", emoji: "🩸", color: "#f43f5e" },
         { keyword: "violencia de genero", interes: 46.62, categoria: "Mujeres y LGBT+", emoji: "💜", color: "#8b5cf6" },
+        { keyword: "TPM", interes: 43.95, categoria: "Menstruación", emoji: "🩸", color: "#f43f5e" },
         { keyword: "homosexualidad", interes: 31.90, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
         { keyword: "terapia pareja", interes: 18.56, categoria: "Sexualidad y Pareja", emoji: "💑", color: "#f97316" },
         { keyword: "coming out", interes: 16.51, categoria: "Mujeres y LGBT+", emoji: "💜", color: "#8b5cf6" },
@@ -800,12 +787,10 @@
       ]
     };
 
-    // ── RENDER GOOGLE TRENDS ──
     const trendsRanking = document.getElementById('trendsRanking');
     if (trendsRanking) {
       const maxInteres = Math.max(...TRENDS_DATA.ranking.map(t => t.interes));
-      
-      TRENDS_DATA.ranking.forEach((t, idx) => {
+      TRENDS_DATA.ranking.forEach((t) => {
         const pct = (t.interes / maxInteres) * 100;
         const div = document.createElement('div');
         div.className = 'flex items-center gap-3';
@@ -813,11 +798,11 @@
           <span class="text-base w-8">${t.emoji}</span>
           <div class="flex-1">
             <div class="flex items-center justify-between mb-1">
-              <span class="text-sm text-white font-medium">${t.keyword}</span>
-              <span class="text-xs font-mono" style="color:${t.color}">${t.interes.toFixed(2)}/100</span>
+              <span class="text-sm text-gray-700 font-medium">${t.keyword}</span>
+              <span class="text-xs font-mono font-bold" style="color:${t.color}">${t.interes.toFixed(2)}/100</span>
             </div>
-            <div class="bg-gray-800 rounded-full h-2.5 overflow-hidden">
-              <div class="h-full rounded-full transition-all duration-1000" style="width:${pct}%;background:${t.color}"></div>
+            <div class="bg-rapsi-light rounded-full h-2 overflow-hidden">
+              <div class="h-full rounded-full trend-bar-rapsi" style="width:${pct}%"></div>
             </div>
           </div>
         `;
@@ -829,39 +814,34 @@
     if (trendsTableBody) {
       TRENDS_DATA.detalle.forEach(d => {
         const row = document.createElement('tr');
-        row.className = 'border-b border-gray-800/50 hover:bg-gray-800/30 transition-colors';
-        
+        row.className = 'border-b border-rapsi-mint/10 hover:bg-rapsi-light/50 transition-colors';
         const colorMap = {
           "Identidad de Género": "#ec4899",
           "Mujeres y LGBT+": "#8b5cf6",
           "Pornografía": "#dc2626",
           "Sexualidad y Pareja": "#f97316",
           "Embarazo": "#ec4899",
-          "Menstruación": "#f43f5e",
-          "Hombres": "#3b82f6"
+          "Menstruación": "#f43f5e"
         };
-        const color = colorMap[d.categoria] || "#7c3aed";
-        
-        const relacionadasText = d.relacionadas.length > 0 
-          ? d.relacionadas.join(", ")
-          : "Sin datos suficientes";
+        const color = colorMap[d.categoria] || "#42708A";
+        const relacionadasText = d.relacionadas.length > 0 ? d.relacionadas.join(", ") : "Sin datos suficientes";
         
         row.innerHTML = `
           <td class="py-3 px-4">
-            <span class="text-xs font-semibold px-2 py-1 rounded" style="background:${color}20;color:${color}">${d.categoria}</span>
+            <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:${color}15;color:${color}">${d.categoria}</span>
           </td>
-          <td class="py-3 px-4 text-white">${d.keyword}</td>
+          <td class="py-3 px-4 text-gray-700 font-medium">${d.keyword}</td>
           <td class="py-3 px-4 text-center">
-            <span class="font-mono font-bold" style="color:${color}">${d.promedio.toFixed(2)}</span>
+            <span class="font-mono font-bold text-rapsi-dark">${d.promedio.toFixed(2)}</span>
           </td>
           <td class="py-3 px-4 text-center text-gray-400">${d.maximo}</td>
-          <td class="py-3 px-4 text-xs text-gray-500">${relacionadasText}</td>
+          <td class="py-3 px-4 text-xs text-gray-400">${relacionadasText}</td>
         `;
         trendsTableBody.appendChild(row);
       });
     }
 
-    // ── FUNCIONES DE UTILIDAD ──
+    // ── FUNCIONES ──
     function showSection(sectionName) {
       document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -869,16 +849,18 @@
         btn.classList.add('tab-inactive');
       });
       document.getElementById('section-' + sectionName)?.classList.remove('hidden');
-      document.querySelector(`[data-tab="${sectionName}"]`)?.classList.remove('tab-inactive');
-      document.querySelector(`[data-tab="${sectionName}"]`)?.classList.add('tab-active');
+      const activeBtn = document.querySelector(`[data-tab="${sectionName}"]`);
+      if (activeBtn) {
+        activeBtn.classList.remove('tab-inactive');
+        activeBtn.classList.add('tab-active');
+      }
     }
 
     function copyHook(element) {
       const text = element.querySelector('p').textContent;
       navigator.clipboard.writeText(text).then(() => {
-        const original = element.innerHTML;
-        element.style.background = '#7c3aed30';
-        element.style.borderLeftColor = '#7c3aed';
+        element.style.background = '#AAF0C330';
+        element.style.borderLeftColor = '#79BCD7';
         setTimeout(() => {
           element.style.background = '';
           element.style.borderLeftColor = '';
