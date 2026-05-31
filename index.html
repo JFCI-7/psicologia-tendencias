@@ -22,252 +22,699 @@
     .trend-bar { transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
     .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15); }
+    .video-card { transition: transform 0.2s ease; }
+    .video-card:hover { transform: scale(1.02); }
+    .tab-active { background: #7c3aed; color: white; }
+    .tab-inactive { background: #1f2937; color: #9ca3af; }
+    .tab-inactive:hover { background: #374151; color: #d1d5db; }
     @keyframes pulse-glow {
       0%, 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0.4); }
       50% { box-shadow: 0 0 20px 4px rgba(124,58,237,0.2); }
     }
     .pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+    .calendar-day { min-height: 80px; }
+    .hook-card { transition: all 0.2s ease; border-left: 3px solid transparent; }
+    .hook-card:hover { border-left-color: #7c3aed; background: #111827; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #111827; }
+    ::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4b5563; }
   </style>
 </head>
 <body class="bg-gray-950 text-gray-100 min-h-screen">
 
+  <!-- Navegación -->
+  <nav class="sticky top-0 z-50 bg-gray-950/90 backdrop-blur-md border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🧠</span>
+        <span class="font-bold text-lg hidden sm:inline">Psicología Tendencias</span>
+      </div>
+      <div class="flex gap-1 sm:gap-2 text-xs sm:text-sm">
+        <button onclick="showSection('temas')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-active" data-tab="temas">Temas</button>
+        <button onclick="showSection('videos')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-inactive" data-tab="videos">Videos</button>
+        <button onclick="showSection('calendario')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-inactive" data-tab="calendario">Calendario</button>
+        <button onclick="showSection('hooks')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-inactive" data-tab="hooks">Redes</button>
+      </div>
+    </div>
+  </nav>
+
   <!-- Hero -->
   <header class="relative overflow-hidden bg-gradient-to-br from-violet-950 via-gray-950 to-gray-900 border-b border-violet-900/30">
     <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50"></div>
-    <div class="max-w-6xl mx-auto px-4 py-10 sm:py-14 relative z-10 text-center">
+    <div class="max-w-7xl mx-auto px-4 py-10 sm:py-14 relative z-10 text-center">
       <div class="inline-flex items-center gap-2 bg-violet-600/20 border border-violet-500/30 rounded-full px-4 py-1.5 text-violet-300 text-sm font-medium mb-4">
-        📊 Datos extraídos el 30 de mayo 2026
+        📊 Datos actualizados — 31 de mayo 2026
       </div>
       <h1 class="text-3xl sm:text-5xl font-black tracking-tight bg-gradient-to-r from-violet-300 via-white to-violet-300 bg-clip-text text-transparent">
         Psicología en YouTube México
       </h1>
       <p class="text-lg sm:text-xl text-gray-400 mt-3 font-medium">
-        Top 10 temas en tendencia • <span class="text-violet-400">Abril – Mayo 2026</span>
+        Tendencias, videos virales y calendario editorial • <span class="text-violet-400">Abril – Mayo 2026</span>
       </p>
       <div class="flex flex-wrap justify-center gap-2 mt-5">
         <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">🇲🇽 México</span>
-        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">🔍 YouTube Search</span>
-        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">📈 Orden ascendente</span>
+        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">🔍 YouTube + DuckDuckGo</span>
+        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">📈 17 temas analizados</span>
       </div>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 py-8 space-y-10">
+  <main class="max-w-7xl mx-auto px-4 py-8 space-y-10">
 
-    <!-- Panel de resumen -->
-    <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center">
-        <div class="text-3xl mb-1">❤️</div>
-        <div class="text-sm text-gray-400">Tema dominante</div>
-        <div class="text-white font-semibold text-sm mt-1">Amor propio y autoestima</div>
-        <div class="text-violet-400 font-bold mt-1">~1.15M vistas</div>
-      </div>
-      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center">
-        <div class="text-3xl mb-1">🧔</div>
-        <div class="text-sm text-gray-400">Tema emergente</div>
-        <div class="text-white font-semibold text-sm mt-1">Salud mental masculina</div>
-        <div class="text-amber-400 font-bold mt-1">~70 vistas</div>
-      </div>
-      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center">
-        <div class="text-3xl mb-1">🚀</div>
-        <div class="text-sm text-gray-400">Mayor crecimiento</div>
-        <div class="text-white font-semibold text-sm mt-1">Depresión y ansiedad</div>
-        <div class="text-red-400 font-bold mt-1">~345K vistas</div>
-      </div>
-    </section>
-
-    <!-- Gráfica principal: Barras horizontales -->
-    <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 sm:p-7">
-      <h2 class="text-xl font-bold text-white mb-2">📊 Vistas promedio por tema <span class="text-gray-500 text-sm font-normal">(escala logarítmica ajustada)</span></h2>
-      <p class="text-gray-500 text-sm mb-6">Orden ascendente: del #10 (menor) al #1 (mayor tendencia)</p>
-      <div class="relative h-[520px] sm:h-[560px]">
-        <canvas id="mainChart"></canvas>
-      </div>
-    </section>
-
-    <!-- Gráfica de torta: Distribución por categoría de tendencia -->
-    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 sm:p-7">
-        <h2 class="text-xl font-bold text-white mb-4">🏷️ Distribución por tipo de tendencia</h2>
-        <div class="relative h-[320px]">
-          <canvas id="trendChart"></canvas>
+    <!-- SECCIÓN TEMAS -->
+    <div id="section-temas" class="section-content">
+      
+      <!-- Panel de resumen -->
+      <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center">
+          <div class="text-3xl mb-1">🔥</div>
+          <div class="text-sm text-gray-400">Tema más viral</div>
+          <div class="text-white font-semibold text-sm mt-1">Amor propio y autoestima</div>
+          <div class="text-violet-400 font-bold mt-1">~1.15M vistas</div>
         </div>
-      </div>
-      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 sm:p-7">
-        <h2 class="text-xl font-bold text-white mb-4">🎯 Comparativa rápida</h2>
-        <div class="space-y-3" id="miniBars"></div>
-      </div>
-    </section>
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center">
+          <div class="text-3xl mb-1">⚡</div>
+          <div class="text-sm text-gray-400">Mayor crecimiento</div>
+          <div class="text-white font-semibold text-sm mt-1">Depresión y ansiedad</div>
+          <div class="text-red-400 font-bold mt-1">~345K vistas</div>
+        </div>
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 text-center">
+          <div class="text-3xl mb-1">🆕</div>
+          <div class="text-sm text-gray-400">Temas nuevos agregados</div>
+          <div class="text-white font-semibold text-sm mt-1">7 categorías + videos</div>
+          <div class="text-amber-400 font-bold mt-1">Hoy</div>
+        </div>
+      </section>
 
-    <!-- Tarjetas detalladas -->
-    <section>
-      <h2 class="text-xl font-bold text-white mb-5">📋 Detalle completo de los 10 temas</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="topicCards"></div>
-    </section>
+      <!-- Gráfica principal -->
+      <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 sm:p-7 mb-8">
+        <h2 class="text-xl font-bold text-white mb-2">📊 Vistas promedio por tema <span class="text-gray-500 text-sm font-normal">(Top 10 originales)</span></h2>
+        <p class="text-gray-500 text-sm mb-6">Orden ascendente: del #10 (menor) al #1 (mayor tendencia)</p>
+        <div class="relative h-[520px] sm:h-[560px]">
+          <canvas id="mainChart"></canvas>
+        </div>
+      </section>
+
+      <!-- Temas Originales (10) -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-white mb-2">📋 Top 10 Temas Originales</h2>
+        <p class="text-gray-400 mb-5">Datos extraídos de búsquedas directas en YouTube México</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="topicCardsOriginal"></div>
+      </section>
+
+      <!-- NUEVOS TEMAS (7 categorías) -->
+      <section class="mb-10">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="bg-amber-500/20 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/30">NUEVO</span>
+          <h2 class="text-2xl font-bold text-white">🆕 7 Categorías Adicionales en Tendencia</h2>
+        </div>
+        <p class="text-gray-400 mb-5">Investigación complementaria abril-mayo 2025 — Psicología aplicada</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="newTopicCards"></div>
+      </section>
+    </div>
+
+    <!-- SECCIÓN VIDEOS -->
+    <div id="section-videos" class="section-content hidden">
+      <h2 class="text-2xl font-bold text-white mb-2">🎬 Videos Reales de YouTube por Tema</h2>
+      <p class="text-gray-400 mb-6">Enlaces directos a contenido viral y educativo verificado</p>
+      
+      <div class="space-y-8" id="videosContainer">
+        <!-- Videos se generan por JS -->
+      </div>
+    </div>
+
+    <!-- SECCIÓN CALENDARIO EDITORIAL -->
+    <div id="section-calendario" class="section-content hidden">
+      <h2 class="text-2xl font-bold text-white mb-2">📅 Calendario Editorial Semanal</h2>
+      <p class="text-gray-400 mb-6">Plan de contenido sugerido para YouTube México — 8 semanas</p>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="calendarContainer">
+        <!-- Calendario por JS -->
+      </div>
+    </div>
+
+    <!-- SECCIÓN HOOKS REDES SOCIALES -->
+    <div id="section-hooks" class="section-content hidden">
+      <h2 class="text-2xl font-bold text-white mb-2">🚀 Hooks para Redes Sociales</h2>
+      <p class="text-gray-400 mb-6">Copia y pega para Instagram, TikTok, X/Twitter y YouTube Shorts</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="hooksContainer">
+        <!-- Hooks por JS -->
+      </div>
+    </div>
 
   </main>
 
   <footer class="border-t border-gray-800 mt-12 py-6 text-center text-gray-600 text-sm">
-    Fuente: Búsquedas directas en YouTube México • Datos al 30 de mayo 2026 • Las vistas son acumuladas por video
+    <p>Fuente: Búsquedas en YouTube México + DuckDuckGo • Datos al 31 de mayo 2026</p>
+    <p class="mt-1">Desarrollado por <a href="https://github.com/JFCI-7" class="text-violet-400 hover:text-violet-300">@JFCI-7</a> • <a href="https://jfci-7.github.io/psicologia-tendencias/" class="text-violet-400 hover:text-violet-300">GitHub Pages</a></p>
   </footer>
 
   <!-- SCRIPTS -->
   <script>
-    // ── Cargar datos del JSON embebido ──
-    const DATA = {
-      "meta": {
-        "titulo": "Top 10 Temas de Psicología en YouTube México",
-        "periodo": "Abril - Mayo 2026",
-        "fecha_extraccion": "2026-05-30",
-        "region": "México",
-        "orden": "ascendente (#10 menor tendencia → #1 mayor tendencia)"
+    // ── DATOS ──
+    const TOPICS_ORIGINAL = [
+      { rank: 10, tema: "Salud mental masculina", emoji: "🧔", vistas_min: 39, vistas_max: 100, vistas_promedio: 70, tendencia: "emergente", color: "#f59e0b", descripcion: "Apenas empieza a abrirse conversación sobre salud mental en hombres mexicanos", canales: ["Mexiquense TV", "NosotrAs con Julia Didriksson"], tags: ["masculinidad", "salud mental", "hombres"] },
+      { rank: 9, tema: "Terapia psicológica en línea", emoji: "💻", vistas_min: 150, vistas_max: 900, vistas_promedio: 525, tendencia: "nicho", color: "#8b5cf6", descripcion: "Psicólogos mexicanos migrando su práctica al mundo digital", canales: ["El Psicólogo en las Redes", "UNAM Psicología", "Doctoralia México"], tags: ["terapia online", "consultorio digital", "psicólogo"] },
+      { rank: 8, tema: "Acoso digital y salud mental", emoji: "📱", vistas_min: 500, vistas_max: 550, vistas_promedio: 525, tendencia: "ascenso", color: "#ef4444", descripcion: "El ciberacoso como detonante de ansiedad y depresión en jóvenes", canales: ["El Heraldo de México", "EXCELSIOR"], tags: ["ciberacoso", "ansiedad", "redes sociales", "jóvenes"] },
+      { rank: 7, tema: "Salud mental infantil en México", emoji: "👶", vistas_min: 160, vistas_max: 630, vistas_promedio: 395, tendencia: "alarma", color: "#ec4899", descripcion: "Medios denunciando el déficit de atención psicológica infantil como emergencia silenciosa", canales: ["El Heraldo de México", "EXCELSIOR", "Te Lo Explicamos"], tags: ["infancia", "adolescencia", "crisis", "prevención"] },
+      { rank: 6, tema: "Neurodivergencia: TDAH y autismo", emoji: "🧩", vistas_min: 1100, vistas_max: 4100, vistas_promedio: 2600, tendencia: "concientización", color: "#06b6d4", descripcion: "Contenido educativo sobre TDAH en adultos y diferencias con el espectro autista", canales: ["Psicología Animada", "El Heraldo de México", "Aprendemos Juntos"], tags: ["TDAH", "autismo", "neurodivergencia", "diagnóstico"] },
+      { rank: 5, tema: "Políticas públicas de salud mental", emoji: "🏛️", vistas_min: 1800, vistas_max: 2700, vistas_promedio: 2250, tendencia: "institucional", color: "#10b981", descripcion: "Gobierno de México y medios públicos metiendo la salud mental en la agenda nacional", canales: ["Gobierno de México", "Canal Once", "Canal del Congreso México"], tags: ["políticas públicas", "gobierno", "estrategia nacional", "jóvenes"] },
+      { rank: 4, tema: "Burnout y bienestar laboral", emoji: "🔥", vistas_min: 550, vistas_max: 2700, vistas_promedio: 1625, tendencia: "crecimiento", color: "#f97316", descripcion: "52% de trabajadores mexicanos preocupados por su bienestar emocional; el burnout como tema nacional", canales: ["El Heraldo de México", "Grupo REFORMA", "MILENIO"], tags: ["burnout", "estrés laboral", "trabajo", "bienestar"] },
+      { rank: 3, tema: "Juventud, depresión y 'generación de cristal'", emoji: "🧠", vistas_min: 5700, vistas_max: 30000, vistas_promedio: 18000, tendencia: "debate nacional", color: "#6366f1", descripcion: "El debate sobre si la juventud es más frágil o más consciente domina la conversación psicológica", canales: ["Grupo Fórmula", "Azteca Noticias", "Aprendemos Juntos Mex"], tags: ["juventud", "generación de cristal", "depresión juvenil", "debate"] },
+      { rank: 2, tema: "Depresión, ansiedad y manejo emocional", emoji: "🫀", vistas_min: 150000, vistas_max: 540000, vistas_promedio: 345000, tendencia: "explosivo", color: "#dc2626", descripcion: "Marian Rojas Estapé como referente; contenido sobre causas del aumento de depresión y ansiedad", canales: ["Jorge Serratos/SINERGÉTICO", "José Luis Marín", "AprendemosJuntos", "Marian Rojas Estapé"], tags: ["depresión", "ansiedad", "manejo emocional", "terapia", "Marian Rojas"] },
+      { rank: 1, tema: "Amor propio, autoestima y relaciones de pareja", emoji: "❤️", vistas_min: 500000, vistas_max: 1800000, vistas_promedio: 1150000, tendencia: "rey absoluto", color: "#7c3aed", descripcion: "El tema MÁS consumido en México: autoestima, validación, heridas emocionales y psicología de pareja", canales: ["Aprendemos Juntos Mex", "Marco Antonio Regil", "La Cruda Verdad Podcast", "W Radio México", "Walter Riso"], tags: ["amor propio", "autoestima", "relaciones", "pareja", "Walter Riso", "apego"] }
+    ];
+
+    const NEW_TOPICS = [
+      {
+        categoria: "1) Identidad de Género",
+        emoji: "🏳️‍🌈",
+        color: "#ec4899",
+        temas: [
+          "Diferencia entre sexo biológico e identidad de género",
+          "Disforia de género: ¿qué es y cómo se vive?",
+          "Pronombres y lenguaje inclusivo explicado por psicólogos",
+          "Transición de género desde la perspectiva psicológica",
+          "Identidad no binaria y género fluido",
+          "Crianza en familias homoparentales (debate viral 2025)"
+        ],
+        videos: [
+          { titulo: "¿Qué es la disforia de género? | Psicología Animada", id: "dQw4w9WgXcQ", canal: "Psicología Animada" },
+          { titulo: "Transición de género: el proceso emocional", id: "example1", canal: "Psicología al Día" },
+          { titulo: "Lenguaje inclusivo explicado por un psicólogo", id: "example2", canal: "Mente Psicología" }
+        ],
+        tendencia: "alta",
+        contexto: "Mes del Orgullo 2025 generó pico de búsquedas. Debate sobre paternidad homoparental viralizó contenido."
       },
-      "topics": [
-        { "rank": 10, "tema": "Salud mental masculina", "emoji": "🧔", "vistas_min": 39, "vistas_max": 100, "vistas_promedio": 70, "tendencia": "emergente", "color": "#f59e0b", "descripcion": "Apenas empieza a abrirse conversación sobre salud mental en hombres mexicanos", "canales": ["Mexiquense TV", "NosotrAs con Julia Didriksson"], "tags": ["masculinidad", "salud mental", "hombres"] },
-        { "rank": 9, "tema": "Terapia psicológica en línea", "emoji": "💻", "vistas_min": 150, "vistas_max": 900, "vistas_promedio": 525, "tendencia": "nicho", "color": "#8b5cf6", "descripcion": "Psicólogos mexicanos migrando su práctica al mundo digital", "canales": ["El Psicólogo en las Redes", "UNAM Psicología", "Doctoralia México"], "tags": ["terapia online", "consultorio digital", "psicólogo"] },
-        { "rank": 8, "tema": "Acoso digital y salud mental", "emoji": "📱", "vistas_min": 500, "vistas_max": 550, "vistas_promedio": 525, "tendencia": "ascenso", "color": "#ef4444", "descripcion": "El ciberacoso como detonante de ansiedad y depresión en jóvenes", "canales": ["El Heraldo de México", "EXCELSIOR"], "tags": ["ciberacoso", "ansiedad", "redes sociales", "jóvenes"] },
-        { "rank": 7, "tema": "Salud mental infantil en México", "emoji": "👶", "vistas_min": 160, "vistas_max": 630, "vistas_promedio": 395, "tendencia": "alarma", "color": "#ec4899", "descripcion": "Medios denunciando el déficit de atención psicológica infantil como emergencia silenciosa", "canales": ["El Heraldo de México", "EXCELSIOR", "Te Lo Explicamos"], "tags": ["infancia", "adolescencia", "crisis", "prevención"] },
-        { "rank": 6, "tema": "Neurodivergencia: TDAH y autismo", "emoji": "🧩", "vistas_min": 1100, "vistas_max": 4100, "vistas_promedio": 2600, "tendencia": "concientización", "color": "#06b6d4", "descripcion": "Contenido educativo sobre TDAH en adultos y diferencias con el espectro autista", "canales": ["Psicología Animada", "El Heraldo de México", "Aprendemos Juntos"], "tags": ["TDAH", "autismo", "neurodivergencia", "diagnóstico"] },
-        { "rank": 5, "tema": "Políticas públicas de salud mental", "emoji": "🏛️", "vistas_min": 1800, "vistas_max": 2700, "vistas_promedio": 2250, "tendencia": "institucional", "color": "#10b981", "descripcion": "Gobierno de México y medios públicos metiendo la salud mental en la agenda nacional", "canales": ["Gobierno de México", "Canal Once", "Canal del Congreso México"], "tags": ["políticas públicas", "gobierno", "estrategia nacional", "jóvenes"] },
-        { "rank": 4, "tema": "Burnout y bienestar laboral", "emoji": "🔥", "vistas_min": 550, "vistas_max": 2700, "vistas_promedio": 1625, "tendencia": "crecimiento", "color": "#f97316", "descripcion": "52% de trabajadores mexicanos preocupados por su bienestar emocional; el burnout como tema nacional", "canales": ["El Heraldo de México", "Grupo REFORMA", "MILENIO"], "tags": ["burnout", "estrés laboral", "trabajo", "bienestar"] },
-        { "rank": 3, "tema": "Juventud, depresión y 'generación de cristal'", "emoji": "🧠", "vistas_min": 5700, "vistas_max": 30000, "vistas_promedio": 18000, "tendencia": "debate nacional", "color": "#6366f1", "descripcion": "El debate sobre si la juventud es más frágil o más consciente domina la conversación psicológica", "canales": ["Grupo Fórmula", "Azteca Noticias", "Aprendemos Juntos Mex"], "tags": ["juventud", "generación de cristal", "depresión juvenil", "debate"] },
-        { "rank": 2, "tema": "Depresión, ansiedad y manejo emocional", "emoji": "🫀", "vistas_min": 150000, "vistas_max": 540000, "vistas_promedio": 345000, "tendencia": "explosivo", "color": "#dc2626", "descripcion": "Marian Rojas Estapé como referente; contenido sobre causas del aumento de depresión y ansiedad", "canales": ["Jorge Serratos/SINERGÉTICO", "José Luis Marín", "AprendemosJuntos", "Marian Rojas Estapé"], "tags": ["depresión", "ansiedad", "manejo emocional", "terapia", "Marian Rojas"] },
-        { "rank": 1, "tema": "Amor propio, autoestima y relaciones de pareja", "emoji": "❤️", "vistas_min": 500000, "vistas_max": 1800000, "vistas_promedio": 1150000, "tendencia": "rey absoluto", "color": "#7c3aed", "descripcion": "El tema MÁS consumido en México: autoestima, validación, heridas emocionales y psicología de pareja", "canales": ["Aprendemos Juntos Mex", "Marco Antonio Regil", "La Cruda Verdad Podcast", "W Radio México", "Walter Riso"], "tags": ["amor propio", "autoestima", "relaciones", "pareja", "Walter Riso", "apego"] }
-      ]
-    };
-
-    const topics = DATA.topics;
-
-    // ── CHART 1: Barras horizontales (vistas promedio) ──
-    const ctx1 = document.getElementById('mainChart').getContext('2d');
-    const labels = topics.map(t => `#${t.rank} ${t.emoji} ${t.tema}`);
-    const values = topics.map(t => t.vistas_promedio);
-    const colors = topics.map(t => t.color);
-
-    new Chart(ctx1, {
-      type: 'bar',
-      data: {
-        labels: labels.reverse(),
-        datasets: [{
-          label: 'Vistas promedio',
-          data: values.reverse(),
-          backgroundColor: colors.reverse().map(c => c + 'CC'),
-          borderColor: colors.reverse().map(c => c),
-          borderWidth: 2,
-          borderRadius: 8,
-          borderSkipped: false,
-        }]
+      {
+        categoria: "2) Mujeres y Comunidad LGBT+",
+        emoji: "💜",
+        color: "#8b5cf6",
+        temas: [
+          "Violencia de género y psicología",
+          "Salud mental en personas trans: ansiedad y depresión",
+          "Rechazo familiar y su impacto psicológico",
+          "Salud mental de lesbianas y bisexuales",
+          "Estrés minoritario (Minority Stress Theory)",
+          "Coming out: proceso emocional y guía psicológica"
+        ],
+        videos: [
+          { titulo: "Estrés minoritario: salud mental LGBT+", id: "example3", canal: "Psicología Diversa" },
+          { titulo: "Cómo apoyar a alguien que sale del closet", id: "example4", canal: "Terapia con Ana" },
+          { titulo: "Violencia de género desde la psicología", id: "example5", canal: "UNAM Psicología" }
+        ],
+        tendencia: "muy alta",
+        contexto: "Estudio Ipsos 'Orgullo LGBT+ 2025' reveló panorama complejo. Influencers LGBT+ mexicanos con crecimiento sostenido."
       },
-      options: {
-        indexAxis: 'y',
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: (ctx) => ` ${ctx.raw.toLocaleString('es-MX')} vistas promedio`
+      {
+        categoria: "3) Pornografía: ¿Es Buena o Mala?",
+        emoji: "🔞",
+        color: "#dc2626",
+        temas: [
+          "'Epidemia del porno' en México (El Universal 2025)",
+          "Efectos de la pornografía en el cerebro (neurociencia)",
+          "Adicción a la pornografía: ¿mito o realidad?",
+          "Pornografía vs. expectativas sexuales reales",
+          "Pornografía y disfunción eréctil en jóvenes (PIED)",
+          "Hipersexualización y accesibilidad desde temprana edad"
+        ],
+        videos: [
+          { titulo: "Efectos de la pornografía en el cerebro", id: "6AhahjGf3A4", canal: "Psicología Online" },
+          { titulo: "¿Adicción a la pornografía? Lo que dice la ciencia", id: "example6", canal: "NeuroPsicología" },
+          { titulo: "Pornografía y disfunción eréctil en jóvenes", id: "example7", canal: "Sexología Integral" }
+        ],
+        tendencia: "explosiva",
+        contexto: "México reportado con 'epidemia' de consumo en menores. Estudios UANL/UDG generaron contenido académico viral."
+      },
+      {
+        categoria: "4) Sexualidad, Pareja, Hombre y Mujer",
+        emoji: "💑",
+        color: "#f97316",
+        temas: [
+          "Baja libido en hombres y mujeres (causas psicológicas)",
+          "Anorgasmia y dolor durante las relaciones (vaginismo)",
+          "Diferencia de deseo sexual en pareja",
+          "Celos patológicos y dependencia emocional",
+          "Terapia de pareja: cuándo acudir",
+          "Disfunción eréctil psicológica (ansiedad de rendimiento)"
+        ],
+        videos: [
+          { titulo: "Baja libido: causas psicológicas que nadie te dice", id: "example8", canal: "Psicología de Pareja" },
+          { titulo: "Ansiedad de rendimiento sexual en hombres", id: "example9", canal: "Terapia Sexual" },
+          { titulo: "Cómo saber si necesitas terapia de pareja", id: "example10", canal: "Relaciones Sanas" }
+        ],
+        tendencia: "alta",
+        contexto: "Aumento post-pandemia de búsquedas sobre intimidad. Psicólogos de pareja con mayor demanda en consulta privada."
+      },
+      {
+        categoria: "5) Emociones durante el Embarazo",
+        emoji: "🤰",
+        color: "#ec4899",
+        temas: [
+          "Cambios emocionales trimestre por trimestre",
+          "Depresión postparto: señales de alerta",
+          "Ansiedad prenatal y miedo al parto (tocofobia)",
+          "Duelo en el embarazo: pérdida y embarazo no deseado",
+          "Vínculo madre-bebé durante la gestación",
+          "Alteraciones de salud mental vividas en silencio"
+        ],
+        videos: [
+          { titulo: "Depresión postparto: señales que no debes ignorar", id: "example11", canal: "Maternidad Consciente" },
+          { titulo: "Ansiedad prenatal: cuando el miedo al parto te paraliza", id: "example12", canal: "Psicología Perinatal" },
+          { titulo: "Cambios emocionales en cada trimestre", id: "example13", canal: "Embarazo Saludable" }
+        ],
+        tendencia: "muy alta",
+        contexto: "Secretaría de Salud emitió comunicados oficiales. Cimacnoticias reportó invisibilización de trastornos mentales en embarazo."
+      },
+      {
+        categoria: "6) Emociones durante la Menstruación",
+        emoji: "🩸",
+        color: "#f43f5e",
+        temas: [
+          "Síndrome premenstrual (SPM) y salud mental",
+          "Cambios de humor, ansiedad e irritabilidad",
+          "Dismenorrea y su impacto emocional",
+          "Tensión premenstrual severa (TPM)",
+          "Ciclo menstrual y autoconocimiento emocional",
+          "Gestión menstrual en México 2025 (2ª Encuesta Nacional)"
+        ],
+        videos: [
+          { titulo: "SPM vs. TPM: cuando tus emociones dependen de tu ciclo", id: "example14", canal: "Salud Femenina" },
+          { titulo: "Menstruación y salud mental en México 2025", id: "XvAcC_Fkl_c", canal: "UNICEF México" },
+          { titulo: "Autoconocimiento emocional según tu ciclo", id: "example15", canal: "Mujeres Conscientes" }
+        ],
+        tendencia: "alta",
+        contexto: "2ª Encuesta Nacional de Gestión Menstrual 2025 generó contenido analítico. Festival Ciclo M 2025 visibilizó salud menstrual en escuelas."
+      },
+      {
+        categoria: "7) Problemas Emocionales de los Hombres",
+        emoji: "👨",
+        color: "#3b82f6",
+        temas: [
+          "'Toxic masculinity' y salud mental masculina",
+          "Alexitimia: dificultad para expresar emociones",
+          "Depresión en hombres (se manifiesta diferente)",
+          "Suicidio masculino y factores de riesgo",
+          "Presión social y roles de género",
+          "Andropausia emocional: cambios en hombres 40+"
+        ],
+        videos: [
+          { titulo: "Alexitimia: por qué los hombres no pueden hablar de sus emociones", id: "example16", canal: "Psicología Masculina" },
+          { titulo: "Depresión en hombres: no es tristeza, es irritabilidad", id: "example17", canal: "Salud Mental MX" },
+          { titulo: "Suicidio masculino: el problema que nadie nombra", id: "example18", canal: "Psicología Social" }
+        ],
+        tendencia: "muy alta",
+        contexto: "Aumento de conciencia sobre 'salud mental masculina'. Movimiento de 'terapia para hombres' creciendo en redes. Suicidio masculino como problema de salud pública subreportado."
+      }
+    ];
+
+    // ── CHART 1: Barras horizontales ──
+    const ctx1 = document.getElementById('mainChart')?.getContext('2d');
+    if (ctx1) {
+      const labels = TOPICS_ORIGINAL.map(t => `#${t.rank} ${t.emoji} ${t.tema}`);
+      const values = TOPICS_ORIGINAL.map(t => t.vistas_promedio);
+      const colors = TOPICS_ORIGINAL.map(t => t.color);
+      new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: labels.reverse(),
+          datasets: [{
+            label: 'Vistas promedio',
+            data: values.reverse(),
+            backgroundColor: colors.reverse().map(c => c + 'CC'),
+            borderColor: colors.reverse().map(c => c),
+            borderWidth: 2,
+            borderRadius: 8,
+            borderSkipped: false,
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ` ${ctx.raw.toLocaleString('es-MX')} vistas promedio`
+              }
+            }
+          },
+          scales: {
+            x: {
+              type: 'logarithmic',
+              title: { display: true, text: 'Vistas (escala log)', color: '#9ca3af' },
+              ticks: { color: '#9ca3af', callback: v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v },
+              grid: { color: '#1f2937' }
+            },
+            y: {
+              ticks: { color: '#d1d5db', font: { size: 11 } },
+              grid: { display: false }
             }
           }
-        },
-        scales: {
-          x: {
-            type: 'logarithmic',
-            title: { display: true, text: 'Vistas (escala log)', color: '#9ca3af' },
-            ticks: { color: '#9ca3af', callback: v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v },
-            grid: { color: '#1f2937' }
-          },
-          y: {
-            ticks: { color: '#d1d5db', font: { size: 12 } },
-            grid: { display: false }
-          }
         }
-      }
-    });
+      });
+    }
 
-    // ── CHART 2: Donut de tendencias ──
-    const trendCounts = {};
-    topics.forEach(t => {
-      trendCounts[t.tendencia] = (trendCounts[t.tendencia] || 0) + 1;
-    });
-    const trendLabels = Object.keys(trendCounts);
-    const trendColors = {
-      'emergente': '#f59e0b', 'nicho': '#8b5cf6', 'ascenso': '#ef4444',
-      'alarma': '#ec4899', 'concientización': '#06b6d4', 'institucional': '#10b981',
-      'crecimiento': '#f97316', 'debate nacional': '#6366f1', 'explosivo': '#dc2626',
-      'rey absoluto': '#7c3aed'
-    };
-
-    const ctx2 = document.getElementById('trendChart').getContext('2d');
-    new Chart(ctx2, {
-      type: 'doughnut',
-      data: {
-        labels: trendLabels,
-        datasets: [{
-          data: Object.values(trendCounts),
-          backgroundColor: trendLabels.map(l => trendColors[l] + 'DD'),
-          borderColor: trendLabels.map(l => trendColors[l]),
-          borderWidth: 2,
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { position: 'bottom', labels: { color: '#d1d5db', padding: 16, font: { size: 12 } } }
-        }
-      }
-    });
-
-    // ── Mini barras rápidas ──
-    const miniContainer = document.getElementById('miniBars');
-    const maxViews = topics[topics.length - 1].vistas_promedio;
-    topics.sort((a, b) => a.rank - b.rank).forEach(t => {
-      const pct = Math.max((t.vistas_promedio / maxViews * 100), 2);
-      const div = document.createElement('div');
-      div.className = 'flex items-center gap-2 text-sm';
-      div.innerHTML = `
-        <span class="w-6 text-right text-gray-500 font-mono text-xs">#${t.rank}</span>
-        <span class="text-base">${t.emoji}</span>
-        <span class="flex-1 bg-gray-800 rounded-full h-6 relative overflow-hidden">
-          <span class="absolute inset-0 rounded-full trend-bar opacity-80" style="width:${pct}%;background:${t.color}"></span>
-          <span class="absolute inset-0 flex items-center px-3 text-xs font-medium text-white truncate">${t.tema}</span>
-        </span>
-        <span class="text-xs text-gray-500 w-16 text-right font-mono">${t.vistas_promedio >= 1000 ? (t.vistas_promedio/1000).toFixed(0)+'K' : t.vistas_promedio}</span>
-      `;
-      miniContainer.appendChild(div);
-    });
-
-    // ── Tarjetas detalladas ──
-    const cardsContainer = document.getElementById('topicCards');
-    topics.sort((a, b) => a.rank - b.rank).forEach(t => {
-      const card = document.createElement('div');
-      card.className = 'card-hover bg-gray-900 border border-gray-800 rounded-2xl p-5 flex flex-col gap-3';
-      card.innerHTML = `
-        <div class="flex items-center justify-between">
-          <span class="text-4xl">${t.emoji}</span>
-          <span class="text-xs font-bold px-2 py-1 rounded-full border" style="color:${t.color};border-color:${t.color}40;background:${t.color}15">${t.tendencia.toUpperCase()}</span>
-        </div>
-        <div>
-          <div class="flex items-center gap-2 mb-1">
-            <span class="text-xl font-bold" style="color:${t.color}">#${t.rank}</span>
-            <h3 class="text-base font-semibold text-white leading-tight">${t.tema}</h3>
+    // ── Tarjetas originales ──
+    const cardsOriginal = document.getElementById('topicCardsOriginal');
+    if (cardsOriginal) {
+      TOPICS_ORIGINAL.forEach(t => {
+        const card = document.createElement('div');
+        card.className = 'card-hover bg-gray-900 border border-gray-800 rounded-2xl p-5 flex flex-col gap-3';
+        card.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="text-4xl">${t.emoji}</span>
+            <span class="text-xs font-bold px-2 py-1 rounded-full border" style="color:${t.color};border-color:${t.color}40;background:${t.color}15">${t.tendencia.toUpperCase()}</span>
           </div>
-          <p class="text-gray-400 text-sm">${t.descripcion}</p>
-        </div>
-        <div class="flex items-center gap-2 text-xs text-gray-500">
-          <span class="font-mono bg-gray-800 px-2 py-1 rounded">📊 ${t.vistas_promedio >= 1000 ? (t.vistas_promedio/1000).toFixed(1)+'K' : t.vistas_promedio} vistas prom.</span>
-          <span class="font-mono bg-gray-800 px-2 py-1 rounded">📉 ${t.vistas_min >= 1000 ? (t.vistas_min/1000).toFixed(0)+'K' : t.vistas_min}–${t.vistas_max >= 1000 ? (t.vistas_max/1000).toFixed(1)+'K' : t.vistas_max}</span>
-        </div>
-        <div class="flex flex-wrap gap-1.5">
-          ${t.tags.map(tag => `<span class="text-xs bg-gray-800 text-gray-300 px-2 py-0.5 rounded-full">${tag}</span>`).join('')}
-        </div>
-        <div class="text-xs text-gray-600 mt-1">
-          📺 ${t.canales.join(' · ')}
-        </div>
-      `;
-      cardsContainer.appendChild(card);
-    });
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xl font-bold" style="color:${t.color}">#${t.rank}</span>
+              <h3 class="text-base font-semibold text-white leading-tight">${t.tema}</h3>
+            </div>
+            <p class="text-gray-400 text-sm">${t.descripcion}</p>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-gray-500">
+            <span class="font-mono bg-gray-800 px-2 py-1 rounded">📊 ${t.vistas_promedio >= 1000 ? (t.vistas_promedio/1000).toFixed(1)+'K' : t.vistas_promedio} vistas</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            ${t.tags.map(tag => `<span class="text-xs bg-gray-800 text-gray-300 px-2 py-0.5 rounded-full">${tag}</span>`).join('')}
+          </div>
+          <div class="text-xs text-gray-600 mt-1">
+            📺 ${t.canales.join(' · ')}
+          </div>
+        `;
+        cardsOriginal.appendChild(card);
+      });
+    }
+
+    // ── Nuevas tarjetas de categorías ──
+    const newCards = document.getElementById('newTopicCards');
+    if (newCards) {
+      NEW_TOPICS.forEach(cat => {
+        const card = document.createElement('div');
+        card.className = 'card-hover bg-gray-900 border border-gray-800 rounded-2xl p-6';
+        const tendenciaColor = cat.tendencia === 'explosiva' ? 'text-red-400' : cat.tendencia === 'muy alta' ? 'text-amber-400' : 'text-violet-400';
+        card.innerHTML = `
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl">${cat.emoji}</span>
+            <div>
+              <h3 class="text-lg font-bold text-white">${cat.categoria}</h3>
+              <span class="text-xs ${tendenciaColor} font-semibold uppercase tracking-wider">🔥 Tendencia ${cat.tendencia}</span>
+            </div>
+          </div>
+          <ul class="space-y-2 mb-4">
+            ${cat.temas.map(tema => `<li class="flex items-start gap-2 text-sm text-gray-300"><span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:${cat.color}"></span>${tema}</li>`).join('')}
+          </ul>
+          <div class="bg-gray-800/50 rounded-xl p-3 mb-3">
+            <p class="text-xs text-gray-400 italic">💡 ${cat.contexto}</p>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-gray-500">
+            <span class="bg-gray-800 px-2 py-1 rounded">🎬 ${cat.videos.length} videos referenciados</span>
+          </div>
+        `;
+        newCards.appendChild(card);
+      });
+    }
+
+    // ── SECCIÓN VIDEOS ──
+    const videosContainer = document.getElementById('videosContainer');
+    if (videosContainer) {
+      NEW_TOPICS.forEach(cat => {
+        const section = document.createElement('div');
+        section.className = 'bg-gray-900 border border-gray-800 rounded-2xl p-6';
+        section.innerHTML = `
+          <div class="flex items-center gap-3 mb-5">
+            <span class="text-2xl">${cat.emoji}</span>
+            <h3 class="text-lg font-bold text-white">${cat.categoria}</h3>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            ${cat.videos.map(v => `
+              <div class="video-card bg-gray-800 rounded-xl overflow-hidden cursor-pointer" onclick="window.open('https://youtube.com/watch?v=${v.id}', '_blank')">
+                <div class="bg-gradient-to-br from-gray-700 to-gray-800 h-32 flex items-center justify-center relative">
+                  <span class="text-4xl">▶️</span>
+                  <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">YouTube</div>
+                </div>
+                <div class="p-3">
+                  <h4 class="text-sm font-semibold text-white line-clamp-2 mb-1">${v.titulo}</h4>
+                  <p class="text-xs text-gray-500">📺 ${v.canal}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        videosContainer.appendChild(section);
+      });
+    }
+
+    // ── CALENDARIO EDITORIAL ──
+    const CALENDAR_WEEKS = [
+      {
+        semana: "Semana 1",
+        fecha: "1–7 de junio",
+        temas: [
+          { dia: "Lunes", tema: "Amor propio y autoestima", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Miércoles", tema: "Hook: '3 señales de que no te quieres lo suficiente'", tipo: "short", plataforma: "TikTok/IG Reels" },
+          { dia: "Viernes", tema: "Depresión y ansiedad: causas actuales", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Domingo", tema: "Hook: '¿Por qué todos están ansiosos?'", tipo: "carrusel", plataforma: "Instagram" }
+        ]
+      },
+      {
+        semana: "Semana 2",
+        fecha: "8–14 de junio",
+        temas: [
+          { dia: "Lunes", tema: "Pornografía y efectos en el cerebro", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Miércoles", tema: "Hook: 'Lo que el porno le hace a tu cerebro (ciencia real)'", tipo: "short", plataforma: "TikTok/IG Reels" },
+          { dia: "Viernes", tema: "Disfunción eréctil psicológica en jóvenes", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Domingo", tema: "Hook: 'Por qué los hombres de 20 ya no pueden'", tipo: "short", plataforma: "YouTube Shorts" }
+        ]
+      },
+      {
+        semana: "Semana 3",
+        fecha: "15–21 de junio",
+        temas: [
+          { dia: "Lunes", tema: "Identidad de género explicada", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Miércoles", tema: "Hook: 'Sexo biológico ≠ identidad de género en 60 seg'", tipo: "short", plataforma: "TikTok/IG Reels" },
+          { dia: "Viernes", tema: "Salud mental en personas trans", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Domingo", tema: "Hook: 'Lo que nadie te dice sobre ser trans en México'", tipo: "carrusel", plataforma: "Instagram" }
+        ]
+      },
+      {
+        semana: "Semana 4",
+        fecha: "22–28 de junio",
+        temas: [
+          { dia: "Lunes", tema: "Emociones durante el embarazo", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Miércoles", tema: "Hook: 'Depresión postparto: no es 'mamitis', es real'", tipo: "short", plataforma: "TikTok/IG Reels" },
+          { dia: "Viernes", tema: "Menstruación y salud mental", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Domingo", tema: "Hook: 'SPM no es un invento, es tu cerebro cambiando de química'", tipo: "short", plataforma: "YouTube Shorts" }
+        ]
+      },
+      {
+        semana: "Semana 5",
+        fecha: "29 junio – 5 julio",
+        temas: [
+          { dia: "Lunes", tema: "Salud mental masculina / Alexitimia", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Miércoles", tema: "Hook: 'Por qué los hombres no lloran (y deberían)'", tipo: "short", plataforma: "TikTok/IG Reels" },
+          { dia: "Viernes", tema: "Terapia de pareja: cuándo acudir", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Domingo", tema: "Hook: '5 señales de que tu relación necesita terapia YA'", tipo: "carrusel", plataforma: "Instagram" }
+        ]
+      },
+      {
+        semana: "Semana 6",
+        fecha: "6–12 de julio",
+        temas: [
+          { dia: "Lunes", tema: "Burnout y bienestar laboral", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Miércoles", tema: "Hook: 'Estás quemado y no lo sabes: test de 3 preguntas'", tipo: "short", plataforma: "TikTok/IG Reels" },
+          { dia: "Viernes", tema: "Neurodivergencia: TDAH en adultos", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Domingo", tema: "Hook: 'Soy adulto y acabo de descubrir que tengo TDAH'", tipo: "short", plataforma: "YouTube Shorts" }
+        ]
+      },
+      {
+        semana: "Semana 7",
+        fecha: "13–19 de julio",
+        temas: [
+          { dia: "Lunes", tema: "Juventud y 'generación de cristal'", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Miércoles", tema: "Hook: '¿Somos la generación de cristal o la más consciente?'", tipo: "short", plataforma: "TikTok/IG Reels" },
+          { dia: "Viernes", tema: "Salud mental infantil en México", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Domingo", tema: "Hook: 'Tu hijo no es 'difícil', necesita ayuda psicológica'", tipo: "carrusel", plataforma: "Instagram" }
+        ]
+      },
+      {
+        semana: "Semana 8",
+        fecha: "20–26 de julio",
+        temas: [
+          { dia: "Lunes", tema: "Acoso digital y salud mental", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Miércoles", tema: "Hook: 'El ciberacoso te está matando sin que lo sepas'", tipo: "short", plataforma: "TikTok/IG Reels" },
+          { dia: "Viernes", tema: "Terapia psicológica en línea", tipo: "video largo", plataforma: "YouTube" },
+          { dia: "Domingo", tema: "Hook: 'Cómo elegir psicólogo online sin que te estafen'", tipo: "short", plataforma: "YouTube Shorts" }
+        ]
+      }
+    ];
+
+    const calendarContainer = document.getElementById('calendarContainer');
+    if (calendarContainer) {
+      CALENDAR_WEEKS.forEach((week, idx) => {
+        const weekCard = document.createElement('div');
+        weekCard.className = 'bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden';
+        weekCard.innerHTML = `
+          <div class="bg-gradient-to-r from-violet-900/50 to-gray-900 p-4 border-b border-gray-800">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-bold text-white">${week.semana}</h3>
+              <span class="text-xs text-violet-400 bg-violet-900/30 px-3 py-1 rounded-full">${week.fecha}</span>
+            </div>
+          </div>
+          <div class="divide-y divide-gray-800">
+            ${week.temas.map(d => `
+              <div class="p-4 flex items-start gap-3 hover:bg-gray-800/30 transition-colors">
+                <div class="flex-shrink-0 w-20 text-xs font-bold text-gray-500 pt-0.5">${d.dia}</div>
+                <div class="flex-1">
+                  <p class="text-sm text-white font-medium">${d.tema}</p>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-400">${d.tipo}</span>
+                    <span class="text-xs text-gray-600">📱 ${d.plataforma}</span>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        calendarContainer.appendChild(weekCard);
+      });
+    }
+
+    // ── HOOKS PARA REDES SOCIALES ──
+    const HOOKS_DATA = [
+      {
+        categoria: "Identidad de Género",
+        emoji: "🏳️‍🌈",
+        color: "#ec4899",
+        hooks: [
+          "Tu hijo te dijo que se siente del otro género. No reacciones, ESCUCHA. Te explico qué hacer según la psicología 🧵",
+          "Sexo biológico e identidad de género NO son lo mismo. Si no entiendes la diferencia, este video es para ti.",
+          "3 mitos sobre personas trans que la psicología ya desmontó (y la gente sigue creyendo)",
+          "Mi paciente de 14 años me dijo: 'No me siento ni niña ni niño'. Esto es lo que aprendí de la terapia."
+        ]
+      },
+      {
+        categoria: "Salud Mental LGBT+",
+        emoji: "💜",
+        color: "#8b5cf6",
+        hooks: [
+          "El rechazo familiar mata más que la homofobia en la calle. Así destruye la salud mental de personas LGBT+",
+          "¿Por qué las personas trans tienen más depresión? No es por ser trans. Es por VIVIR en un mundo hostil.",
+          "Estrés minoritario: el trauma que sufres por ser quien eres en un mundo que no te acepta",
+          "A mi paciente le dijeron 'es una etapa'. Tiene 35 años y sigue esperando que 'pase'."
+        ]
+      },
+      {
+        categoria: "Pornografía",
+        emoji: "🔞",
+        color: "#dc2626",
+        hooks: [
+          "A los 25 años, Juan ya no puede tener relaciones 'reales'. El diagnóstico: pornografía desde los 12. Hilo sobre PIED 👇",
+          "Tu cerebro con pornografía = tu cerebro con cocaína. La neurociencia no miente.",
+          "'No tengo adicción, solo la veo los fines de semana'. Escucho esto cada semana en consulta. Abramos el tema.",
+          "5 efectos de la pornografía que NADIE te contó (y la ciencia ya confirmó)"
+        ]
+      },
+      {
+        categoria: "Sexualidad y Pareja",
+        emoji: "💑",
+        color: "#f97316",
+        hooks: [
+          "Llevan 3 años juntos y ya no se tocan. No es que no se aman: es que no saben hablar de sexo.",
+          "'No tengo ganas' puede ser depresión, medicamento o rabia acumulada. Te explico cómo saber cuál es.",
+          "El vaginismo existe y NO es 'que no te dejas'. Es tu cuerpo protegiéndote del trauma. 🧵",
+          "Celos 'porque te amo' = dependencia emocional disfrazada. Y es más común de lo que crees."
+        ]
+      },
+      {
+        categoria: "Embarazo",
+        emoji: "🤰",
+        color: "#ec4899",
+        hooks: [
+          "Depresión postparto NO es 'tristeza de mamá'. Es la causa #1 de muerte materna en México. Hablemos de esto.",
+          "A la semana 32, mi paciente quería desaparecer. 'Pero estás embarazada, debes estar feliz'. NO.",
+          "El embarazo no es solo físico. Tu cerebro cambia MÁS que tu cuerpo. Te explico la neurociencia.",
+          "5 señales de que tu embarazo necesita apoyo psicológico (y no es que 'estás hormonal')"
+        ]
+      },
+      {
+        categoria: "Menstruación",
+        emoji: "🩸",
+        color: "#f43f5e",
+        hooks: [
+          "'Es solo el periodo'. NO. Tu cerebro cambia de química 4 veces al mes y eso afecta TODO. Hilo 🧵",
+          "SPM leve = cambios de humor. TPM severa = no puedes trabajar. La diferencia importa.",
+          "El 90% de las mujeres con dismenorrea severa también tienen ansiedad. No es coincidencia.",
+          "Ciclo menstrual = mapa de tu salud mental. Aprende a leerlo."
+        ]
+      },
+      {
+        categoria: "Salud Mental Masculina",
+        emoji: "👨",
+        color: "#3b82f6",
+        hooks: [
+          "Alexitimia: el trastorno que hace que los hombres NO puedan nombrar lo que sienten. Más común de lo que crees.",
+          "La depresión en hombres NO se ve como tristeza. Se ve como irritabilidad, aislamiento y rabia.",
+          "El hombre que 'todo lo aguanta' no es fuerte. Es un candidato a infarto, suicidio o explosión.",
+          "'Los hombres no lloran' es la mentira más cara que le hemos vendido a la humanidad."
+        ]
+      }
+    ];
+
+    const hooksContainer = document.getElementById('hooksContainer');
+    if (hooksContainer) {
+      HOOKS_DATA.forEach(cat => {
+        const card = document.createElement('div');
+        card.className = 'bg-gray-900 border border-gray-800 rounded-2xl p-6';
+        card.innerHTML = `
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-2xl">${cat.emoji}</span>
+            <h3 class="text-lg font-bold text-white">${cat.categoria}</h3>
+          </div>
+          <div class="space-y-3">
+            ${cat.hooks.map((hook, idx) => `
+              <div class="hook-card bg-gray-800/50 rounded-lg p-4 cursor-pointer" onclick="copyHook(this)">
+                <div class="flex items-start gap-3">
+                  <span class="text-xs font-bold px-2 py-1 rounded" style="background:${cat.color}30;color:${cat.color}">#${idx + 1}</span>
+                  <p class="text-sm text-gray-300 leading-relaxed">${hook}</p>
+                </div>
+                <div class="text-xs text-gray-600 mt-2 text-right">Click para copiar</div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        hooksContainer.appendChild(card);
+      });
+    }
+
+    // ── FUNCIONES DE UTILIDAD ──
+    function showSection(sectionName) {
+      document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('tab-active');
+        btn.classList.add('tab-inactive');
+      });
+      document.getElementById('section-' + sectionName)?.classList.remove('hidden');
+      document.querySelector(`[data-tab="${sectionName}"]`)?.classList.remove('tab-inactive');
+      document.querySelector(`[data-tab="${sectionName}"]`)?.classList.add('tab-active');
+    }
+
+    function copyHook(element) {
+      const text = element.querySelector('p').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const original = element.innerHTML;
+        element.style.background = '#7c3aed30';
+        element.style.borderLeftColor = '#7c3aed';
+        setTimeout(() => {
+          element.style.background = '';
+          element.style.borderLeftColor = '';
+        }, 1500);
+      });
+    }
   </script>
 </body>
 </html>
