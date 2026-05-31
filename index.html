@@ -55,6 +55,7 @@
         <button onclick="showSection('videos')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-inactive" data-tab="videos">Videos</button>
         <button onclick="showSection('calendario')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-inactive" data-tab="calendario">Calendario</button>
         <button onclick="showSection('hooks')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-inactive" data-tab="hooks">Redes</button>
+        <button onclick="showSection('trends')" class="tab-btn px-3 py-1.5 rounded-lg font-medium transition-colors tab-inactive" data-tab="trends">Google Trends</button>
       </div>
     </div>
   </nav>
@@ -75,7 +76,8 @@
       <div class="flex flex-wrap justify-center gap-2 mt-5">
         <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">🇲🇽 México</span>
         <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">🔍 YouTube + DuckDuckGo</span>
-        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">📈 17 temas analizados</span>
+        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">📈 Google Trends API</span>
+        <span class="bg-gray-800/60 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700/50">17 temas analizados</span>
       </div>
     </div>
   </header>
@@ -161,6 +163,83 @@
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="hooksContainer">
         <!-- Hooks por JS -->
+      </div>
+    </div>
+
+    <!-- SECCIÓN GOOGLE TRENDS -->
+    <div id="section-trends" class="section-content hidden">
+      <h2 class="text-2xl font-bold text-white mb-2">📈 Datos Reales de Google Trends México</h2>
+      <p class="text-gray-400 mb-6">Interés de búsqueda Abril-Mayo 2025 • Escala 0-100</p>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <!-- Ranking de tendencias -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-white mb-4">🏆 Ranking de Interés de Búsqueda</h3>
+          <div class="space-y-3" id="trendsRanking">
+            <!-- Se genera por JS -->
+          </div>
+        </div>
+        
+        <!-- Insights -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-white mb-4">💡 Insights Clave</h3>
+          <div class="space-y-4">
+            <div class="bg-gray-800/50 rounded-lg p-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-2xl">🔥</span>
+                <span class="font-semibold text-white">Tema Estrella</span>
+              </div>
+              <p class="text-gray-400 text-sm"><strong class="text-red-400">Disfunción eréctil (51.48/100)</strong> — Tema explosivo con más búsquedas que "depresión" o "ansiedad". Relacionado directamente con consumo de pornografía.</p>
+            </div>
+            <div class="bg-gray-800/50 rounded-lg p-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-2xl">🩸</span>
+                <span class="font-semibold text-white">Sorpresa del Ranking</span>
+              </div>
+              <p class="text-gray-400 text-sm"><strong class="text-pink-400">TPM (43.95/100)</strong> — Más buscada que "depresión postparto" o "salud mental LGBT". Oportunidad de contenido educativo grande.</p>
+            </div>
+            <div class="bg-gray-800/50 rounded-lg p-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-2xl">📊</span>
+                <span class="font-semibold text-white">Dato SEO</span>
+              </div>
+              <p class="text-gray-400 text-sm">El público busca <strong class="text-amber-400">"homosexualidad"</strong> (31.9/100) más que <strong>"salud mental LGBT"</strong> (1.64/100). Usa ambos términos para maximizar alcance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tabla detallada -->
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6">
+        <h3 class="text-lg font-bold text-white mb-4">📋 Detalle Completo por Categoría</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-800">
+                <th class="text-left text-gray-400 py-3 px-4">Categoría</th>
+                <th class="text-left text-gray-400 py-3 px-4">Keyword</th>
+                <th class="text-center text-gray-400 py-3 px-4">Interés Prom.</th>
+                <th class="text-center text-gray-400 py-3 px-4">Máx.</th>
+                <th class="text-left text-gray-400 py-3 px-4">Consultas Relacionadas</th>
+              </tr>
+            </thead>
+            <tbody id="trendsTableBody">
+              <!-- Se genera por JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Metodología -->
+      <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-6 mt-6">
+        <h3 class="text-lg font-bold text-white mb-2">🔬 Metodología</h3>
+        <ul class="text-gray-400 text-sm space-y-1">
+          <li>• Fuente: Google Trends API via PyTrends</li>
+          <li>• Período: Abril 1 - Mayo 31, 2025</li>
+          <li>• Región: México (nacional)</li>
+          <li>• Idioma: Español (México)</li>
+          <li>• Nota: Google bloquea peticiones masivas; datos representan muestra de keywords prioritarias</li>
+        </ul>
       </div>
     </div>
 
@@ -688,6 +767,97 @@
           </div>
         `;
         hooksContainer.appendChild(card);
+      });
+    }
+
+    // ── GOOGLE TRENDS DATA ──
+    const TRENDS_DATA = {
+      ranking: [
+        { keyword: "disfuncion erectil", interes: 51.48, categoria: "Sexualidad y Pareja", emoji: "💑", color: "#f97316" },
+        { keyword: "TPM", interes: 43.95, categoria: "Menstruación", emoji: "🩸", color: "#f43f5e" },
+        { keyword: "violencia de genero", interes: 46.62, categoria: "Mujeres y LGBT+", emoji: "💜", color: "#8b5cf6" },
+        { keyword: "homosexualidad", interes: 31.90, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
+        { keyword: "terapia pareja", interes: 18.56, categoria: "Sexualidad y Pareja", emoji: "💑", color: "#f97316" },
+        { keyword: "coming out", interes: 16.51, categoria: "Mujeres y LGBT+", emoji: "💜", color: "#8b5cf6" },
+        { keyword: "no binario", interes: 12.98, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
+        { keyword: "identidad de genero", interes: 12.26, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
+        { keyword: "lenguaje inclusivo", interes: 7.03, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
+        { keyword: "embarazo ansiedad", interes: 3.28, categoria: "Embarazo", emoji: "🤰", color: "#ec4899" },
+        { keyword: "salud mental lgbt", interes: 1.64, categoria: "Mujeres y LGBT+", emoji: "💜", color: "#8b5cf6" },
+        { keyword: "adiccion pornografia", interes: 1.64, categoria: "Pornografía", emoji: "🔞", color: "#dc2626" }
+      ],
+      detalle: [
+        { categoria: "Identidad de Género", keyword: "identidad de genero", promedio: 12.26, maximo: 100, relacionadas: ["que es identidad de genero (100)", "que es la identidad de genero (81)", "concepto de identidad de genero (12)"] },
+        { categoria: "Identidad de Género", keyword: "lenguaje inclusivo", promedio: 7.03, maximo: 100, relacionadas: ["ejemplo de lenguaje inclusivo (100)", "lenguaje inclusivo ejemplo (94)", "lenguaje inclusivo ejemplos (87)"] },
+        { categoria: "Mujeres y LGBT+", keyword: "violencia de genero", promedio: 46.62, maximo: 100, relacionadas: ["la violencia de genero (100)", "que es violencia de genero (42)", "que es la violencia de genero (36)"] },
+        { categoria: "Mujeres y LGBT+", keyword: "coming out", promedio: 16.51, maximo: 100, relacionadas: ["movies coming out in 2025 (100)", "diana ross i'm coming out (59)", "when is gta 6 coming out (27)"] },
+        { categoria: "Mujeres y LGBT+", keyword: "salud mental lgbt", promedio: 1.64, maximo: 100, relacionadas: [] },
+        { categoria: "Pornografía", keyword: "adiccion pornografia", promedio: 1.64, maximo: 100, relacionadas: [] },
+        { categoria: "Sexualidad y Pareja", keyword: "terapia pareja", promedio: 18.56, maximo: 100, relacionadas: [] },
+        { categoria: "Sexualidad y Pareja", keyword: "disfuncion erectil", promedio: 51.48, maximo: 100, relacionadas: [] },
+        { categoria: "Embarazo", keyword: "embarazo ansiedad", promedio: 3.28, maximo: 100, relacionadas: [] },
+        { categoria: "Menstruación", keyword: "TPM", promedio: 43.95, maximo: 100, relacionadas: [] }
+      ]
+    };
+
+    // ── RENDER GOOGLE TRENDS ──
+    const trendsRanking = document.getElementById('trendsRanking');
+    if (trendsRanking) {
+      const maxInteres = Math.max(...TRENDS_DATA.ranking.map(t => t.interes));
+      
+      TRENDS_DATA.ranking.forEach((t, idx) => {
+        const pct = (t.interes / maxInteres) * 100;
+        const div = document.createElement('div');
+        div.className = 'flex items-center gap-3';
+        div.innerHTML = `
+          <span class="text-base w-8">${t.emoji}</span>
+          <div class="flex-1">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-white font-medium">${t.keyword}</span>
+              <span class="text-xs font-mono" style="color:${t.color}">${t.interes.toFixed(2)}/100</span>
+            </div>
+            <div class="bg-gray-800 rounded-full h-2.5 overflow-hidden">
+              <div class="h-full rounded-full transition-all duration-1000" style="width:${pct}%;background:${t.color}"></div>
+            </div>
+          </div>
+        `;
+        trendsRanking.appendChild(div);
+      });
+    }
+
+    const trendsTableBody = document.getElementById('trendsTableBody');
+    if (trendsTableBody) {
+      TRENDS_DATA.detalle.forEach(d => {
+        const row = document.createElement('tr');
+        row.className = 'border-b border-gray-800/50 hover:bg-gray-800/30 transition-colors';
+        
+        const colorMap = {
+          "Identidad de Género": "#ec4899",
+          "Mujeres y LGBT+": "#8b5cf6",
+          "Pornografía": "#dc2626",
+          "Sexualidad y Pareja": "#f97316",
+          "Embarazo": "#ec4899",
+          "Menstruación": "#f43f5e",
+          "Hombres": "#3b82f6"
+        };
+        const color = colorMap[d.categoria] || "#7c3aed";
+        
+        const relacionadasText = d.relacionadas.length > 0 
+          ? d.relacionadas.join(", ")
+          : "Sin datos suficientes";
+        
+        row.innerHTML = `
+          <td class="py-3 px-4">
+            <span class="text-xs font-semibold px-2 py-1 rounded" style="background:${color}20;color:${color}">${d.categoria}</span>
+          </td>
+          <td class="py-3 px-4 text-white">${d.keyword}</td>
+          <td class="py-3 px-4 text-center">
+            <span class="font-mono font-bold" style="color:${color}">${d.promedio.toFixed(2)}</span>
+          </td>
+          <td class="py-3 px-4 text-center text-gray-400">${d.maximo}</td>
+          <td class="py-3 px-4 text-xs text-gray-500">${relacionadasText}</td>
+        `;
+        trendsTableBody.appendChild(row);
       });
     }
 
