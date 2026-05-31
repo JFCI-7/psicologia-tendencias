@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
@@ -28,101 +29,168 @@
     }
   </script>
   <style>
+    :root {
+      --bg-primary: #F8FBFA;
+      --bg-secondary: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --bg-light: #F0FAF5;
+      --text-primary: #1F2937;
+      --text-secondary: #6B7280;
+      --text-muted: #9CA3AF;
+      --border-color: #E8F4F0;
+      --border-hover: #8DD7C2;
+      --shadow-color: rgba(66,112,138,0.12);
+    }
+    
+    .dark {
+      --bg-primary: #0F1720;
+      --bg-secondary: #1A2332;
+      --bg-card: #1E2937;
+      --bg-light: #162032;
+      --text-primary: #F0FAF5;
+      --text-secondary: #A0B4C4;
+      --text-muted: #5A7A8A;
+      --border-color: #2A4050;
+      --border-hover: #79BCD7;
+      --shadow-color: rgba(0,0,0,0.4);
+    }
+    
     * { font-family: 'Inter', system-ui, sans-serif; }
-    body { background: #F8FBFA; }
+    body { 
+      background: var(--bg-primary); 
+      color: var(--text-primary);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    
     .card-hover { 
       transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1); 
-      border: 1px solid #E8F4F0;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
     }
     .card-hover:hover { 
       transform: translateY(-6px); 
-      box-shadow: 0 24px 48px -12px rgba(66,112,138,0.15);
-      border-color: #8DD7C2;
+      box-shadow: 0 24px 48px -12px var(--shadow-color);
+      border-color: var(--border-hover);
     }
+    
     .video-card { transition: all 0.3s ease; }
-    .video-card:hover { transform: scale(1.03); box-shadow: 0 12px 32px -8px rgba(66,112,138,0.2); }
+    .video-card:hover { 
+      transform: scale(1.03); 
+      box-shadow: 0 12px 32px -8px var(--shadow-color); 
+    }
+    
     .tab-active { 
       background: linear-gradient(135deg, #42708A 0%, #79BCD7 100%); 
       color: white; 
       box-shadow: 0 4px 16px -4px rgba(66,112,138,0.3);
     }
     .tab-inactive { 
-      background: white; 
+      background: var(--bg-card); 
       color: #42708A; 
-      border: 1px solid #E8F4F0;
+      border: 1px solid var(--border-color);
     }
     .tab-inactive:hover { 
-      background: #F0FAF5; 
+      background: var(--bg-light); 
       border-color: #8DD7C2;
     }
+    
     .hook-card { 
       transition: all 0.2s ease; 
       border-left: 3px solid transparent;
-      background: white;
+      background: var(--bg-card);
     }
     .hook-card:hover { 
       border-left-color: #79BCD7; 
-      background: #F0FAF5;
+      background: var(--bg-light);
       transform: translateX(4px);
     }
+    
     .gradient-text {
       background: linear-gradient(135deg, #42708A 0%, #79BCD7 50%, #8DD7C2 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+    
     .hero-gradient {
-      background: linear-gradient(135deg, #F0FAF5 0%, #E8F4F0 50%, #D4EFE5 100%);
+      background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-primary) 50%, #D4EFE5 100%);
     }
+    .dark .hero-gradient {
+      background: linear-gradient(135deg, #162032 0%, #0F1720 50%, #1A2332 100%);
+    }
+    
     .badge {
       background: linear-gradient(135deg, #AAF0C3 0%, #8DD7C2 100%);
       color: #42708A;
     }
+    
     .trend-bar-rapsi {
       background: linear-gradient(90deg, #79BCD7 0%, #AAF0C3 100%);
       border-radius: 999px;
       transition: width 1s ease;
     }
+    
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #F0FAF5; }
+    ::-webkit-scrollbar-track { background: var(--bg-light); }
     ::-webkit-scrollbar-thumb { background: #8DD7C2; border-radius: 3px; }
+    
     .pattern-bg {
-      background-image: url('pattern-brain.png');
+      background-image: url('marca_de_agua.png');
       background-repeat: no-repeat;
       background-position: bottom right;
-      background-size: 400px;
+      background-size: 350px;
+      opacity: 0.15;
     }
+    
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
     .float-anim { animation: float 4s ease-in-out infinite; }
+    
+    .theme-toggle {
+      transition: all 0.3s ease;
+    }
+    .theme-toggle:hover {
+      transform: rotate(15deg) scale(1.1);
+    }
+    
+    .section-content {
+      transition: opacity 0.2s ease;
+    }
   </style>
 </head>
-<body class="text-gray-700 min-h-screen">
+<body class="min-h-screen">
 
   <!-- Navegación -->
-  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-rapsi-mint/30 shadow-sm">
+  <nav class="sticky top-0 z-50 backdrop-blur-xl border-b border-[var(--border-color)] shadow-sm" style="background: rgba(var(--bg-card), 0.85);">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full float-anim bg-gradient-to-br from-rapsi-mint to-rapsi-sky flex items-center justify-center text-lg">🧠</div>
+        <img src="logo_web.png" alt="RAPSI" class="w-10 h-10 rounded-full float-anim object-cover">
         <div>
-          <span class="font-bold text-lg text-rapsi-dark">RAPSI</span>
+          <span class="font-bold text-lg text-[var(--text-primary)]">RAPSI</span>
           <span class="hidden sm:inline text-xs text-rapsi-sky ml-2 font-medium">Tendencias de Psicología</span>
         </div>
       </div>
-      <div class="flex gap-1.5 text-xs sm:text-sm">
-        <button onclick="showSection('temas')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all" data-tab="temas">Temas</button>
-        <button onclick="showSection('videos')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="videos">Videos</button>
-        <button onclick="showSection('calendario')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="calendario">Calendario</button>
-        <button onclick="showSection('hooks')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="hooks">Redes</button>
-        <button onclick="showSection('trends')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="trends">Trends</button>
+      <div class="flex items-center gap-2">
+        <div class="flex gap-1.5 text-xs sm:text-sm">
+          <button onclick="showSection('temas')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all" data-tab="temas">Temas</button>
+          <button onclick="showSection('videos')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="videos">Videos</button>
+          <button onclick="showSection('calendario')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="calendario">Calendario</button>
+          <button onclick="showSection('hooks')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="hooks">Redes</button>
+          <button onclick="showSection('trends')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="trends">Trends</button>
+        </div>
+        <!-- Botón Dark/Light -->
+        <button onclick="toggleTheme()" class="theme-toggle ml-2 w-9 h-9 rounded-full flex items-center justify-center text-lg" style="background: var(--bg-light); border: 1px solid var(--border-color);" title="Cambiar tema">
+          <span id="themeIcon">🌙</span>
+        </button>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <header class="hero-gradient pattern-bg relative overflow-hidden">
+  <header class="hero-gradient relative overflow-hidden">
+    <div class="absolute inset-0 pattern-bg"></div>
     <div class="absolute top-0 right-0 w-96 h-96 bg-rapsi-mint/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
     <div class="absolute bottom-0 left-0 w-72 h-72 bg-rapsi-sky/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
     
@@ -135,18 +203,18 @@
           <h1 class="text-4xl sm:text-6xl font-black tracking-tight gradient-text mb-4">
             Tendencias de<br>Psicología en México
           </h1>
-          <p class="text-lg text-gray-500 mt-4 font-medium max-w-xl">
+          <p class="text-lg mt-4 font-medium max-w-xl" style="color: var(--text-secondary);">
             Análisis completo de YouTube + Google Trends • Abril – Mayo 2026 • 
             <span class="text-rapsi-dark font-semibold">17 temas</span> en tendencia
           </p>
           <div class="flex flex-wrap justify-center lg:justify-start gap-2 mt-6">
-            <span class="bg-white text-rapsi-dark text-xs px-4 py-2 rounded-full border border-rapsi-mint/50 shadow-sm font-medium">🇲🇽 México</span>
-            <span class="bg-white text-rapsi-dark text-xs px-4 py-2 rounded-full border border-rapsi-mint/50 shadow-sm font-medium">🔍 YouTube + DuckDuckGo</span>
-            <span class="bg-white text-rapsi-dark text-xs px-4 py-2 rounded-full border border-rapsi-mint/50 shadow-sm font-medium">📈 Google Trends API</span>
+            <span class="text-xs px-4 py-2 rounded-full font-medium shadow-sm" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color);">🇲🇽 México</span>
+            <span class="text-xs px-4 py-2 rounded-full font-medium shadow-sm" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color);">🔍 YouTube + DuckDuckGo</span>
+            <span class="text-xs px-4 py-2 rounded-full font-medium shadow-sm" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color);">📈 Google Trends API</span>
           </div>
         </div>
         <div class="flex-shrink-0">
-          <div class="w-48 h-48 rounded-full bg-gradient-to-br from-rapsi-mint to-rapsi-sky flex items-center justify-center text-6xl shadow-2xl float-anim">🧠</div>
+          <img src="logotipo_nombre_canvertir.png" alt="RAPSI Logo" class="w-72 h-auto drop-shadow-2xl float-anim">
         </div>
       </div>
     </div>
@@ -159,30 +227,30 @@
       
       <!-- Panel de resumen -->
       <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-        <div class="bg-white border border-rapsi-mint/30 rounded-2xl p-6 text-center shadow-sm card-hover">
+        <div class="card-hover rounded-2xl p-6 text-center shadow-sm">
           <div class="text-3xl mb-2">🔥</div>
-          <div class="text-sm text-gray-400 mb-1">Tema más viral</div>
-          <div class="text-rapsi-dark font-bold text-sm">Amor propio y autoestima</div>
+          <div class="text-sm mb-1" style="color: var(--text-muted);">Tema más viral</div>
+          <div class="font-bold text-sm" style="color: var(--text-primary);">Amor propio y autoestima</div>
           <div class="text-rapsi-sky font-bold mt-1 text-lg">~1.15M vistas</div>
         </div>
-        <div class="bg-white border border-rapsi-mint/30 rounded-2xl p-6 text-center shadow-sm card-hover">
+        <div class="card-hover rounded-2xl p-6 text-center shadow-sm">
           <div class="text-3xl mb-2">⚡</div>
-          <div class="text-sm text-gray-400 mb-1">Mayor crecimiento</div>
-          <div class="text-rapsi-dark font-bold text-sm">Depresión y ansiedad</div>
+          <div class="text-sm mb-1" style="color: var(--text-muted);">Mayor crecimiento</div>
+          <div class="font-bold text-sm" style="color: var(--text-primary);">Depresión y ansiedad</div>
           <div class="text-rapsi-teal font-bold mt-1 text-lg">~345K vistas</div>
         </div>
-        <div class="bg-white border border-rapsi-mint/30 rounded-2xl p-6 text-center shadow-sm card-hover">
+        <div class="card-hover rounded-2xl p-6 text-center shadow-sm">
           <div class="text-3xl mb-2">🆕</div>
-          <div class="text-sm text-gray-400 mb-1">Datos Google Trends</div>
-          <div class="text-rapsi-dark font-bold text-sm">Disfunción eréctil líder</div>
+          <div class="text-sm mb-1" style="color: var(--text-muted);">Datos Google Trends</div>
+          <div class="font-bold text-sm" style="color: var(--text-primary);">Disfunción eréctil líder</div>
           <div class="text-rapsi-dark font-bold mt-1 text-lg">51.48/100</div>
         </div>
       </section>
 
       <!-- Gráfica principal -->
-      <section class="bg-white border border-rapsi-mint/30 rounded-3xl p-6 sm:p-8 shadow-sm mb-10">
-        <h2 class="text-xl font-bold text-rapsi-dark mb-2">📊 Vistas promedio por tema</h2>
-        <p class="text-gray-400 text-sm mb-6">Orden ascendente: del #10 al #1 (Top 10 original)</p>
+      <section class="card-hover rounded-3xl p-6 sm:p-8 shadow-sm mb-10">
+        <h2 class="text-xl font-bold mb-2" style="color: var(--text-primary);">📊 Vistas promedio por tema</h2>
+        <p class="text-sm mb-6" style="color: var(--text-muted);">Orden ascendente: del #10 al #1 (Top 10 original)</p>
         <div class="relative h-[480px] sm:h-[520px]">
           <canvas id="mainChart"></canvas>
         </div>
@@ -190,8 +258,8 @@
 
       <!-- Temas Originales -->
       <section class="mb-12">
-        <h2 class="text-2xl font-bold text-rapsi-dark mb-2">📋 Top 10 Temas Originales</h2>
-        <p class="text-gray-400 mb-6">Datos extraídos de búsquedas en YouTube México</p>
+        <h2 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">📋 Top 10 Temas Originales</h2>
+        <p class="mb-6" style="color: var(--text-secondary);">Datos extraídos de búsquedas en YouTube México</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="topicCardsOriginal"></div>
       </section>
 
@@ -199,84 +267,84 @@
       <section class="mb-12">
         <div class="flex items-center gap-3 mb-3">
           <span class="bg-gradient-to-r from-rapsi-mint to-rapsi-teal text-rapsi-dark text-xs font-bold px-4 py-1.5 rounded-full">7 CATEGORÍAS NUEVAS</span>
-          <h2 class="text-2xl font-bold text-rapsi-dark">Psicología Aplicada en Tendencia</h2>
+          <h2 class="text-2xl font-bold" style="color: var(--text-primary);">Psicología Aplicada en Tendencia</h2>
         </div>
-        <p class="text-gray-400 mb-6">Investigación complementaria abril-mayo 2025</p>
+        <p class="mb-6" style="color: var(--text-secondary);">Investigación complementaria abril-mayo 2025</p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="newTopicCards"></div>
       </section>
     </div>
 
     <!-- SECCIÓN VIDEOS -->
     <div id="section-videos" class="section-content hidden">
-      <h2 class="text-2xl font-bold text-rapsi-dark mb-2">🎬 Videos Reales de YouTube</h2>
-      <p class="text-gray-400 mb-8">Enlaces directos a contenido viral y educativo verificado</p>
+      <h2 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">🎬 Videos Reales de YouTube</h2>
+      <p class="mb-8" style="color: var(--text-secondary);">Enlaces directos a contenido viral y educativo verificado</p>
       <div class="space-y-8" id="videosContainer"></div>
     </div>
 
     <!-- SECCIÓN CALENDARIO -->
     <div id="section-calendario" class="section-content hidden">
-      <h2 class="text-2xl font-bold text-rapsi-dark mb-2">📅 Calendario Editorial Semanal</h2>
-      <p class="text-gray-400 mb-8">Plan de contenido sugerido para YouTube México — 8 semanas</p>
+      <h2 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">📅 Calendario Editorial Semanal</h2>
+      <p class="mb-8" style="color: var(--text-secondary);">Plan de contenido sugerido para YouTube México — 8 semanas</p>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="calendarContainer"></div>
     </div>
 
     <!-- SECCIÓN HOOKS -->
     <div id="section-hooks" class="section-content hidden">
-      <h2 class="text-2xl font-bold text-rapsi-dark mb-2">🚀 Hooks para Redes Sociales</h2>
-      <p class="text-gray-400 mb-8">Copia y pega para Instagram, TikTok, X/Twitter y YouTube Shorts</p>
+      <h2 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">🚀 Hooks para Redes Sociales</h2>
+      <p class="mb-8" style="color: var(--text-secondary);">Copia y pega para Instagram, TikTok, X/Twitter y YouTube Shorts</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="hooksContainer"></div>
     </div>
 
     <!-- SECCIÓN GOOGLE TRENDS -->
     <div id="section-trends" class="section-content hidden">
-      <h2 class="text-2xl font-bold text-rapsi-dark mb-2">📈 Datos Reales de Google Trends México</h2>
-      <p class="text-gray-400 mb-8">Interés de búsqueda Abril-Mayo 2025 • Escala 0-100</p>
+      <h2 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">📈 Datos Reales de Google Trends México</h2>
+      <p class="mb-8" style="color: var(--text-secondary);">Interés de búsqueda Abril-Mayo 2025 • Escala 0-100</p>
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
-        <div class="bg-white border border-rapsi-mint/30 rounded-3xl p-6 shadow-sm">
-          <h3 class="text-lg font-bold text-rapsi-dark mb-5">🏆 Ranking de Interés de Búsqueda</h3>
+        <div class="card-hover rounded-3xl p-6 shadow-sm">
+          <h3 class="text-lg font-bold mb-5" style="color: var(--text-primary);">🏆 Ranking de Interés de Búsqueda</h3>
           <div class="space-y-3" id="trendsRanking"></div>
         </div>
         
-        <div class="bg-white border border-rapsi-mint/30 rounded-3xl p-6 shadow-sm">
-          <h3 class="text-lg font-bold text-rapsi-dark mb-5">💡 Insights Clave</h3>
+        <div class="card-hover rounded-3xl p-6 shadow-sm">
+          <h3 class="text-lg font-bold mb-5" style="color: var(--text-primary);">💡 Insights Clave</h3>
           <div class="space-y-4">
-            <div class="bg-rapsi-light rounded-xl p-4 border border-rapsi-mint/20">
+            <div class="rounded-xl p-4 border" style="background: var(--bg-light); border-color: var(--border-color);">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-xl">🔥</span>
-                <span class="font-semibold text-rapsi-dark">Tema Estrella</span>
+                <span class="font-semibold" style="color: var(--text-primary);">Tema Estrella</span>
               </div>
-              <p class="text-gray-500 text-sm"><strong class="text-rapsi-dark">Disfunción eréctil (51.48/100)</strong> — Tema explosivo. Relacionado directamente con consumo de pornografía.</p>
+              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">Disfunción eréctil (51.48/100)</strong> — Tema explosivo. Relacionado directamente con consumo de pornografía.</p>
             </div>
-            <div class="bg-rapsi-light rounded-xl p-4 border border-rapsi-mint/20">
+            <div class="rounded-xl p-4 border" style="background: var(--bg-light); border-color: var(--border-color);">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-xl">🩸</span>
-                <span class="font-semibold text-rapsi-dark">Sorpresa del Ranking</span>
+                <span class="font-semibold" style="color: var(--text-primary);">Sorpresa del Ranking</span>
               </div>
-              <p class="text-gray-500 text-sm"><strong class="text-rapsi-dark">TPM (43.95/100)</strong> — Más buscada que "depresión postparto". Oportunidad de contenido educativo grande.</p>
+              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">TPM (43.95/100)</strong> — Más buscada que "depresión postparto". Oportunidad de contenido educativo grande.</p>
             </div>
-            <div class="bg-rapsi-light rounded-xl p-4 border border-rapsi-mint/20">
+            <div class="rounded-xl p-4 border" style="background: var(--bg-light); border-color: var(--border-color);">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-xl">📊</span>
-                <span class="font-semibold text-rapsi-dark">Dato SEO</span>
+                <span class="font-semibold" style="color: var(--text-primary);">Dato SEO</span>
               </div>
-              <p class="text-gray-500 text-sm">El público busca <strong class="text-rapsi-dark">"homosexualidad"</strong> (31.9/100) más que <strong>"salud mental LGBT"</strong> (1.64/100). Usa ambos términos.</p>
+              <p class="text-sm" style="color: var(--text-secondary);">El público busca <strong style="color: var(--text-primary);">"homosexualidad"</strong> (31.9/100) más que <strong>"salud mental LGBT"</strong> (1.64/100). Usa ambos términos.</p>
             </div>
           </div>
         </div>
       </div>
       
-      <div class="bg-white border border-rapsi-mint/30 rounded-3xl p-6 shadow-sm">
-        <h3 class="text-lg font-bold text-rapsi-dark mb-5">📋 Detalle Completo por Categoría</h3>
+      <div class="card-hover rounded-3xl p-6 shadow-sm">
+        <h3 class="text-lg font-bold mb-5" style="color: var(--text-primary);">📋 Detalle Completo por Categoría</h3>
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
             <thead>
-              <tr class="border-b border-rapsi-mint/30">
-                <th class="text-left text-gray-400 py-3 px-4 font-medium">Categoría</th>
-                <th class="text-left text-gray-400 py-3 px-4 font-medium">Keyword</th>
-                <th class="text-center text-gray-400 py-3 px-4 font-medium">Interés Prom.</th>
-                <th class="text-center text-gray-400 py-3 px-4 font-medium">Máx.</th>
-                <th class="text-left text-gray-400 py-3 px-4 font-medium">Consultas Relacionadas</th>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <th class="text-left py-3 px-4 font-medium" style="color: var(--text-muted);">Categoría</th>
+                <th class="text-left py-3 px-4 font-medium" style="color: var(--text-muted);">Keyword</th>
+                <th class="text-center py-3 px-4 font-medium" style="color: var(--text-muted);">Interés Prom.</th>
+                <th class="text-center py-3 px-4 font-medium" style="color: var(--text-muted);">Máx.</th>
+                <th class="text-left py-3 px-4 font-medium" style="color: var(--text-muted);">Consultas Relacionadas</th>
               </tr>
             </thead>
             <tbody id="trendsTableBody"></tbody>
@@ -284,9 +352,9 @@
         </div>
       </div>
       
-      <div class="bg-rapsi-light/50 border border-rapsi-mint/20 rounded-2xl p-6 mt-6">
-        <h3 class="text-lg font-bold text-rapsi-dark mb-2">🔬 Metodología</h3>
-        <ul class="text-gray-500 text-sm space-y-1">
+      <div class="rounded-2xl p-6 mt-6 border" style="background: var(--bg-light); border-color: var(--border-color);">
+        <h3 class="text-lg font-bold mb-2" style="color: var(--text-primary);">🔬 Metodología</h3>
+        <ul class="text-sm space-y-1" style="color: var(--text-secondary);">
           <li>• Fuente: Google Trends API via PyTrends</li>
           <li>• Período: Abril 1 - Mayo 31, 2025</li>
           <li>• Región: México (nacional)</li>
@@ -297,20 +365,41 @@
 
   </main>
 
-  <footer class="bg-gradient-to-r from-rapsi-dark to-rapsi-sky mt-16 py-10 text-center">
+  <footer class="mt-16 py-10 text-center" style="background: linear-gradient(135deg, #42708A 0%, #79BCD7 100%);">
     <div class="max-w-7xl mx-auto px-4">
       <div class="flex items-center justify-center gap-3 mb-4">
-        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-2xl">🧠</div>
+        <img src="logo_web.png" alt="RAPSI" class="w-12 h-12 rounded-full bg-white/10 object-cover">
         <span class="text-white font-bold text-xl">RAPSI</span>
       </div>
-      <p class="text-white/70 text-sm">Tendencias de Psicología en YouTube México</p>
-      <p class="text-white/50 text-xs mt-2">Datos al 31 de mayo 2026 • Fuente: YouTube + DuckDuckGo + Google Trends</p>
-      <p class="text-white/40 text-xs mt-1">Desarrollado por <a href="https://github.com/JFCI-7" class="text-rapsi-mint hover:text-white transition-colors">@JFCI-7</a></p>
+      <p class="text-white/80 text-sm">Tendencias de Psicología en YouTube México</p>
+      <p class="text-white/60 text-xs mt-2">Datos al 31 de mayo 2026 • Fuente: YouTube + DuckDuckGo + Google Trends</p>
+      <p class="text-white/50 text-xs mt-1">Desarrollado por <a href="https://github.com/JFCI-7" class="text-rapsi-mint hover:text-white transition-colors">@JFCI-7</a></p>
     </div>
   </footer>
 
   <!-- SCRIPTS -->
   <script>
+    // ── THEME TOGGLE ──
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('themeIcon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+    
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      document.getElementById('themeIcon').textContent = '☀️';
+    }
+
     // ── DATOS ──
     const TOPICS_ORIGINAL = [
       { rank: 10, tema: "Salud mental masculina", emoji: "🧔", vistas_min: 39, vistas_max: 100, vistas_promedio: 70, tendencia: "emergente", color: "#f59e0b", descripcion: "Apenas empieza a abrirse conversación sobre salud mental en hombres mexicanos", canales: ["Mexiquense TV", "NosotrAs con Julia Didriksson"], tags: ["masculinidad", "salud mental", "hombres"] },
@@ -471,6 +560,7 @@
     // ── CHART 1 ──
     const ctx1 = document.getElementById('mainChart')?.getContext('2d');
     if (ctx1) {
+      const isDark = document.documentElement.classList.contains('dark');
       const labels = TOPICS_ORIGINAL.map(t => `#${t.rank} ${t.emoji} ${t.tema}`);
       const values = TOPICS_ORIGINAL.map(t => t.vistas_promedio);
       new Chart(ctx1, {
@@ -480,8 +570,8 @@
           datasets: [{
             label: 'Vistas promedio',
             data: values.reverse(),
-            backgroundColor: '#79BCD7CC',
-            borderColor: '#79BCD7',
+            backgroundColor: isDark ? '#79BCD7CC' : '#42708ACC',
+            borderColor: isDark ? '#79BCD7' : '#42708A',
             borderWidth: 2,
             borderRadius: 12,
             borderSkipped: false,
@@ -494,8 +584,9 @@
           plugins: {
             legend: { display: false },
             tooltip: {
-              backgroundColor: '#42708A',
+              backgroundColor: isDark ? '#1A2332' : '#42708A',
               titleColor: '#AAF0C3',
+              bodyColor: '#F0FAF5',
               callbacks: {
                 label: (ctx) => ` ${ctx.raw.toLocaleString('es-MX')} vistas`
               }
@@ -504,12 +595,12 @@
           scales: {
             x: {
               type: 'logarithmic',
-              title: { display: true, text: 'Vistas (escala log)', color: '#79BCD7' },
-              ticks: { color: '#42708A', callback: v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v },
-              grid: { color: '#E8F4F0' }
+              title: { display: true, text: 'Vistas (escala log)', color: isDark ? '#5A7A8A' : '#79BCD7' },
+              ticks: { color: isDark ? '#5A7A8A' : '#42708A', callback: v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v },
+              grid: { color: isDark ? '#2A4050' : '#E8F4F0' }
             },
             y: {
-              ticks: { color: '#42708A', font: { size: 11 } },
+              ticks: { color: isDark ? '#A0B4C4' : '#42708A', font: { size: 11 } },
               grid: { display: false }
             }
           }
@@ -522,7 +613,7 @@
     if (cardsOriginal) {
       TOPICS_ORIGINAL.forEach(t => {
         const card = document.createElement('div');
-        card.className = 'card-hover bg-white rounded-2xl p-5 flex flex-col gap-3';
+        card.className = 'card-hover rounded-2xl p-5 flex flex-col gap-3';
         card.innerHTML = `
           <div class="flex items-center justify-between">
             <span class="text-4xl">${t.emoji}</span>
@@ -531,15 +622,15 @@
           <div>
             <div class="flex items-center gap-2 mb-1">
               <span class="text-xl font-bold" style="color:${t.color}">#${t.rank}</span>
-              <h3 class="text-base font-semibold text-gray-800 leading-tight">${t.tema}</h3>
+              <h3 class="text-base font-semibold leading-tight" style="color: var(--text-primary);">${t.tema}</h3>
             </div>
-            <p class="text-gray-500 text-sm">${t.descripcion}</p>
+            <p class="text-sm" style="color: var(--text-secondary);">${t.descripcion}</p>
           </div>
-          <div class="flex items-center gap-2 text-xs text-gray-400">
-            <span class="font-mono bg-rapsi-light px-2 py-1 rounded-lg">📊 ${t.vistas_promedio >= 1000 ? (t.vistas_promedio/1000).toFixed(1)+'K' : t.vistas_promedio} vistas</span>
+          <div class="flex items-center gap-2 text-xs">
+            <span class="font-mono px-2 py-1 rounded-lg" style="background: var(--bg-light); color: var(--text-secondary);">📊 ${t.vistas_promedio >= 1000 ? (t.vistas_promedio/1000).toFixed(1)+'K' : t.vistas_promedio} vistas</span>
           </div>
           <div class="flex flex-wrap gap-1.5">
-            ${t.tags.map(tag => `<span class="text-xs bg-rapsi-light text-rapsi-dark px-2 py-0.5 rounded-full">${tag}</span>`).join('')}
+            ${t.tags.map(tag => `<span class="text-xs px-2 py-0.5 rounded-full" style="background: var(--bg-light); color: var(--text-primary);">${tag}</span>`).join('')}
           </div>
         `;
         cardsOriginal.appendChild(card);
@@ -551,21 +642,21 @@
     if (newCards) {
       NEW_TOPICS.forEach(cat => {
         const card = document.createElement('div');
-        card.className = 'card-hover bg-white rounded-2xl p-6';
+        card.className = 'card-hover rounded-2xl p-6';
         const tendenciaColor = cat.tendencia === 'explosiva' ? 'text-red-500' : cat.tendencia === 'muy alta' ? 'text-amber-500' : 'text-rapsi-dark';
         card.innerHTML = `
           <div class="flex items-center gap-3 mb-4">
             <span class="text-3xl">${cat.emoji}</span>
             <div>
-              <h3 class="text-lg font-bold text-gray-800">${cat.categoria}</h3>
+              <h3 class="text-lg font-bold" style="color: var(--text-primary);">${cat.categoria}</h3>
               <span class="text-xs ${tendenciaColor} font-bold uppercase tracking-wider">🔥 Tendencia ${cat.tendencia}</span>
             </div>
           </div>
           <ul class="space-y-2 mb-4">
-            ${cat.temas.map(tema => `<li class="flex items-start gap-2 text-sm text-gray-600"><span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:${cat.color}"></span>${tema}</li>`).join('')}
+            ${cat.temas.map(tema => `<li class="flex items-start gap-2 text-sm" style="color: var(--text-secondary);"><span class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:${cat.color}"></span>${tema}</li>`).join('')}
           </ul>
-          <div class="bg-rapsi-light rounded-xl p-3 mb-3 border border-rapsi-mint/20">
-            <p class="text-xs text-gray-500 italic">💡 ${cat.contexto}</p>
+          <div class="rounded-xl p-3 mb-3 border" style="background: var(--bg-light); border-color: var(--border-color);">
+            <p class="text-xs italic" style="color: var(--text-muted);">💡 ${cat.contexto}</p>
           </div>
         `;
         newCards.appendChild(card);
@@ -577,22 +668,22 @@
     if (videosContainer) {
       NEW_TOPICS.forEach(cat => {
         const section = document.createElement('div');
-        section.className = 'bg-white border border-rapsi-mint/20 rounded-2xl p-6 shadow-sm';
+        section.className = 'card-hover rounded-2xl p-6 shadow-sm';
         section.innerHTML = `
           <div class="flex items-center gap-3 mb-5">
             <span class="text-2xl">${cat.emoji}</span>
-            <h3 class="text-lg font-bold text-gray-800">${cat.categoria}</h3>
+            <h3 class="text-lg font-bold" style="color: var(--text-primary);">${cat.categoria}</h3>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             ${cat.videos.map(v => `
-              <div class="video-card bg-rapsi-light rounded-xl overflow-hidden cursor-pointer border border-rapsi-mint/20" onclick="window.open('https://youtube.com/watch?v=${v.id}', '_blank')">
+              <div class="video-card rounded-xl overflow-hidden cursor-pointer border" style="background: var(--bg-light); border-color: var(--border-color);" onclick="window.open('https://youtube.com/watch?v=${v.id}', '_blank')">
                 <div class="bg-gradient-to-br from-rapsi-sky to-rapsi-mint h-32 flex items-center justify-center relative">
                   <span class="text-4xl">▶️</span>
                   <div class="absolute bottom-2 right-2 bg-white/90 text-rapsi-dark text-xs px-2 py-0.5 rounded-full font-medium shadow-sm">YouTube</div>
                 </div>
                 <div class="p-3">
-                  <h4 class="text-sm font-semibold text-gray-800 line-clamp-2 mb-1">${v.titulo}</h4>
-                  <p class="text-xs text-gray-400">📺 ${v.canal}</p>
+                  <h4 class="text-sm font-semibold line-clamp-2 mb-1" style="color: var(--text-primary);">${v.titulo}</h4>
+                  <p class="text-xs" style="color: var(--text-muted);">📺 ${v.canal}</p>
                 </div>
               </div>
             `).join('')}
@@ -658,23 +749,23 @@
     if (calendarContainer) {
       CALENDAR_WEEKS.forEach((week) => {
         const weekCard = document.createElement('div');
-        weekCard.className = 'bg-white border border-rapsi-mint/20 rounded-2xl overflow-hidden shadow-sm';
+        weekCard.className = 'card-hover rounded-2xl overflow-hidden shadow-sm';
         weekCard.innerHTML = `
-          <div class="bg-gradient-to-r from-rapsi-mint/30 to-rapsi-sky/20 p-4 border-b border-rapsi-mint/20">
+          <div class="p-4 border-b" style="background: linear-gradient(135deg, rgba(170,240,195,0.2) 0%, rgba(121,188,215,0.15) 100%); border-color: var(--border-color);">
             <div class="flex items-center justify-between">
-              <h3 class="text-lg font-bold text-rapsi-dark">${week.semana}</h3>
-              <span class="text-xs text-rapsi-dark bg-white/70 px-3 py-1 rounded-full font-medium">${week.fecha}</span>
+              <h3 class="text-lg font-bold" style="color: var(--text-primary);">${week.semana}</h3>
+              <span class="text-xs px-3 py-1 rounded-full font-medium" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color);">${week.fecha}</span>
             </div>
           </div>
-          <div class="divide-y divide-rapsi-mint/10">
+          <div class="divide-y" style="border-color: var(--border-color);">
             ${week.temas.map(d => `
-              <div class="p-4 flex items-start gap-3 hover:bg-rapsi-light/50 transition-colors">
-                <div class="flex-shrink-0 w-20 text-xs font-bold text-rapsi-sky pt-0.5">${d.dia}</div>
+              <div class="p-4 flex items-start gap-3 hover:bg-opacity-50 transition-colors" style="hover: var(--bg-light);">
+                <div class="flex-shrink-0 w-20 text-xs font-bold pt-0.5" style="color: var(--text-muted);">${d.dia}</div>
                 <div class="flex-1">
-                  <p class="text-sm text-gray-700 font-medium">${d.tema}</p>
+                  <p class="text-sm font-medium" style="color: var(--text-primary);">${d.tema}</p>
                   <div class="flex items-center gap-2 mt-1">
-                    <span class="text-xs px-2 py-0.5 rounded-full bg-rapsi-light text-rapsi-dark border border-rapsi-mint/20">${d.tipo}</span>
-                    <span class="text-xs text-gray-400">📱 ${d.plataforma}</span>
+                    <span class="text-xs px-2 py-0.5 rounded-full" style="background: var(--bg-light); color: var(--text-secondary); border: 1px solid var(--border-color);">${d.tipo}</span>
+                    <span class="text-xs" style="color: var(--text-muted);">📱 ${d.plataforma}</span>
                   </div>
                 </div>
               </div>
@@ -735,20 +826,20 @@
     if (hooksContainer) {
       HOOKS_DATA.forEach(cat => {
         const card = document.createElement('div');
-        card.className = 'bg-white border border-rapsi-mint/20 rounded-2xl p-6 shadow-sm';
+        card.className = 'card-hover rounded-2xl p-6 shadow-sm';
         card.innerHTML = `
           <div class="flex items-center gap-3 mb-4">
             <span class="text-2xl">${cat.emoji}</span>
-            <h3 class="text-lg font-bold text-gray-800">${cat.categoria}</h3>
+            <h3 class="text-lg font-bold" style="color: var(--text-primary);">${cat.categoria}</h3>
           </div>
           <div class="space-y-3">
             ${cat.hooks.map((hook, idx) => `
-              <div class="hook-card rounded-lg p-4 cursor-pointer border border-gray-100" onclick="copyHook(this)">
+              <div class="hook-card rounded-lg p-4 cursor-pointer border" style="border-color: var(--border-color);" onclick="copyHook(this)">
                 <div class="flex items-start gap-3">
                   <span class="text-xs font-bold px-2 py-1 rounded-lg flex-shrink-0" style="background:${cat.color}15;color:${cat.color}">#${idx + 1}</span>
-                  <p class="text-sm text-gray-600 leading-relaxed">${hook}</p>
+                  <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">${hook}</p>
                 </div>
-                <div class="text-xs text-gray-400 mt-2 text-right">Click para copiar</div>
+                <div class="text-xs mt-2 text-right" style="color: var(--text-muted);">Click para copiar</div>
               </div>
             `).join('')}
           </div>
@@ -798,10 +889,10 @@
           <span class="text-base w-8">${t.emoji}</span>
           <div class="flex-1">
             <div class="flex items-center justify-between mb-1">
-              <span class="text-sm text-gray-700 font-medium">${t.keyword}</span>
+              <span class="text-sm font-medium" style="color: var(--text-primary);">${t.keyword}</span>
               <span class="text-xs font-mono font-bold" style="color:${t.color}">${t.interes.toFixed(2)}/100</span>
             </div>
-            <div class="bg-rapsi-light rounded-full h-2 overflow-hidden">
+            <div class="rounded-full h-2 overflow-hidden" style="background: var(--bg-light);">
               <div class="h-full rounded-full trend-bar-rapsi" style="width:${pct}%"></div>
             </div>
           </div>
@@ -814,7 +905,8 @@
     if (trendsTableBody) {
       TRENDS_DATA.detalle.forEach(d => {
         const row = document.createElement('tr');
-        row.className = 'border-b border-rapsi-mint/10 hover:bg-rapsi-light/50 transition-colors';
+        row.className = 'transition-colors';
+        row.style.borderBottom = '1px solid var(--border-color)';
         const colorMap = {
           "Identidad de Género": "#ec4899",
           "Mujeres y LGBT+": "#8b5cf6",
@@ -830,12 +922,12 @@
           <td class="py-3 px-4">
             <span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:${color}15;color:${color}">${d.categoria}</span>
           </td>
-          <td class="py-3 px-4 text-gray-700 font-medium">${d.keyword}</td>
+          <td class="py-3 px-4 font-medium" style="color: var(--text-primary);">${d.keyword}</td>
           <td class="py-3 px-4 text-center">
             <span class="font-mono font-bold text-rapsi-dark">${d.promedio.toFixed(2)}</span>
           </td>
-          <td class="py-3 px-4 text-center text-gray-400">${d.maximo}</td>
-          <td class="py-3 px-4 text-xs text-gray-400">${relacionadasText}</td>
+          <td class="py-3 px-4 text-center" style="color: var(--text-muted);">${d.maximo}</td>
+          <td class="py-3 px-4 text-xs" style="color: var(--text-muted);">${relacionadasText}</td>
         `;
         trendsTableBody.appendChild(row);
       });
