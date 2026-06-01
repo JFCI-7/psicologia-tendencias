@@ -8,6 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -182,7 +183,7 @@
         </div>
         <!-- Botón Dark/Light -->
         <button onclick="toggleTheme()" class="theme-toggle ml-2 w-9 h-9 rounded-full flex items-center justify-center text-lg" style="background: var(--bg-light); border: 1px solid var(--border-color);" title="Cambiar tema">
-          <span id="themeIcon">🌙</span>
+          <i id="themeIcon" class="ri-moon-line"></i>
         </button>
       </div>
     </div>
@@ -396,11 +397,11 @@
       const icon = document.getElementById('themeIcon');
       if (html.classList.contains('dark')) {
         html.classList.remove('dark');
-        icon.textContent = '🌙';
+        icon.className = 'ri-moon-line';
         localStorage.setItem('theme', 'light');
       } else {
         html.classList.add('dark');
-        icon.textContent = '☀️';
+        icon.className = 'ri-sun-line';
         localStorage.setItem('theme', 'dark');
       }
     }
@@ -408,7 +409,7 @@
     // Load saved theme
     if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
-      document.getElementById('themeIcon').textContent = '☀️';
+      document.getElementById('themeIcon').className = 'ri-sun-line';
     }
 
     // ── DATOS ──
