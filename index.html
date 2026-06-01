@@ -695,6 +695,34 @@
       });
     }
 
+    // ── Tarjetas Mundial 2026 ──
+    const mundialCards = document.getElementById('mundialCards');
+    if (mundialCards) {
+      MUNDIAL_2026.forEach(cat => {
+        const card = document.createElement('div');
+        card.className = 'card-hover rounded-3xl p-6 shadow-sm flex flex-col gap-4';
+        card.style.border = '1px solid var(--border-color)';
+        card.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">${cat.emoji}</span>
+            <div>
+              <h3 class="font-bold text-lg" style="color: var(--text-primary);">${cat.categoria}</h3>
+              <span class="text-xs font-medium px-2 py-0.5 rounded-full" style="background:${cat.color}15;color:${cat.color}">${cat.tendencia.toUpperCase()}</span>
+            </div>
+          </div>
+          <div class="space-y-3">
+            ${cat.temas.map(t => `
+              <div class="rounded-xl p-3" style="background: var(--bg-light); border: 1px solid var(--border-color);">
+                <div class="font-semibold text-sm mb-1" style="color: var(--text-primary);">${t.titulo}</div>
+                <div class="text-xs leading-relaxed" style="color: var(--text-secondary);">${t.enfoque}</div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        mundialCards.appendChild(card);
+      });
+    }
+
     // ── Nuevas tarjetas ──
     const newCards = document.getElementById('newTopicCards');
     if (newCards) {
