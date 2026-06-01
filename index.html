@@ -159,6 +159,167 @@
     .section-content {
       transition: opacity 0.2s ease;
     }
+  
+    /* ===== RESPONSIVE ===== */
+    
+    /* Menú móvil */
+    .mobile-menu-btn {
+      display: none;
+    }
+    .desktop-nav {
+      display: flex;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-primary);
+      z-index: 100;
+      flex-direction: column;
+      padding: 2rem;
+      gap: 1rem;
+    }
+    .mobile-nav.active {
+      display: flex;
+    }
+    .mobile-nav button {
+      width: 100%;
+      text-align: left;
+      padding: 1rem;
+      font-size: 1.1rem;
+      border-radius: 1rem;
+    }
+    .mobile-nav-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    /* Tablas responsive */
+    .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-responsive table {
+      min-width: 640px;
+    }
+    
+    /* Gráficas responsive */
+    .chart-container {
+      position: relative;
+      height: 300px;
+    }
+    @media (min-width: 640px) {
+      .chart-container {
+        height: 400px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .chart-container {
+        height: 520px;
+      }
+    }
+    
+    /* Tarjetas */
+    .cards-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    /* Hero responsive */
+    .hero-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    @media (min-width: 1024px) {
+      .hero-grid {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+    
+    /* Textos */
+    .hero-title {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .hero-title {
+        font-size: 3.5rem;
+      }
+    }
+    
+    /* Ocultar en móvil */
+    .hide-mobile {
+      display: none;
+    }
+    @media (min-width: 640px) {
+      .hide-mobile {
+        display: inline;
+      }
+    }
+    
+    /* Breakpoints específicos */
+    @media (max-width: 639px) {
+      .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 999px;
+        background: var(--bg-light);
+        border: 1px solid var(--border-color);
+      }
+      .desktop-nav {
+        display: none !important;
+      }
+      .sm\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+      }
+      .sm\:py-16 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+      }
+      .lg\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+      }
+      .lg\:flex-row {
+        flex-direction: column !important;
+      }
+      .w-72 {
+        width: 16rem !important;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .md\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body class="min-h-screen">
@@ -174,13 +335,18 @@
         </div>
       </div>
       <div class="flex items-center gap-2">
-        <div class="flex gap-1.5 text-xs sm:text-sm">
+        <!-- Desktop nav -->
+        <div class="desktop-nav gap-1.5 text-xs sm:text-sm">
           <button onclick="showSection('temas')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all" data-tab="temas">Temas</button>
           <button onclick="showSection('videos')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="videos">Videos</button>
           <button onclick="showSection('calendario')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="calendario">Calendario</button>
           <button onclick="showSection('hooks')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="hooks">Redes</button>
           <button onclick="showSection('trends')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="trends">Trends</button>
         </div>
+        <!-- Botón móvil hamburguesa -->
+        <button onclick="toggleMobileMenu()" class="mobile-menu-btn" title="Menú">
+          <i class="ri-menu-line text-xl" style="color: var(--text-primary);"></i>
+        </button>
         <!-- Botón Dark/Light -->
         <button onclick="toggleTheme()" class="theme-toggle ml-2 w-9 h-9 rounded-full flex items-center justify-center text-lg" style="background: var(--bg-light); border: 1px solid var(--border-color);" title="Cambiar tema">
           <i id="themeIcon" class="ri-moon-line"></i>
@@ -188,6 +354,30 @@
       </div>
     </div>
   </nav>
+  
+  <!-- Menú móvil overlay -->
+  <div id="mobileNav" class="mobile-nav">
+    <button onclick="toggleMobileMenu()" class="mobile-nav-close" style="color: var(--text-primary);">
+      <i class="ri-close-line"></i>
+    </button>
+    <div class="mt-8 flex flex-col gap-3">
+      <button onclick="showSection('temas'); toggleMobileMenu();" class="tab-btn px-4 py-3 rounded-xl font-medium transition-all" data-tab="temas" style="background: var(--bg-light); color: var(--text-primary); border: 1px solid var(--border-color);">
+        <i class="ri-article-line mr-2"></i>Temas
+      </button>
+      <button onclick="showSection('videos'); toggleMobileMenu();" class="tab-btn px-4 py-3 rounded-xl font-medium transition-all tab-inactive" data-tab="videos" style="background: var(--bg-light); color: var(--text-primary); border: 1px solid var(--border-color);">
+        <i class="ri-video-line mr-2"></i>Videos
+      </button>
+      <button onclick="showSection('calendario'); toggleMobileMenu();" class="tab-btn px-4 py-3 rounded-xl font-medium transition-all tab-inactive" data-tab="calendario" style="background: var(--bg-light); color: var(--text-primary); border: 1px solid var(--border-color);">
+        <i class="ri-calendar-line mr-2"></i>Calendario
+      </button>
+      <button onclick="showSection('hooks'); toggleMobileMenu();" class="tab-btn px-4 py-3 rounded-xl font-medium transition-all tab-inactive" data-tab="hooks" style="background: var(--bg-light); color: var(--text-primary); border: 1px solid var(--border-color);">
+        <i class="ri-share-line mr-2"></i>Redes
+      </button>
+      <button onclick="showSection('trends'); toggleMobileMenu();" class="tab-btn px-4 py-3 rounded-xl font-medium transition-all tab-inactive" data-tab="trends" style="background: var(--bg-light); color: var(--text-primary); border: 1px solid var(--border-color);">
+        <i class="ri-bar-chart-line mr-2"></i>Trends
+      </button>
+    </div>
+  </div>
 
   <!-- Hero -->
   <header class="hero-gradient relative overflow-hidden">
@@ -196,12 +386,12 @@
     <div class="absolute bottom-0 left-0 w-72 h-72 bg-rapsi-sky/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
     
     <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16 relative z-10">
-      <div class="flex flex-col lg:flex-row items-center gap-8">
+      <div class="hero-grid">
         <div class="flex-1 text-center lg:text-left">
           <div class="inline-flex items-center gap-2 badge rounded-full px-4 py-1.5 text-xs font-bold mb-5">
             📊 Datos actualizados — 1 junio 2026
           </div>
-          <h1 class="text-4xl sm:text-6xl font-black tracking-tight gradient-text mb-4">
+          <h1 class="hero-title font-black tracking-tight gradient-text mb-4">
             Tendencias de<br>Psicología en México
           </h1>
           <p class="text-lg mt-4 font-medium max-w-xl" style="color: var(--text-secondary);">
@@ -261,7 +451,7 @@
       <section class="mb-12">
         <h2 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">📋 Top 10 Temas Originales</h2>
         <p class="mb-6" style="color: var(--text-secondary);">Datos extraídos de búsquedas en YouTube México</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="topicCardsOriginal"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="topicCardsOriginal" class="cards-grid"></div>
       </section>
 
       <!-- NUEVOS TEMAS -->
@@ -271,7 +461,7 @@
           <h2 class="text-2xl font-bold" style="color: var(--text-primary);">Psicología Aplicada en Tendencia</h2>
         </div>
         <p class="mb-6" style="color: var(--text-secondary);">Investigación complementaria abril-mayo 2025</p>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="newTopicCards"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="newTopicCards" class="cards-grid"></div>
       </section>
 
       <!-- MUNDIAL 2026 -->
@@ -281,7 +471,7 @@
           <h2 class="text-2xl font-bold" style="color: var(--text-primary);">Psicología y el Mundial</h2>
         </div>
         <p class="mb-6" style="color: var(--text-secondary);">Temas de tendencia por el Mundial 2026 en México, EE.UU. y Canadá</p>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="mundialCards"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="mundialCards" class="cards-grid"></div>
       </section>
 
     </div>
@@ -348,7 +538,7 @@
       
       <div class="card-hover rounded-3xl p-6 shadow-sm">
         <h3 class="text-lg font-bold mb-5" style="color: var(--text-primary);">📋 Detalle Completo por Categoría</h3>
-        <div class="overflow-x-auto">
+        <div class="table-responsive">
           <table class="w-full text-sm">
             <thead>
               <tr style="border-bottom: 1px solid var(--border-color);">
@@ -391,6 +581,13 @@
 
   <!-- SCRIPTS -->
   <script>
+    // ── MOBILE MENU ──
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('active');
+      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    }
+
     // ── THEME TOGGLE ──
     function setLogo() {
       const logo = document.getElementById('heroLogo');
