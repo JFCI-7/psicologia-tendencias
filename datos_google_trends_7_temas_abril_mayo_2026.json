@@ -5,18 +5,9 @@
       "interes_promedio": 14.36,
       "interes_maximo": 100,
       "consultas_relacionadas": [
-        {
-          "query": "que es psicologia social",
-          "valor": 100
-        },
-        {
-          "query": "que es la psicologia social",
-          "valor": 63
-        },
-        {
-          "query": "libro psicologia social",
-          "valor": 28
-        }
+        { "query": "que es psicologia social", "valor": 100 },
+        { "query": "que es la psicologia social", "valor": 63 },
+        { "query": "libro psicologia social", "valor": 28 }
       ]
     },
     {
@@ -24,10 +15,7 @@
       "interes_promedio": 14.0,
       "interes_maximo": 100,
       "consultas_relacionadas": [
-        {
-          "query": "que es la interaccion social",
-          "valor": 100
-        }
+        { "query": "que es la interaccion social", "valor": 100 }
       ]
     },
     {
@@ -41,18 +29,9 @@
       "interes_promedio": 10.61,
       "interes_maximo": 100,
       "consultas_relacionadas": [
-        {
-          "query": "que es la influencia social",
-          "valor": 100
-        },
-        {
-          "query": "la influencia social y los medios de comunicación",
-          "valor": 17
-        },
-        {
-          "query": "tipos de influencia social",
-          "valor": 6
-        }
+        { "query": "que es la influencia social", "valor": 100 },
+        { "query": "la influencia social y los medios de comunicación", "valor": 17 },
+        { "query": "tipos de influencia social", "valor": 6 }
       ]
     },
     {
@@ -82,6 +61,36 @@
       "interes_promedio": 7.74,
       "interes_maximo": 100,
       "consultas_relacionadas": []
+    },
+    {
+      "keyword": "validacion personal",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "likes autoestima",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "comparacion social",
+      "interes_promedio": 0.03,
+      "interes_maximo": 1,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "aceptacion social",
+      "interes_promedio": 0.13,
+      "interes_maximo": 1,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "fomo",
+      "interes_promedio": 56.21,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
     }
   ],
   "autoestima_escuelas": [
@@ -95,6 +104,36 @@
       "keyword": "autoestima estudiantes",
       "interes_promedio": 2.85,
       "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "bullying autoestima",
+      "interes_promedio": 0.92,
+      "interes_maximo": 30,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "salud mental estudiantes",
+      "interes_promedio": 13.46,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "acoso escolar mexico",
+      "interes_promedio": 6.39,
+      "interes_maximo": 55,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "bienestar estudiantil",
+      "interes_promedio": 1.82,
+      "interes_maximo": 32,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "programas autoestima",
+      "interes_promedio": 2.16,
+      "interes_maximo": 34,
       "consultas_relacionadas": []
     }
   ],
@@ -116,6 +155,18 @@
       "interes_promedio": 13.0,
       "interes_maximo": 100,
       "consultas_relacionadas": []
+    },
+    {
+      "keyword": "tda escuela",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "sintomas tdah",
+      "interes_promedio": 4.87,
+      "interes_maximo": 78,
+      "consultas_relacionadas": []
     }
   ],
   "aprendizaje_ninos": [
@@ -124,6 +175,24 @@
       "interes_promedio": 25.44,
       "interes_maximo": 100,
       "consultas_relacionadas": []
+    },
+    {
+      "keyword": "desarrollo cognitivo infantil",
+      "interes_promedio": 1.23,
+      "interes_maximo": 75,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "estilos aprendizaje",
+      "interes_promedio": 10.64,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "habilidades aprendizaje",
+      "interes_promedio": 14.31,
+      "interes_maximo": 92,
+      "consultas_relacionadas": []
     }
   ],
   "efectos_dispositivos_ninos": [
@@ -131,6 +200,36 @@
       "keyword": "tiempo pantallas infantil",
       "interes_promedio": 1.64,
       "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "celulares niños",
+      "interes_promedio": 2.54,
+      "interes_maximo": 13,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "pantallas niños",
+      "interes_promedio": 5.85,
+      "interes_maximo": 76,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "tabletas niños",
+      "interes_promedio": 8.07,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "adiccion tecnologia niños",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "uso celular infantil",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
       "consultas_relacionadas": []
     }
   ]

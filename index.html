@@ -199,14 +199,14 @@
       <div class="flex flex-col lg:flex-row items-center gap-8">
         <div class="flex-1 text-center lg:text-left">
           <div class="inline-flex items-center gap-2 badge rounded-full px-4 py-1.5 text-xs font-bold mb-5">
-            📊 Datos actualizados — 31 mayo 2026
+            📊 Datos actualizados — 1 junio 2026
           </div>
           <h1 class="text-4xl sm:text-6xl font-black tracking-tight gradient-text mb-4">
             Tendencias de<br>Psicología en México
           </h1>
           <p class="text-lg mt-4 font-medium max-w-xl" style="color: var(--text-secondary);">
             Análisis completo de YouTube + Google Trends • Abril – Mayo 2026 • 
-            <span class="text-rapsi-dark font-semibold">17 temas</span> en tendencia
+            <span class="text-rapsi-dark font-semibold">32 keywords</span> en tendencia
           </p>
           <div class="flex flex-wrap justify-center lg:justify-start gap-2 mt-6">
             <span class="text-xs px-4 py-2 rounded-full font-medium shadow-sm" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color);">🇲🇽 México</span>
@@ -326,21 +326,21 @@
                 <span class="text-xl">🔥</span>
                 <span class="font-semibold" style="color: var(--text-primary);">Tema Estrella</span>
               </div>
-              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">TDAH en niños (37.56/100)</strong> — Tema más buscado. Diagnóstico, síntomas y manejo en población infantil mexicana.</p>
+              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">FOMO (56.21/100)</strong> — Tema estrella de la búsqueda. El miedo a perderse algo en redes sociales domina la conversación sobre validación personal.</p>
             </div>
             <div class="rounded-xl p-4 border" style="background: var(--bg-light); border-color: var(--border-color);">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-xl">🩸</span>
                 <span class="font-semibold" style="color: var(--text-primary);">Sorpresa del Ranking</span>
               </div>
-              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">Aprendizaje en niños (25.44/100)</strong> — Segundo tema más buscado. Estilos de aprendizaje y desarrollo cognitivo infantil.</p>
+              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">TDAH en niños (37.56/100)</strong> — Segundo tema más buscado, manteniendo liderazgo en salud infantil. Diagnóstico y manejo en población mexicana.</p>
             </div>
             <div class="rounded-xl p-4 border" style="background: var(--bg-light); border-color: var(--border-color);">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-xl">📊</span>
                 <span class="font-semibold" style="color: var(--text-primary);">Dato SEO</span>
               </div>
-              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">Psicología social (14.36/100)</strong> e <strong>interacción social (14.0/100)</strong> muestran interés moderado y constante.</p>
+              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">Habilidades de aprendizaje (14.31/100)</strong> e <strong>salud mental estudiantes (13.46/100)</strong> muestran interés sostenido en educación.</p>
             </div>
           </div>
         </div>
@@ -947,18 +947,38 @@
     // ── GOOGLE TRENDS DATA ──
     const TRENDS_DATA = {
       ranking: [
+        { keyword: "fomo", interes: 56.21, categoria: "Redes y validación personal", emoji: "😰", color: "#ef4444" },
         { keyword: "TDAH niños", interes: 37.56, categoria: "TDA en niños", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "aprendizaje niños", interes: 25.44, categoria: "Aprendizaje niños", emoji: "📚", color: "#10b981" },
+        { keyword: "habilidades aprendizaje", interes: 14.31, categoria: "Aprendizaje niños", emoji: "📚", color: "#10b981" },
+        { keyword: "psicologia social", interes: 14.36, categoria: "Psicología social", emoji: "👥", color: "#6366f1" },
+        { keyword: "salud mental estudiantes", interes: 13.46, categoria: "Autoestima en escuelas", emoji: "🏫", color: "#f59e0b" },
         { keyword: "trastorno deficit atencion", interes: 15.57, categoria: "TDA en niños", emoji: "🧩", color: "#06b6d4" },
         { keyword: "hiperactividad niños", interes: 13.00, categoria: "TDA en niños", emoji: "🧩", color: "#06b6d4" },
-        { keyword: "aprendizaje niños", interes: 25.44, categoria: "Aprendizaje niños", emoji: "📚", color: "#10b981" },
-        { keyword: "psicologia social", interes: 14.36, categoria: "Psicología social", emoji: "👥", color: "#6366f1" },
         { keyword: "interaccion social", interes: 14.00, categoria: "Psicología social", emoji: "👥", color: "#6366f1" },
-        { keyword: "influencia social", interes: 10.61, categoria: "Psicología social", emoji: "👥", color: "#6366f1" },
+        { keyword: "estilos aprendizaje", interes: 10.64, categoria: "Aprendizaje niños", emoji: "📚", color: "#10b981" },
         { keyword: "redes sociales mexico", interes: 12.72, categoria: "Redes sociales e impacto", emoji: "📱", color: "#8b5cf6" },
+        { keyword: "influencia social", interes: 10.61, categoria: "Psicología social", emoji: "👥", color: "#6366f1" },
+        { keyword: "tabletas niños", interes: 8.07, categoria: "Dispositivos móviles", emoji: "📵", color: "#ef4444" },
         { keyword: "autoestima redes sociales", interes: 7.74, categoria: "Redes y validación personal", emoji: "💜", color: "#ec4899" },
+        { keyword: "acoso escolar mexico", interes: 6.39, categoria: "Autoestima en escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "pantallas niños", interes: 5.85, categoria: "Dispositivos móviles", emoji: "📵", color: "#ef4444" },
+        { keyword: "sintomas tdah", interes: 4.87, categoria: "TDA en niños", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "celulares niños", interes: 2.54, categoria: "Dispositivos móviles", emoji: "📵", color: "#ef4444" },
         { keyword: "autoestima estudiantes", interes: 2.85, categoria: "Autoestima en escuelas", emoji: "🏫", color: "#f59e0b" },
         { keyword: "autoestima escuela", interes: 2.54, categoria: "Autoestima en escuelas", emoji: "🏫", color: "#f59e0b" },
-        { keyword: "tiempo pantallas infantil", interes: 1.64, categoria: "Dispositivos móviles", emoji: "📵", color: "#ef4444" }
+        { keyword: "programas autoestima", interes: 2.16, categoria: "Autoestima en escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "bienestar estudiantil", interes: 1.82, categoria: "Autoestima en escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "desarrollo cognitivo infantil", interes: 1.23, categoria: "Aprendizaje niños", emoji: "📚", color: "#10b981" },
+        { keyword: "bullying autoestima", interes: 0.92, categoria: "Autoestima en escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "tiempo pantallas infantil", interes: 1.64, categoria: "Dispositivos móviles", emoji: "📵", color: "#ef4444" },
+        { keyword: "aceptacion social", interes: 0.13, categoria: "Redes y validación personal", emoji: "💜", color: "#ec4899" },
+        { keyword: "comparacion social", interes: 0.03, categoria: "Redes y validación personal", emoji: "💜", color: "#ec4899" },
+        { keyword: "validacion personal", interes: 0.0, categoria: "Redes y validación personal", emoji: "💜", color: "#ec4899" },
+        { keyword: "likes autoestima", interes: 0.0, categoria: "Redes y validación personal", emoji: "💜", color: "#ec4899" },
+        { keyword: "tda escuela", interes: 0.0, categoria: "TDA en niños", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "adiccion tecnologia niños", interes: 0.0, categoria: "Dispositivos móviles", emoji: "📵", color: "#ef4444" },
+        { keyword: "uso celular infantil", interes: 0.0, categoria: "Dispositivos móviles", emoji: "📵", color: "#ef4444" }
       ],
       detalle: [
         { categoria: "1) Psicología social", keyword: "psicologia social", promedio: 14.36, maximo: 100, relacionadas: ["que es psicologia social (100)", "que es la psicologia social (63)", "libro psicologia social (28)"] },
@@ -969,13 +989,33 @@
         { categoria: "2) Redes sociales e impacto", keyword: "redes sociales mexico", promedio: 12.72, maximo: 100, relacionadas: [] },
         { categoria: "2) Redes sociales e impacto", keyword: "redes sociales impacto sociedad", promedio: 3.13, maximo: 100, relacionadas: [] },
         { categoria: "3) Redes y validación personal", keyword: "autoestima redes sociales", promedio: 7.74, maximo: 100, relacionadas: [] },
+        { categoria: "3) Redes y validación personal", keyword: "fomo", promedio: 56.21, maximo: 100, relacionadas: [] },
+        { categoria: "3) Redes y validación personal", keyword: "validacion personal", promedio: 0.0, maximo: 0, relacionadas: [] },
+        { categoria: "3) Redes y validación personal", keyword: "likes autoestima", promedio: 0.0, maximo: 0, relacionadas: [] },
+        { categoria: "3) Redes y validación personal", keyword: "comparacion social", promedio: 0.03, maximo: 1, relacionadas: [] },
+        { categoria: "3) Redes y validación personal", keyword: "aceptacion social", promedio: 0.13, maximo: 1, relacionadas: [] },
         { categoria: "4) Autoestima en escuelas", keyword: "autoestima escuela", promedio: 2.54, maximo: 100, relacionadas: [] },
         { categoria: "4) Autoestima en escuelas", keyword: "autoestima estudiantes", promedio: 2.85, maximo: 100, relacionadas: [] },
+        { categoria: "4) Autoestima en escuelas", keyword: "bullying autoestima", promedio: 0.92, maximo: 30, relacionadas: [] },
+        { categoria: "4) Autoestima en escuelas", keyword: "salud mental estudiantes", promedio: 13.46, maximo: 100, relacionadas: [] },
+        { categoria: "4) Autoestima en escuelas", keyword: "acoso escolar mexico", promedio: 6.39, maximo: 55, relacionadas: [] },
+        { categoria: "4) Autoestima en escuelas", keyword: "bienestar estudiantil", promedio: 1.82, maximo: 32, relacionadas: [] },
+        { categoria: "4) Autoestima en escuelas", keyword: "programas autoestima", promedio: 2.16, maximo: 34, relacionadas: [] },
         { categoria: "5) TDA en niños", keyword: "TDAH niños", promedio: 37.56, maximo: 100, relacionadas: [] },
         { categoria: "5) TDA en niños", keyword: "trastorno deficit atencion", promedio: 15.57, maximo: 100, relacionadas: [] },
         { categoria: "5) TDA en niños", keyword: "hiperactividad niños", promedio: 13.00, maximo: 100, relacionadas: [] },
+        { categoria: "5) TDA en niños", keyword: "tda escuela", promedio: 0.0, maximo: 0, relacionadas: [] },
+        { categoria: "5) TDA en niños", keyword: "sintomas tdah", promedio: 4.87, maximo: 78, relacionadas: [] },
         { categoria: "6) Aprendizaje en niños", keyword: "aprendizaje niños", promedio: 25.44, maximo: 100, relacionadas: [] },
-        { categoria: "7) Dispositivos móviles", keyword: "tiempo pantallas infantil", promedio: 1.64, maximo: 100, relacionadas: [] }
+        { categoria: "6) Aprendizaje en niños", keyword: "desarrollo cognitivo infantil", promedio: 1.23, maximo: 75, relacionadas: [] },
+        { categoria: "6) Aprendizaje en niños", keyword: "estilos aprendizaje", promedio: 10.64, maximo: 100, relacionadas: [] },
+        { categoria: "6) Aprendizaje en niños", keyword: "habilidades aprendizaje", promedio: 14.31, maximo: 92, relacionadas: [] },
+        { categoria: "7) Dispositivos móviles", keyword: "tiempo pantallas infantil", promedio: 1.64, maximo: 100, relacionadas: [] },
+        { categoria: "7) Dispositivos móviles", keyword: "celulares niños", promedio: 2.54, maximo: 13, relacionadas: [] },
+        { categoria: "7) Dispositivos móviles", keyword: "pantallas niños", promedio: 5.85, maximo: 76, relacionadas: [] },
+        { categoria: "7) Dispositivos móviles", keyword: "tabletas niños", promedio: 8.07, maximo: 100, relacionadas: [] },
+        { categoria: "7) Dispositivos móviles", keyword: "adiccion tecnologia niños", promedio: 0.0, maximo: 0, relacionadas: [] },
+        { categoria: "7) Dispositivos móviles", keyword: "uso celular infantil", promedio: 0.0, maximo: 0, relacionadas: [] }
       ]
     };
 
