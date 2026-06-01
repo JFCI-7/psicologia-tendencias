@@ -1,0 +1,137 @@
+{
+  "psicologia_social": [
+    {
+      "keyword": "psicologia social",
+      "interes_promedio": 14.36,
+      "interes_maximo": 100,
+      "consultas_relacionadas": [
+        {
+          "query": "que es psicologia social",
+          "valor": 100
+        },
+        {
+          "query": "que es la psicologia social",
+          "valor": 63
+        },
+        {
+          "query": "libro psicologia social",
+          "valor": 28
+        }
+      ]
+    },
+    {
+      "keyword": "interaccion social",
+      "interes_promedio": 14.0,
+      "interes_maximo": 100,
+      "consultas_relacionadas": [
+        {
+          "query": "que es la interaccion social",
+          "valor": 100
+        }
+      ]
+    },
+    {
+      "keyword": "comportamiento grupal",
+      "interes_promedio": 3.85,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "influencia social",
+      "interes_promedio": 10.61,
+      "interes_maximo": 100,
+      "consultas_relacionadas": [
+        {
+          "query": "que es la influencia social",
+          "valor": 100
+        },
+        {
+          "query": "la influencia social y los medios de comunicación",
+          "valor": 17
+        },
+        {
+          "query": "tipos de influencia social",
+          "valor": 6
+        }
+      ]
+    },
+    {
+      "keyword": "actitudes sociales",
+      "interes_promedio": 9.08,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "redes_sociales_impacto_sociedad": [
+    {
+      "keyword": "redes sociales impacto sociedad",
+      "interes_promedio": 3.13,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "redes sociales mexico",
+      "interes_promedio": 12.72,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "redes_sociales_validacion_personal": [
+    {
+      "keyword": "autoestima redes sociales",
+      "interes_promedio": 7.74,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "autoestima_escuelas": [
+    {
+      "keyword": "autoestima escuela",
+      "interes_promedio": 2.54,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "autoestima estudiantes",
+      "interes_promedio": 2.85,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "tda_ninos": [
+    {
+      "keyword": "TDAH niños",
+      "interes_promedio": 37.56,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "trastorno deficit atencion",
+      "interes_promedio": 15.57,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "hiperactividad niños",
+      "interes_promedio": 13.0,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "aprendizaje_ninos": [
+    {
+      "keyword": "aprendizaje niños",
+      "interes_promedio": 25.44,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "efectos_dispositivos_ninos": [
+    {
+      "keyword": "tiempo pantallas infantil",
+      "interes_promedio": 1.64,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ]
+}

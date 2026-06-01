@@ -242,8 +242,8 @@
         <div class="card-hover rounded-2xl p-6 text-center shadow-sm">
           <div class="text-3xl mb-2">🆕</div>
           <div class="text-sm mb-1" style="color: var(--text-muted);">Datos Google Trends</div>
-          <div class="font-bold text-sm" style="color: var(--text-primary);">Disfunción eréctil líder</div>
-          <div class="text-rapsi-dark font-bold mt-1 text-lg">51.48/100</div>
+          <div class="font-bold text-sm" style="color: var(--text-primary);">TDAH en niños líder</div>
+          <div class="text-rapsi-dark font-bold mt-1 text-lg">37.56/100</div>
         </div>
       </section>
 
@@ -297,8 +297,8 @@
 
     <!-- SECCIÓN GOOGLE TRENDS -->
     <div id="section-trends" class="section-content hidden">
-      <h2 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">📈 Datos Reales de Google Trends México</h2>
-      <p class="mb-8" style="color: var(--text-secondary);">Interés de búsqueda Abril-Mayo 2025 • Escala 0-100</p>
+      <h2 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">📈 7 Temas de Psicología — Google Trends México</h2>
+      <p class="mb-8" style="color: var(--text-secondary);">Interés de búsqueda Abril-Mayo 2026 • Escala 0-100</p>
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
         <div class="card-hover rounded-3xl p-6 shadow-sm">
@@ -314,21 +314,21 @@
                 <span class="text-xl">🔥</span>
                 <span class="font-semibold" style="color: var(--text-primary);">Tema Estrella</span>
               </div>
-              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">Disfunción eréctil (51.48/100)</strong> — Tema explosivo. Relacionado directamente con consumo de pornografía.</p>
+              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">TDAH en niños (37.56/100)</strong> — Tema más buscado. Diagnóstico, síntomas y manejo en población infantil mexicana.</p>
             </div>
             <div class="rounded-xl p-4 border" style="background: var(--bg-light); border-color: var(--border-color);">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-xl">🩸</span>
                 <span class="font-semibold" style="color: var(--text-primary);">Sorpresa del Ranking</span>
               </div>
-              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">TPM (43.95/100)</strong> — Más buscada que "depresión postparto". Oportunidad de contenido educativo grande.</p>
+              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">Aprendizaje en niños (25.44/100)</strong> — Segundo tema más buscado. Estilos de aprendizaje y desarrollo cognitivo infantil.</p>
             </div>
             <div class="rounded-xl p-4 border" style="background: var(--bg-light); border-color: var(--border-color);">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-xl">📊</span>
                 <span class="font-semibold" style="color: var(--text-primary);">Dato SEO</span>
               </div>
-              <p class="text-sm" style="color: var(--text-secondary);">El público busca <strong style="color: var(--text-primary);">"homosexualidad"</strong> (31.9/100) más que <strong>"salud mental LGBT"</strong> (1.64/100). Usa ambos términos.</p>
+              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">Psicología social (14.36/100)</strong> e <strong>interacción social (14.0/100)</strong> muestran interés moderado y constante.</p>
             </div>
           </div>
         </div>
@@ -356,7 +356,7 @@
         <h3 class="text-lg font-bold mb-2" style="color: var(--text-primary);">🔬 Metodología</h3>
         <ul class="text-sm space-y-1" style="color: var(--text-secondary);">
           <li>• Fuente: Google Trends API via PyTrends</li>
-          <li>• Período: Abril 1 - Mayo 31, 2025</li>
+          <li>• Período: Abril 1 - Mayo 31, 2026</li>
           <li>• Región: México (nacional)</li>
           <li>• Nota: Google limita peticiones masivas; datos representan muestra de keywords prioritarias</li>
         </ul>
@@ -851,30 +851,35 @@
     // ── GOOGLE TRENDS DATA ──
     const TRENDS_DATA = {
       ranking: [
-        { keyword: "disfuncion erectil", interes: 51.48, categoria: "Sexualidad y Pareja", emoji: "💑", color: "#f97316" },
-        { keyword: "violencia de genero", interes: 46.62, categoria: "Mujeres y LGBT+", emoji: "💜", color: "#8b5cf6" },
-        { keyword: "TPM", interes: 43.95, categoria: "Menstruación", emoji: "🩸", color: "#f43f5e" },
-        { keyword: "homosexualidad", interes: 31.90, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
-        { keyword: "terapia pareja", interes: 18.56, categoria: "Sexualidad y Pareja", emoji: "💑", color: "#f97316" },
-        { keyword: "coming out", interes: 16.51, categoria: "Mujeres y LGBT+", emoji: "💜", color: "#8b5cf6" },
-        { keyword: "no binario", interes: 12.98, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
-        { keyword: "identidad de genero", interes: 12.26, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
-        { keyword: "lenguaje inclusivo", interes: 7.03, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
-        { keyword: "embarazo ansiedad", interes: 3.28, categoria: "Embarazo", emoji: "🤰", color: "#ec4899" },
-        { keyword: "salud mental lgbt", interes: 1.64, categoria: "Mujeres y LGBT+", emoji: "💜", color: "#8b5cf6" },
-        { keyword: "adiccion pornografia", interes: 1.64, categoria: "Pornografía", emoji: "🔞", color: "#dc2626" }
+        { keyword: "TDAH niños", interes: 37.56, categoria: "TDA en niños", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "trastorno deficit atencion", interes: 15.57, categoria: "TDA en niños", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "hiperactividad niños", interes: 13.00, categoria: "TDA en niños", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "aprendizaje niños", interes: 25.44, categoria: "Aprendizaje niños", emoji: "📚", color: "#10b981" },
+        { keyword: "psicologia social", interes: 14.36, categoria: "Psicología social", emoji: "👥", color: "#6366f1" },
+        { keyword: "interaccion social", interes: 14.00, categoria: "Psicología social", emoji: "👥", color: "#6366f1" },
+        { keyword: "influencia social", interes: 10.61, categoria: "Psicología social", emoji: "👥", color: "#6366f1" },
+        { keyword: "redes sociales mexico", interes: 12.72, categoria: "Redes sociales e impacto", emoji: "📱", color: "#8b5cf6" },
+        { keyword: "autoestima redes sociales", interes: 7.74, categoria: "Redes y validación personal", emoji: "💜", color: "#ec4899" },
+        { keyword: "autoestima estudiantes", interes: 2.85, categoria: "Autoestima en escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "autoestima escuela", interes: 2.54, categoria: "Autoestima en escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "tiempo pantallas infantil", interes: 1.64, categoria: "Dispositivos móviles", emoji: "📵", color: "#ef4444" }
       ],
       detalle: [
-        { categoria: "Identidad de Género", keyword: "identidad de genero", promedio: 12.26, maximo: 100, relacionadas: ["que es identidad de genero (100)", "que es la identidad de genero (81)", "concepto de identidad de genero (12)"] },
-        { categoria: "Identidad de Género", keyword: "lenguaje inclusivo", promedio: 7.03, maximo: 100, relacionadas: ["ejemplo de lenguaje inclusivo (100)", "lenguaje inclusivo ejemplo (94)", "lenguaje inclusivo ejemplos (87)"] },
-        { categoria: "Mujeres y LGBT+", keyword: "violencia de genero", promedio: 46.62, maximo: 100, relacionadas: ["la violencia de genero (100)", "que es violencia de genero (42)", "que es la violencia de genero (36)"] },
-        { categoria: "Mujeres y LGBT+", keyword: "coming out", promedio: 16.51, maximo: 100, relacionadas: ["movies coming out in 2025 (100)", "diana ross i'm coming out (59)", "when is gta 6 coming out (27)"] },
-        { categoria: "Mujeres y LGBT+", keyword: "salud mental lgbt", promedio: 1.64, maximo: 100, relacionadas: [] },
-        { categoria: "Pornografía", keyword: "adiccion pornografia", promedio: 1.64, maximo: 100, relacionadas: [] },
-        { categoria: "Sexualidad y Pareja", keyword: "terapia pareja", promedio: 18.56, maximo: 100, relacionadas: [] },
-        { categoria: "Sexualidad y Pareja", keyword: "disfuncion erectil", promedio: 51.48, maximo: 100, relacionadas: [] },
-        { categoria: "Embarazo", keyword: "embarazo ansiedad", promedio: 3.28, maximo: 100, relacionadas: [] },
-        { categoria: "Menstruación", keyword: "TPM", promedio: 43.95, maximo: 100, relacionadas: [] }
+        { categoria: "1) Psicología social", keyword: "psicologia social", promedio: 14.36, maximo: 100, relacionadas: ["que es psicologia social (100)", "que es la psicologia social (63)", "libro psicologia social (28)"] },
+        { categoria: "1) Psicología social", keyword: "interaccion social", promedio: 14.00, maximo: 100, relacionadas: ["que es la interaccion social (100)"] },
+        { categoria: "1) Psicología social", keyword: "comportamiento grupal", promedio: 3.85, maximo: 100, relacionadas: [] },
+        { categoria: "1) Psicología social", keyword: "influencia social", promedio: 10.61, maximo: 100, relacionadas: ["que es la influencia social (100)", "la influencia social y los medios (17)", "tipos de influencia social (6)"] },
+        { categoria: "1) Psicología social", keyword: "actitudes sociales", promedio: 9.08, maximo: 100, relacionadas: [] },
+        { categoria: "2) Redes sociales e impacto", keyword: "redes sociales mexico", promedio: 12.72, maximo: 100, relacionadas: [] },
+        { categoria: "2) Redes sociales e impacto", keyword: "redes sociales impacto sociedad", promedio: 3.13, maximo: 100, relacionadas: [] },
+        { categoria: "3) Redes y validación personal", keyword: "autoestima redes sociales", promedio: 7.74, maximo: 100, relacionadas: [] },
+        { categoria: "4) Autoestima en escuelas", keyword: "autoestima escuela", promedio: 2.54, maximo: 100, relacionadas: [] },
+        { categoria: "4) Autoestima en escuelas", keyword: "autoestima estudiantes", promedio: 2.85, maximo: 100, relacionadas: [] },
+        { categoria: "5) TDA en niños", keyword: "TDAH niños", promedio: 37.56, maximo: 100, relacionadas: [] },
+        { categoria: "5) TDA en niños", keyword: "trastorno deficit atencion", promedio: 15.57, maximo: 100, relacionadas: [] },
+        { categoria: "5) TDA en niños", keyword: "hiperactividad niños", promedio: 13.00, maximo: 100, relacionadas: [] },
+        { categoria: "6) Aprendizaje en niños", keyword: "aprendizaje niños", promedio: 25.44, maximo: 100, relacionadas: [] },
+        { categoria: "7) Dispositivos móviles", keyword: "tiempo pantallas infantil", promedio: 1.64, maximo: 100, relacionadas: [] }
       ]
     };
 
