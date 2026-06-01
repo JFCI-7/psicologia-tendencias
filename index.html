@@ -215,7 +215,7 @@
           </div>
         </div>
         <div class="flex-shrink-0">
-          <img src="logotipo_nombre_canvertir.png" alt="RAPSI Logo" class="w-72 h-auto drop-shadow-2xl float-anim">
+          <img id="heroLogo" src="logotipo_nombre_canvertir.png" alt="RAPSI Logo" class="w-72 h-auto drop-shadow-2xl float-anim">
         </div>
       </div>
     </div>
@@ -392,6 +392,13 @@
   <!-- SCRIPTS -->
   <script>
     // ── THEME TOGGLE ──
+    function setLogo() {
+      const logo = document.getElementById('heroLogo');
+      if (logo) {
+        logo.src = document.documentElement.classList.contains('dark') ? 'Logo blanco.png' : 'logotipo_nombre_canvertir.png';
+      }
+    }
+
     function toggleTheme() {
       const html = document.documentElement;
       const icon = document.getElementById('themeIcon');
@@ -404,6 +411,7 @@
         icon.className = 'ri-sun-line';
         localStorage.setItem('theme', 'dark');
       }
+      setLogo();
     }
     
     // Load saved theme
@@ -411,6 +419,7 @@
       document.documentElement.classList.add('dark');
       document.getElementById('themeIcon').className = 'ri-sun-line';
     }
+    setLogo();
 
     // ── DATOS ──
     const TOPICS_ORIGINAL = [
