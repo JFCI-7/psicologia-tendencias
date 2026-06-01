@@ -272,6 +272,17 @@
         <p class="mb-6" style="color: var(--text-secondary);">Investigación complementaria abril-mayo 2025</p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="newTopicCards"></div>
       </section>
+
+      <!-- MUNDIAL 2026 -->
+      <section class="mb-12">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="bg-gradient-to-r from-green-400 to-blue-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">🌍 MUNDIAL 2026</span>
+          <h2 class="text-2xl font-bold" style="color: var(--text-primary);">Psicología y el Mundial</h2>
+        </div>
+        <p class="mb-6" style="color: var(--text-secondary);">Temas de tendencia por el Mundial 2026 en México, EE.UU. y Canadá</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="mundialCards"></div>
+      </section>
+
     </div>
 
     <!-- SECCIÓN VIDEOS -->
@@ -412,6 +423,53 @@
       { rank: 3, tema: "Juventud, depresión y 'generación de cristal'", emoji: "🧠", vistas_min: 5700, vistas_max: 30000, vistas_promedio: 18000, tendencia: "debate nacional", color: "#6366f1", descripcion: "El debate sobre si la juventud es más frágil o más consciente domina la conversación psicológica", canales: ["Grupo Fórmula", "Azteca Noticias", "Aprendemos Juntos Mex"], tags: ["juventud", "generación de cristal", "depresión juvenil", "debate"] },
       { rank: 2, tema: "Depresión, ansiedad y manejo emocional", emoji: "🫀", vistas_min: 150000, vistas_max: 540000, vistas_promedio: 345000, tendencia: "explosivo", color: "#dc2626", descripcion: "Marian Rojas Estapé como referente; contenido sobre causas del aumento de depresión y ansiedad", canales: ["Jorge Serratos/SINERGÉTICO", "José Luis Marín", "AprendemosJuntos", "Marian Rojas Estapé"], tags: ["depresión", "ansiedad", "manejo emocional", "terapia", "Marian Rojas"] },
       { rank: 1, tema: "Amor propio, autoestima y relaciones de pareja", emoji: "❤️", vistas_min: 500000, vistas_max: 1800000, vistas_promedio: 1150000, tendencia: "rey absoluto", color: "#7c3aed", descripcion: "El tema MÁS consumido en México: autoestima, validación, heridas emocionales y psicología de pareja", canales: ["Aprendemos Juntos Mex", "Marco Antonio Regil", "La Cruda Verdad Podcast", "W Radio México", "Walter Riso"], tags: ["amor propio", "autoestima", "relaciones", "pareja", "Walter Riso", "apego"] }
+    ];
+
+    
+    const MUNDIAL_2026 = [
+      {
+        categoria: "Psicología de las Masas e Identidad",
+        emoji: "🔥",
+        color: "#ef4444",
+        temas: [
+          { titulo: "La Psicología del Fanatismo: ¿Por qué nos duele tanto cuando pierde la selección?", enfoque: "Identidad social: cómo el cerebro fusiona el 'yo' con el 'nosotros' (el equipo). Gestión de la frustración tras una eliminación." },
+          { titulo: "El Fenómeno del 'Villano Favorito': ¿Por qué nos encanta odiar a ciertos jugadores?", enfoque: "Proyección psicológica y la necesidad de canalizar frustración en un 'chivo expiatorio' (linchamiento digital)." },
+          { titulo: "México, EE. UU. y Canadá: Choque cultural y nacionalismo en la cancha", enfoque: "Cómo el fútbol exacerba el nacionalismo. La identidad del migrante mexicano en EE.UU. cuando juega la selección." }
+        ],
+        tendencia: "viral"
+      },
+      {
+        categoria: "Psicología del Alto Rendimiento",
+        emoji: "🏆",
+        color: "#f59e0b",
+        temas: [
+          { titulo: "Ansiedad bajo presión: ¿Qué pasa por la mente de un jugador antes de tirar un penal?", enfoque: "Choking (parálisis por análisis). Técnicas de regulación emocional, respiración y self-talk aplicables a la vida diaria." },
+          { titulo: "El Síndrome del Espejo: El impacto de las críticas en redes sociales a los futbolistas", enfoque: "Resiliencia digital, ciberacoso y cómo blindar la autoestima ante la aprobación externa." }
+        ],
+        tendencia: "nicho desarrollo"
+      },
+      {
+        categoria: "Salud Mental Colectiva",
+        emoji: "🧠",
+        color: "#6366f1",
+        temas: [
+          { titulo: "El 'Efecto Mundial': ¿Sube o baja el estado de ánimo de un país durante la copa?", enfoque: "Psicología ambiental: el evento como mecanismo de evasión colectiva. La 'depresión post-mundial'." },
+          { titulo: "Violencia en los estadios: La devaluación del rival y el anonimato de la masa", enfoque: "Desindividualización: cómo perdemos el filtro moral en multitudes. Prevención de hostilidad." }
+        ],
+        tendencia: "reflexivo"
+      },
+      {
+        categoria: "Bono: Fórmula de Retención para Videos",
+        emoji: "🎬",
+        color: "#10b981",
+        temas: [
+          { titulo: "1. El Gancho (Hook): Primeros 30 segundos", enfoque: "Clip del partido en tendencia. '¿Viste el penal fallado? No fue error técnico, fue secuestro de la amígdala.'" },
+          { titulo: "2. Validación Empática: Minuto 1-3", enfoque: "Conéctate como psicólogo y mexicano. Valida la pasión sin juzgar el fanatismo." },
+          { titulo: "3. Concepto Clínico: Minuto 3-7", enfoque: "Introduce el término psicológico con analogías futbolísticas. Sé el colega que explica tomando café." },
+          { titulo: "4. Takeaway Práctico: Hasta el final", enfoque: "'Así maneja el estrés un campeón del mundo. Aquí 3 pasos para tu oficina esta semana.'" }
+        ],
+        tendencia: "herramienta"
+      }
     ];
 
     const NEW_TOPICS = [
