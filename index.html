@@ -8,6 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -158,6 +159,167 @@
     .section-content {
       transition: opacity 0.2s ease;
     }
+  
+    /* ===== RESPONSIVE ===== */
+    
+    /* Menú móvil */
+    .mobile-menu-btn {
+      display: none;
+    }
+    .desktop-nav {
+      display: flex;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-primary);
+      z-index: 100;
+      flex-direction: column;
+      padding: 2rem;
+      gap: 1rem;
+    }
+    .mobile-nav.active {
+      display: flex;
+    }
+    .mobile-nav button {
+      width: 100%;
+      text-align: left;
+      padding: 1rem;
+      font-size: 1.1rem;
+      border-radius: 1rem;
+    }
+    .mobile-nav-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    /* Tablas responsive */
+    .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-responsive table {
+      min-width: 640px;
+    }
+    
+    /* Gráficas responsive */
+    .chart-container {
+      position: relative;
+      height: 300px;
+    }
+    @media (min-width: 640px) {
+      .chart-container {
+        height: 400px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .chart-container {
+        height: 520px;
+      }
+    }
+    
+    /* Tarjetas */
+    .cards-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    /* Hero responsive */
+    .hero-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    @media (min-width: 1024px) {
+      .hero-grid {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+    
+    /* Textos */
+    .hero-title {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 640px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .hero-title {
+        font-size: 3.5rem;
+      }
+    }
+    
+    /* Ocultar en móvil */
+    .hide-mobile {
+      display: none;
+    }
+    @media (min-width: 640px) {
+      .hide-mobile {
+        display: inline;
+      }
+    }
+    
+    /* Breakpoints específicos */
+    @media (max-width: 639px) {
+      .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 999px;
+        background: var(--bg-light);
+        border: 1px solid var(--border-color);
+      }
+      .desktop-nav {
+        display: none !important;
+      }
+      .sm\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+      }
+      .sm\:py-16 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+      }
+      .lg\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+      }
+      .lg\:flex-row {
+        flex-direction: column !important;
+      }
+      .w-72 {
+        width: 16rem !important;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .md\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body class="min-h-screen">
@@ -173,20 +335,49 @@
         </div>
       </div>
       <div class="flex items-center gap-2">
-        <div class="flex gap-1.5 text-xs sm:text-sm">
+        <!-- Desktop nav -->
+        <div class="desktop-nav gap-1.5 text-xs sm:text-sm">
           <button onclick="showSection('temas')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all" data-tab="temas">Temas</button>
           <button onclick="showSection('videos')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="videos">Videos</button>
           <button onclick="showSection('calendario')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="calendario">Calendario</button>
           <button onclick="showSection('hooks')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="hooks">Redes</button>
           <button onclick="showSection('trends')" class="tab-btn px-3 py-1.5 rounded-full font-medium transition-all tab-inactive" data-tab="trends">Trends</button>
         </div>
+        <!-- Botón móvil hamburguesa -->
+        <button onclick="toggleMobileMenu()" class="mobile-menu-btn" title="Menú">
+          <i class="ri-menu-line text-xl" style="color: var(--text-primary);"></i>
+        </button>
         <!-- Botón Dark/Light -->
         <button onclick="toggleTheme()" class="theme-toggle ml-2 w-9 h-9 rounded-full flex items-center justify-center text-lg" style="background: var(--bg-light); border: 1px solid var(--border-color);" title="Cambiar tema">
-          <span id="themeIcon">🌙</span>
+          <i id="themeIcon" class="ri-moon-line"></i>
         </button>
       </div>
     </div>
   </nav>
+  
+  <!-- Menú móvil overlay -->
+  <div id="mobileNav" class="mobile-nav">
+    <button onclick="toggleMobileMenu()" class="mobile-nav-close" style="color: var(--text-primary);">
+      <i class="ri-close-line"></i>
+    </button>
+    <div class="mt-8 flex flex-col gap-3">
+      <button onclick="showSection('temas'); toggleMobileMenu();" class="tab-btn px-4 py-3 rounded-xl font-medium transition-all" data-tab="temas" style="background: var(--bg-light); color: var(--text-primary); border: 1px solid var(--border-color);">
+        <i class="ri-article-line mr-2"></i>Temas
+      </button>
+      <button onclick="showSection('videos'); toggleMobileMenu();" class="tab-btn px-4 py-3 rounded-xl font-medium transition-all tab-inactive" data-tab="videos" style="background: var(--bg-light); color: var(--text-primary); border: 1px solid var(--border-color);">
+        <i class="ri-video-line mr-2"></i>Videos
+      </button>
+      <button onclick="showSection('calendario'); toggleMobileMenu();" class="tab-btn px-4 py-3 rounded-xl font-medium transition-all tab-inactive" data-tab="calendario" style="background: var(--bg-light); color: var(--text-primary); border: 1px solid var(--border-color);">
+        <i class="ri-calendar-line mr-2"></i>Calendario
+      </button>
+      <button onclick="showSection('hooks'); toggleMobileMenu();" class="tab-btn px-4 py-3 rounded-xl font-medium transition-all tab-inactive" data-tab="hooks" style="background: var(--bg-light); color: var(--text-primary); border: 1px solid var(--border-color);">
+        <i class="ri-share-line mr-2"></i>Redes
+      </button>
+      <button onclick="showSection('trends'); toggleMobileMenu();" class="tab-btn px-4 py-3 rounded-xl font-medium transition-all tab-inactive" data-tab="trends" style="background: var(--bg-light); color: var(--text-primary); border: 1px solid var(--border-color);">
+        <i class="ri-bar-chart-line mr-2"></i>Trends
+      </button>
+    </div>
+  </div>
 
   <!-- Hero -->
   <header class="hero-gradient relative overflow-hidden">
@@ -195,17 +386,17 @@
     <div class="absolute bottom-0 left-0 w-72 h-72 bg-rapsi-sky/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
     
     <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16 relative z-10">
-      <div class="flex flex-col lg:flex-row items-center gap-8">
+      <div class="hero-grid">
         <div class="flex-1 text-center lg:text-left">
           <div class="inline-flex items-center gap-2 badge rounded-full px-4 py-1.5 text-xs font-bold mb-5">
-            📊 Datos actualizados — 31 mayo 2026
+            📊 Datos actualizados — 3 junio 2026
           </div>
-          <h1 class="text-4xl sm:text-6xl font-black tracking-tight gradient-text mb-4">
+          <h1 class="hero-title font-black tracking-tight gradient-text mb-4">
             Tendencias de<br>Psicología en México
           </h1>
           <p class="text-lg mt-4 font-medium max-w-xl" style="color: var(--text-secondary);">
             Análisis completo de YouTube + Google Trends • Abril – Mayo 2026 • 
-            <span class="text-rapsi-dark font-semibold">17 temas</span> en tendencia
+            <span class="text-rapsi-dark font-semibold">37 keywords</span> en tendencia
           </p>
           <div class="flex flex-wrap justify-center lg:justify-start gap-2 mt-6">
             <span class="text-xs px-4 py-2 rounded-full font-medium shadow-sm" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color);">🇲🇽 México</span>
@@ -214,7 +405,7 @@
           </div>
         </div>
         <div class="flex-shrink-0">
-          <img src="logotipo_nombre_canvertir.png" alt="RAPSI Logo" class="w-72 h-auto drop-shadow-2xl float-anim">
+          <img id="heroLogo" src="logotipo_nombre_canvertir.png" alt="RAPSI Logo" class="w-72 h-auto drop-shadow-2xl float-anim">
         </div>
       </div>
     </div>
@@ -242,8 +433,8 @@
         <div class="card-hover rounded-2xl p-6 text-center shadow-sm">
           <div class="text-3xl mb-2">🆕</div>
           <div class="text-sm mb-1" style="color: var(--text-muted);">Datos Google Trends</div>
-          <div class="font-bold text-sm" style="color: var(--text-primary);">Disfunción eréctil líder</div>
-          <div class="text-rapsi-dark font-bold mt-1 text-lg">51.48/100</div>
+          <div class="font-bold text-sm" style="color: var(--text-primary);">Pornografía + Sexualidad + Identidad</div>
+          <div class="text-rapsi-dark font-bold mt-1 text-lg">17 categorías</div>
         </div>
       </section>
 
@@ -260,7 +451,7 @@
       <section class="mb-12">
         <h2 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">📋 Top 10 Temas Originales</h2>
         <p class="mb-6" style="color: var(--text-secondary);">Datos extraídos de búsquedas en YouTube México</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="topicCardsOriginal"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="topicCardsOriginal" class="cards-grid"></div>
       </section>
 
       <!-- NUEVOS TEMAS -->
@@ -270,8 +461,19 @@
           <h2 class="text-2xl font-bold" style="color: var(--text-primary);">Psicología Aplicada en Tendencia</h2>
         </div>
         <p class="mb-6" style="color: var(--text-secondary);">Investigación complementaria abril-mayo 2025</p>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="newTopicCards"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="newTopicCards" class="cards-grid"></div>
       </section>
+
+      <!-- MUNDIAL 2026 -->
+      <section class="mb-12">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="bg-gradient-to-r from-green-400 to-blue-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">🌍 MUNDIAL 2026</span>
+          <h2 class="text-2xl font-bold" style="color: var(--text-primary);">Psicología y el Mundial</h2>
+        </div>
+        <p class="mb-6" style="color: var(--text-secondary);">Temas de tendencia por el Mundial 2026 en México, EE.UU. y Canadá</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="mundialCards" class="cards-grid"></div>
+      </section>
+
     </div>
 
     <!-- SECCIÓN VIDEOS -->
@@ -297,8 +499,8 @@
 
     <!-- SECCIÓN GOOGLE TRENDS -->
     <div id="section-trends" class="section-content hidden">
-      <h2 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">📈 Datos Reales de Google Trends México</h2>
-      <p class="mb-8" style="color: var(--text-secondary);">Interés de búsqueda Abril-Mayo 2025 • Escala 0-100</p>
+      <h2 class="text-2xl font-bold mb-2" style="color: var(--text-primary);">📈 7 Temas de Psicología — Google Trends México</h2>
+      <p class="mb-8" style="color: var(--text-secondary);">Interés de búsqueda Abril-Mayo 2026 • Escala 0-100</p>
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
         <div class="card-hover rounded-3xl p-6 shadow-sm">
@@ -314,21 +516,21 @@
                 <span class="text-xl">🔥</span>
                 <span class="font-semibold" style="color: var(--text-primary);">Tema Estrella</span>
               </div>
-              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">Disfunción eréctil (51.48/100)</strong> — Tema explosivo. Relacionado directamente con consumo de pornografía.</p>
+              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">Ciclo Menstrual (64.02/100)</strong> — Tema estrella de la búsqueda. Abril-Mayo 2026.</p>
             </div>
             <div class="rounded-xl p-4 border" style="background: var(--bg-light); border-color: var(--border-color);">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-xl">🩸</span>
                 <span class="font-semibold" style="color: var(--text-primary);">Sorpresa del Ranking</span>
               </div>
-              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">TPM (43.95/100)</strong> — Más buscada que "depresión postparto". Oportunidad de contenido educativo grande.</p>
+              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">Fomo (56.21/100)</strong> — Segundo tema más buscado. Redes Validacion.</p>
             </div>
             <div class="rounded-xl p-4 border" style="background: var(--bg-light); border-color: var(--border-color);">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-xl">📊</span>
                 <span class="font-semibold" style="color: var(--text-primary);">Dato SEO</span>
               </div>
-              <p class="text-sm" style="color: var(--text-secondary);">El público busca <strong style="color: var(--text-primary);">"homosexualidad"</strong> (31.9/100) más que <strong>"salud mental LGBT"</strong> (1.64/100). Usa ambos términos.</p>
+              <p class="text-sm" style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">Disfuncion Erectil (44.64/100)</strong> — Destaca en pornografía. Alto interés en salud sexual masculina.</p>
             </div>
           </div>
         </div>
@@ -336,7 +538,7 @@
       
       <div class="card-hover rounded-3xl p-6 shadow-sm">
         <h3 class="text-lg font-bold mb-5" style="color: var(--text-primary);">📋 Detalle Completo por Categoría</h3>
-        <div class="overflow-x-auto">
+        <div class="table-responsive">
           <table class="w-full text-sm">
             <thead>
               <tr style="border-bottom: 1px solid var(--border-color);">
@@ -356,7 +558,7 @@
         <h3 class="text-lg font-bold mb-2" style="color: var(--text-primary);">🔬 Metodología</h3>
         <ul class="text-sm space-y-1" style="color: var(--text-secondary);">
           <li>• Fuente: Google Trends API via PyTrends</li>
-          <li>• Período: Abril 1 - Mayo 31, 2025</li>
+          <li>• Período: Abril 1 - Mayo 31, 2026</li>
           <li>• Región: México (nacional)</li>
           <li>• Nota: Google limita peticiones masivas; datos representan muestra de keywords prioritarias</li>
         </ul>
@@ -379,26 +581,42 @@
 
   <!-- SCRIPTS -->
   <script>
+    // ── MOBILE MENU ──
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('active');
+      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    }
+
     // ── THEME TOGGLE ──
+    function setLogo() {
+      const logo = document.getElementById('heroLogo');
+      if (logo) {
+        logo.src = document.documentElement.classList.contains('dark') ? 'logo_blanco.png' : 'logotipo_nombre_canvertir.png';
+      }
+    }
+
     function toggleTheme() {
       const html = document.documentElement;
       const icon = document.getElementById('themeIcon');
       if (html.classList.contains('dark')) {
         html.classList.remove('dark');
-        icon.textContent = '🌙';
+        icon.className = 'ri-moon-line';
         localStorage.setItem('theme', 'light');
       } else {
         html.classList.add('dark');
-        icon.textContent = '☀️';
+        icon.className = 'ri-sun-line';
         localStorage.setItem('theme', 'dark');
       }
+      setLogo();
     }
     
     // Load saved theme
     if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
-      document.getElementById('themeIcon').textContent = '☀️';
+      document.getElementById('themeIcon').className = 'ri-sun-line';
     }
+    setLogo();
 
     // ── DATOS ──
     const TOPICS_ORIGINAL = [
@@ -412,6 +630,53 @@
       { rank: 3, tema: "Juventud, depresión y 'generación de cristal'", emoji: "🧠", vistas_min: 5700, vistas_max: 30000, vistas_promedio: 18000, tendencia: "debate nacional", color: "#6366f1", descripcion: "El debate sobre si la juventud es más frágil o más consciente domina la conversación psicológica", canales: ["Grupo Fórmula", "Azteca Noticias", "Aprendemos Juntos Mex"], tags: ["juventud", "generación de cristal", "depresión juvenil", "debate"] },
       { rank: 2, tema: "Depresión, ansiedad y manejo emocional", emoji: "🫀", vistas_min: 150000, vistas_max: 540000, vistas_promedio: 345000, tendencia: "explosivo", color: "#dc2626", descripcion: "Marian Rojas Estapé como referente; contenido sobre causas del aumento de depresión y ansiedad", canales: ["Jorge Serratos/SINERGÉTICO", "José Luis Marín", "AprendemosJuntos", "Marian Rojas Estapé"], tags: ["depresión", "ansiedad", "manejo emocional", "terapia", "Marian Rojas"] },
       { rank: 1, tema: "Amor propio, autoestima y relaciones de pareja", emoji: "❤️", vistas_min: 500000, vistas_max: 1800000, vistas_promedio: 1150000, tendencia: "rey absoluto", color: "#7c3aed", descripcion: "El tema MÁS consumido en México: autoestima, validación, heridas emocionales y psicología de pareja", canales: ["Aprendemos Juntos Mex", "Marco Antonio Regil", "La Cruda Verdad Podcast", "W Radio México", "Walter Riso"], tags: ["amor propio", "autoestima", "relaciones", "pareja", "Walter Riso", "apego"] }
+    ];
+
+    
+    const MUNDIAL_2026 = [
+      {
+        categoria: "Psicología de las Masas e Identidad",
+        emoji: "🔥",
+        color: "#ef4444",
+        temas: [
+          { titulo: "La Psicología del Fanatismo: ¿Por qué nos duele tanto cuando pierde la selección?", enfoque: "Identidad social: cómo el cerebro fusiona el 'yo' con el 'nosotros' (el equipo). Gestión de la frustración tras una eliminación." },
+          { titulo: "El Fenómeno del 'Villano Favorito': ¿Por qué nos encanta odiar a ciertos jugadores?", enfoque: "Proyección psicológica y la necesidad de canalizar frustración en un 'chivo expiatorio' (linchamiento digital)." },
+          { titulo: "México, EE. UU. y Canadá: Choque cultural y nacionalismo en la cancha", enfoque: "Cómo el fútbol exacerba el nacionalismo. La identidad del migrante mexicano en EE.UU. cuando juega la selección." }
+        ],
+        tendencia: "viral"
+      },
+      {
+        categoria: "Psicología del Alto Rendimiento",
+        emoji: "🏆",
+        color: "#f59e0b",
+        temas: [
+          { titulo: "Ansiedad bajo presión: ¿Qué pasa por la mente de un jugador antes de tirar un penal?", enfoque: "Choking (parálisis por análisis). Técnicas de regulación emocional, respiración y self-talk aplicables a la vida diaria." },
+          { titulo: "El Síndrome del Espejo: El impacto de las críticas en redes sociales a los futbolistas", enfoque: "Resiliencia digital, ciberacoso y cómo blindar la autoestima ante la aprobación externa." }
+        ],
+        tendencia: "nicho desarrollo"
+      },
+      {
+        categoria: "Salud Mental Colectiva",
+        emoji: "🧠",
+        color: "#6366f1",
+        temas: [
+          { titulo: "El 'Efecto Mundial': ¿Sube o baja el estado de ánimo de un país durante la copa?", enfoque: "Psicología ambiental: el evento como mecanismo de evasión colectiva. La 'depresión post-mundial'." },
+          { titulo: "Violencia en los estadios: La devaluación del rival y el anonimato de la masa", enfoque: "Desindividualización: cómo perdemos el filtro moral en multitudes. Prevención de hostilidad." }
+        ],
+        tendencia: "reflexivo"
+      },
+      {
+        categoria: "Bono: Fórmula de Retención para Videos",
+        emoji: "🎬",
+        color: "#10b981",
+        temas: [
+          { titulo: "1. El Gancho (Hook): Primeros 30 segundos", enfoque: "Clip del partido en tendencia. '¿Viste el penal fallado? No fue error técnico, fue secuestro de la amígdala.'" },
+          { titulo: "2. Validación Empática: Minuto 1-3", enfoque: "Conéctate como psicólogo y mexicano. Valida la pasión sin juzgar el fanatismo." },
+          { titulo: "3. Concepto Clínico: Minuto 3-7", enfoque: "Introduce el término psicológico con analogías futbolísticas. Sé el colega que explica tomando café." },
+          { titulo: "4. Takeaway Práctico: Hasta el final", enfoque: "'Así maneja el estrés un campeón del mundo. Aquí 3 pasos para tu oficina esta semana.'" }
+        ],
+        tendencia: "herramienta"
+      }
     ];
 
     const NEW_TOPICS = [
@@ -637,6 +902,34 @@
       });
     }
 
+    // ── Tarjetas Mundial 2026 ──
+    const mundialCards = document.getElementById('mundialCards');
+    if (mundialCards) {
+      MUNDIAL_2026.forEach(cat => {
+        const card = document.createElement('div');
+        card.className = 'card-hover rounded-3xl p-6 shadow-sm flex flex-col gap-4';
+        card.style.border = '1px solid var(--border-color)';
+        card.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">${cat.emoji}</span>
+            <div>
+              <h3 class="font-bold text-lg" style="color: var(--text-primary);">${cat.categoria}</h3>
+              <span class="text-xs font-medium px-2 py-0.5 rounded-full" style="background:${cat.color}15;color:${cat.color}">${cat.tendencia.toUpperCase()}</span>
+            </div>
+          </div>
+          <div class="space-y-3">
+            ${cat.temas.map(t => `
+              <div class="rounded-xl p-3" style="background: var(--bg-light); border: 1px solid var(--border-color);">
+                <div class="font-semibold text-sm mb-1" style="color: var(--text-primary);">${t.titulo}</div>
+                <div class="text-xs leading-relaxed" style="color: var(--text-secondary);">${t.enfoque}</div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        mundialCards.appendChild(card);
+      });
+    }
+
     // ── Nuevas tarjetas ──
     const newCards = document.getElementById('newTopicCards');
     if (newCards) {
@@ -851,33 +1144,114 @@
     // ── GOOGLE TRENDS DATA ──
     const TRENDS_DATA = {
       ranking: [
-        { keyword: "disfuncion erectil", interes: 51.48, categoria: "Sexualidad y Pareja", emoji: "💑", color: "#f97316" },
-        { keyword: "violencia de genero", interes: 46.62, categoria: "Mujeres y LGBT+", emoji: "💜", color: "#8b5cf6" },
-        { keyword: "TPM", interes: 43.95, categoria: "Menstruación", emoji: "🩸", color: "#f43f5e" },
-        { keyword: "homosexualidad", interes: 31.90, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
-        { keyword: "terapia pareja", interes: 18.56, categoria: "Sexualidad y Pareja", emoji: "💑", color: "#f97316" },
-        { keyword: "coming out", interes: 16.51, categoria: "Mujeres y LGBT+", emoji: "💜", color: "#8b5cf6" },
-        { keyword: "no binario", interes: 12.98, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
-        { keyword: "identidad de genero", interes: 12.26, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
-        { keyword: "lenguaje inclusivo", interes: 7.03, categoria: "Identidad de Género", emoji: "🏳️‍🌈", color: "#ec4899" },
-        { keyword: "embarazo ansiedad", interes: 3.28, categoria: "Embarazo", emoji: "🤰", color: "#ec4899" },
-        { keyword: "salud mental lgbt", interes: 1.64, categoria: "Mujeres y LGBT+", emoji: "💜", color: "#8b5cf6" },
-        { keyword: "adiccion pornografia", interes: 1.64, categoria: "Pornografía", emoji: "🔞", color: "#dc2626" }
+        { keyword: "ciclo menstrual", interes: 64.02, categoria: "Menstruacion", emoji: "🩸", color: "#f43f5e" },
+        { keyword: "fomo", interes: 56.21, categoria: "Redes Validacion", emoji: "💜", color: "#ec4899" },
+        { keyword: "disfuncion erectil", interes: 44.64, categoria: "Pornografia", emoji: "🔞", color: "#dc2626" },
+        { keyword: "TDAH niños", interes: 37.56, categoria: "Tda Ninos", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "aprendizaje niños", interes: 25.44, categoria: "Aprendizaje Ninos", emoji: "📚", color: "#10b981" },
+        { keyword: "TPM", interes: 18.95, categoria: "Varios", emoji: "📌", color: "#42708A" },
+        { keyword: "trastorno deficit atencion", interes: 15.57, categoria: "Tda Ninos", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "baja libido", interes: 14.39, categoria: "Sexualidad Pareja", emoji: "💑", color: "#f97316" },
+        { keyword: "psicologia social", interes: 14.36, categoria: "Psicologia Social", emoji: "👥", color: "#6366f1" },
+        { keyword: "habilidades aprendizaje", interes: 14.31, categoria: "Tda Aprendizaje", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "disforia de genero", interes: 14.07, categoria: "Identidad Genero", emoji: "🏳️‍🌈", color: "#ec4899" },
+        { keyword: "interaccion social", interes: 14.00, categoria: "Psicologia Social", emoji: "👥", color: "#6366f1" },
+        { keyword: "terapia sexual", interes: 13.92, categoria: "Sexualidad Pareja", emoji: "💑", color: "#f97316" },
+        { keyword: "salud mental estudiantes", interes: 13.46, categoria: "Autoestima Escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "hiperactividad niños", interes: 13.00, categoria: "Tda Ninos", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "redes sociales mexico", interes: 12.72, categoria: "Redes Sociales Impacto Sociedad", emoji: "📱", color: "#8b5cf6" },
+        { keyword: "estilos aprendizaje", interes: 10.64, categoria: "Tda Aprendizaje", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "influencia social", interes: 10.61, categoria: "Psicologia Social", emoji: "👥", color: "#6366f1" },
+        { keyword: "actitudes sociales", interes: 9.08, categoria: "Psicologia Social", emoji: "👥", color: "#6366f1" },
+        { keyword: "tabletas niños", interes: 8.07, categoria: "Dispositivos Ninos", emoji: "📵", color: "#ef4444" },
+        { keyword: "genero no binario", interes: 8.05, categoria: "Identidad Genero", emoji: "🏳️‍🌈", color: "#ec4899" },
+        { keyword: "autoestima redes sociales", interes: 7.74, categoria: "Redes Sociales Validacion Personal", emoji: "💜", color: "#ec4899" },
+        { keyword: "dismenorrea", interes: 7.67, categoria: "Menstruacion", emoji: "🩸", color: "#f43f5e" },
+        { keyword: "acoso escolar mexico", interes: 6.39, categoria: "Autoestima Escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "disfuncion sexual", interes: 6.00, categoria: "Sexualidad Pareja", emoji: "💑", color: "#f97316" },
+        { keyword: "pantallas niños", interes: 5.85, categoria: "Dispositivos Ninos", emoji: "📵", color: "#ef4444" },
+        { keyword: "sintomas tdah", interes: 4.87, categoria: "Tda Aprendizaje", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "comportamiento grupal", interes: 3.85, categoria: "Psicologia Social", emoji: "👥", color: "#6366f1" },
+        { keyword: "redes sociales impacto sociedad", interes: 3.13, categoria: "Redes Sociales Impacto Sociedad", emoji: "📱", color: "#8b5cf6" },
+        { keyword: "autoestima estudiantes", interes: 2.85, categoria: "Autoestima Escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "autoestima escuela", interes: 2.54, categoria: "Autoestima Escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "celulares niños", interes: 2.54, categoria: "Dispositivos Ninos", emoji: "📵", color: "#ef4444" },
+        { keyword: "anorgasmia", interes: 2.41, categoria: "Sexualidad Pareja", emoji: "💑", color: "#f97316" },
+        { keyword: "programas autoestima", interes: 2.16, categoria: "Autoestima Escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "salud mental materna", interes: 2.07, categoria: "Embarazo", emoji: "🤰", color: "#ec4899" },
+        { keyword: "roles genero hombres", interes: 2.03, categoria: "Hombres Emocional", emoji: "👨", color: "#3b82f6" },
+        { keyword: "bienestar estudiantil", interes: 1.82, categoria: "Autoestima Escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "tiempo pantallas infantil", interes: 1.64, categoria: "Efectos Dispositivos Ninos", emoji: "📵", color: "#ef4444" },
+        { keyword: "ansiedad prenatal", interes: 1.59, categoria: "Embarazo", emoji: "🤰", color: "#ec4899" },
+        { keyword: "desarrollo cognitivo infantil", interes: 1.23, categoria: "Tda Aprendizaje", emoji: "🧩", color: "#06b6d4" },
+        { keyword: "depresion hombres", interes: 1.23, categoria: "Hombres Emocional", emoji: "👨", color: "#3b82f6" },
+        { keyword: "adiccion pornografia", interes: 1.13, categoria: "Pornografia", emoji: "🔞", color: "#dc2626" },
+        { keyword: "bullying autoestima", interes: 0.92, categoria: "Autoestima Escuelas", emoji: "🏫", color: "#f59e0b" },
+        { keyword: "sindrome premenstrual", interes: 0.80, categoria: "Menstruacion", emoji: "🩸", color: "#f43f5e" },
+        { keyword: "depresion postparto", interes: 0.67, categoria: "Embarazo", emoji: "🤰", color: "#ec4899" },
+        { keyword: "salud menstrual", interes: 0.62, categoria: "Menstruacion", emoji: "🩸", color: "#f43f5e" },
+        { keyword: "transicion de genero", interes: 0.61, categoria: "Identidad Genero", emoji: "🏳️‍🌈", color: "#ec4899" },
+        { keyword: "hipersexualizacion", interes: 0.25, categoria: "Pornografia", emoji: "🔞", color: "#dc2626" },
+        { keyword: "aceptacion social", interes: 0.13, categoria: "Redes Validacion", emoji: "💜", color: "#ec4899" },
+        { keyword: "pornografia pareja", interes: 0.10, categoria: "Pornografia", emoji: "🔞", color: "#dc2626" },
+        { keyword: "alexitemia", interes: 0.07, categoria: "Hombres Emocional", emoji: "👨", color: "#3b82f6" },
+        { keyword: "comparacion social", interes: 0.03, categoria: "Redes Validacion", emoji: "💜", color: "#ec4899" }
       ],
       detalle: [
-        { categoria: "Identidad de Género", keyword: "identidad de genero", promedio: 12.26, maximo: 100, relacionadas: ["que es identidad de genero (100)", "que es la identidad de genero (81)", "concepto de identidad de genero (12)"] },
-        { categoria: "Identidad de Género", keyword: "lenguaje inclusivo", promedio: 7.03, maximo: 100, relacionadas: ["ejemplo de lenguaje inclusivo (100)", "lenguaje inclusivo ejemplo (94)", "lenguaje inclusivo ejemplos (87)"] },
-        { categoria: "Mujeres y LGBT+", keyword: "violencia de genero", promedio: 46.62, maximo: 100, relacionadas: ["la violencia de genero (100)", "que es violencia de genero (42)", "que es la violencia de genero (36)"] },
-        { categoria: "Mujeres y LGBT+", keyword: "coming out", promedio: 16.51, maximo: 100, relacionadas: ["movies coming out in 2025 (100)", "diana ross i'm coming out (59)", "when is gta 6 coming out (27)"] },
-        { categoria: "Mujeres y LGBT+", keyword: "salud mental lgbt", promedio: 1.64, maximo: 100, relacionadas: [] },
-        { categoria: "Pornografía", keyword: "adiccion pornografia", promedio: 1.64, maximo: 100, relacionadas: [] },
-        { categoria: "Sexualidad y Pareja", keyword: "terapia pareja", promedio: 18.56, maximo: 100, relacionadas: [] },
-        { categoria: "Sexualidad y Pareja", keyword: "disfuncion erectil", promedio: 51.48, maximo: 100, relacionadas: [] },
-        { categoria: "Embarazo", keyword: "embarazo ansiedad", promedio: 3.28, maximo: 100, relacionadas: [] },
-        { categoria: "Menstruación", keyword: "TPM", promedio: 43.95, maximo: 100, relacionadas: [] }
+        { categoria: "Psicologia Social", keyword: "psicologia social", promedio: 14.36, maximo: 100, relacionadas: ["que es psicologia social (100), que es la psicologia social (63), libro psicologia social (28)"] },
+        { categoria: "Psicologia Social", keyword: "interaccion social", promedio: 14.00, maximo: 100, relacionadas: ["que es la interaccion social (100)"] },
+        { categoria: "Psicologia Social", keyword: "comportamiento grupal", promedio: 3.85, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Psicologia Social", keyword: "influencia social", promedio: 10.61, maximo: 100, relacionadas: ["que es la influencia social (100), la influencia social y los medios de comunicación (17), tipos de influencia social (6)"] },
+        { categoria: "Psicologia Social", keyword: "actitudes sociales", promedio: 9.08, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Redes Sociales Impacto Sociedad", keyword: "redes sociales impacto sociedad", promedio: 3.13, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Redes Sociales Impacto Sociedad", keyword: "redes sociales mexico", promedio: 12.72, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Redes Sociales Validacion Personal", keyword: "autoestima redes sociales", promedio: 7.74, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Autoestima Escuelas", keyword: "autoestima escuela", promedio: 2.54, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Autoestima Escuelas", keyword: "autoestima estudiantes", promedio: 2.85, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Autoestima Escuelas", keyword: "bullying autoestima", promedio: 0.92, maximo: 30, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Autoestima Escuelas", keyword: "salud mental estudiantes", promedio: 13.46, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Autoestima Escuelas", keyword: "acoso escolar mexico", promedio: 6.39, maximo: 55, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Autoestima Escuelas", keyword: "bienestar estudiantil", promedio: 1.82, maximo: 32, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Autoestima Escuelas", keyword: "programas autoestima", promedio: 2.16, maximo: 34, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Tda Ninos", keyword: "TDAH niños", promedio: 37.56, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Tda Ninos", keyword: "trastorno deficit atencion", promedio: 15.57, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Tda Ninos", keyword: "hiperactividad niños", promedio: 13.00, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Aprendizaje Ninos", keyword: "aprendizaje niños", promedio: 25.44, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Efectos Dispositivos Ninos", keyword: "tiempo pantallas infantil", promedio: 1.64, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Redes Validacion", keyword: "comparacion social", promedio: 0.03, maximo: 1, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Redes Validacion", keyword: "aceptacion social", promedio: 0.13, maximo: 1, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Redes Validacion", keyword: "fomo", promedio: 56.21, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Tda Aprendizaje", keyword: "sintomas tdah", promedio: 4.87, maximo: 78, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Tda Aprendizaje", keyword: "desarrollo cognitivo infantil", promedio: 1.23, maximo: 75, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Tda Aprendizaje", keyword: "estilos aprendizaje", promedio: 10.64, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Tda Aprendizaje", keyword: "habilidades aprendizaje", promedio: 14.31, maximo: 92, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Dispositivos Ninos", keyword: "celulares niños", promedio: 2.54, maximo: 13, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Dispositivos Ninos", keyword: "pantallas niños", promedio: 5.85, maximo: 76, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Dispositivos Ninos", keyword: "tabletas niños", promedio: 8.07, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Embarazo", keyword: "depresion postparto", promedio: 0.67, maximo: 6, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Embarazo", keyword: "ansiedad prenatal", promedio: 1.59, maximo: 97, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Embarazo", keyword: "salud mental materna", promedio: 2.07, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Hombres Emocional", keyword: "depresion hombres", promedio: 1.23, maximo: 69, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Hombres Emocional", keyword: "alexitemia", promedio: 0.07, maximo: 4, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Hombres Emocional", keyword: "roles genero hombres", promedio: 2.03, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Varios", keyword: "TPM", promedio: 18.95, maximo: 47, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Menstruacion", keyword: "sindrome premenstrual", promedio: 0.80, maximo: 5, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Menstruacion", keyword: "dismenorrea", promedio: 7.67, maximo: 49, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Menstruacion", keyword: "ciclo menstrual", promedio: 64.02, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Menstruacion", keyword: "salud menstrual", promedio: 0.62, maximo: 8, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Sexualidad Pareja", keyword: "baja libido", promedio: 14.39, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Sexualidad Pareja", keyword: "anorgasmia", promedio: 2.41, maximo: 57, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Sexualidad Pareja", keyword: "disfuncion sexual", promedio: 6.00, maximo: 64, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Sexualidad Pareja", keyword: "terapia sexual", promedio: 13.92, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Identidad Genero", keyword: "disforia de genero", promedio: 14.07, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Identidad Genero", keyword: "transicion de genero", promedio: 0.61, maximo: 37, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Identidad Genero", keyword: "genero no binario", promedio: 8.05, maximo: 98, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Pornografia", keyword: "disfuncion erectil", promedio: 44.64, maximo: 100, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Pornografia", keyword: "hipersexualizacion", promedio: 0.25, maximo: 4, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Pornografia", keyword: "pornografia pareja", promedio: 0.10, maximo: 6, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Pornografia", keyword: "adiccion pornografia", promedio: 1.13, maximo: 61, relacionadas: ["Sin datos suficientes"] }
       ]
     };
-
     const trendsRanking = document.getElementById('trendsRanking');
     if (trendsRanking) {
       const maxInteres = Math.max(...TRENDS_DATA.ranking.map(t => t.interes));
