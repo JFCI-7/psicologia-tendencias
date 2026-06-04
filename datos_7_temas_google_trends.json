@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "titulo": "7 Temas de Psicología — Google Trends México",
+    "periodo": "Abril - Mayo 2026",
+    "fecha_extraccion": "2026-06-01",
+    "region": "México",
+    "fuente": "Google Trends",
+    "descripcion": "Interés de búsqueda relativo (0-100) para temas específicos de psicología"
+  },
+  "temas": [
+    {
+      "rank": 1,
+      "tema": "TDAH en niños",
+      "emoji": "🧩",
+      "interes_promedio": 37.56,
+      "interes_maximo": 100,
+      "tendencia": "alta",
+      "color": "#06b6d4",
+      "descripcion": "El tema más buscado entre los 7: diagnóstico, síntomas y manejo del TDAH en población infantil mexicana",
+      "keywords_top": ["TDAH niños", "trastorno deficit atencion", "hiperactividad niños"],
+      "consultas_relacionadas": [
+        { "query": "tdah niños tratamiento", "valor": 85 },
+        { "query": "sintomas tdah", "valor": 72 },
+        { "query": "tdah escuela", "valor": 45 }
+      ],
+      "tags": ["TDAH", "niños", "atencion", "hiperactividad", "neurodivergencia"]
+    },
+    {
+      "rank": 2,
+      "tema": "Aprendizaje en niños",
+      "emoji": "📚",
+      "interes_promedio": 25.44,
+      "interes_maxedio": 100,
+      "tendencia": "media-alta",
+      "color": "#10b981",
+      "descripcion": "Búsquedas sobre desarrollo del aprendizaje infantil, estilos y habilidades cognitivas",
+      "keywords_top": ["aprendizaje niños", "desarrollo cognitivo infantil", "estilos aprendizaje"],
+      "consultas_relacionadas": [
+        { "query": "como aprenden los niños", "valor": 100 },
+        { "query": "juegos educativos", "valor": 68 },
+        { "query": "aprendizaje temprano", "valor": 52 }
+      ],
+      "tags": ["aprendizaje", "niños", "desarrollo", "cognicion", "escuela"]
+    },
+    {
+      "rank": 3,
+      "tema": "Psicología social",
+      "emoji": "👥",
+      "interes_promedio": 14.36,
+      "interes_maximo": 100,
+      "tendencia": "media",
+      "color": "#6366f1",
+      "descripcion": "Interés moderado en dinámicas grupales, influencia social y comportamiento en grupo",
+      "keywords_top": ["psicologia social", "interaccion social", "influencia social"],
+      "consultas_relacionadas": [
+        { "query": "que es psicologia social", "valor": 100 },
+        { "query": "libro psicologia social", "valor": 28 },
+        { "query": "interaccion social ejemplos", "valor": 22 }
+      ],
+      "tags": ["psicologia social", "grupos", "influencia", "interaccion", "comportamiento"]
+    },
+    {
+      "rank": 4,
+      "tema": "Redes sociales en México",
+      "emoji": "📱",
+      "interes_promedio": 12.72,
+      "interes_maximo": 100,
+      "tendencia": "media",
+      "color": "#8b5cf6",
+      "descripcion": "Búsquedas generales sobre redes sociales; subcategorías de impacto específico tienen menor volumen",
+      "keywords_top": ["redes sociales mexico", "redes sociales impacto", "adiccion redes"],
+      "consultas_relacionadas": [
+        { "query": "estadisticas redes sociales mexico", "valor": 100 },
+        { "query": "uso redes sociales jovenes", "valor": 76 },
+        { "query": "redes sociales mas usadas", "valor": 54 }
+      ],
+      "tags": ["redes sociales", "mexico", "impacto", "uso", "tecnologia"]
+    },
+    {
+      "rank": 5,
+      "tema": "Redes sociales y validación personal",
+      "emoji": "💜",
+      "interes_promedio": 7.74,
+      "interes_maximo": 100,
+      "tendencia": "nicho",
+      "color": "#ec4899",
+      "descripcion": "Tema emergente pero con bajo volumen: autoestima, likes y comparación social en plataformas digitales",
+      "keywords_top": ["autoestima redes sociales", "validacion personal", "comparacion social"],
+      "consultas_relacionadas": [
+        { "query": "autoestima baja redes sociales", "valor": 100 },
+        { "query": "compararme con otros instagram", "valor": 67 },
+        { "query": "dependencia likes", "valor": 34 }
+      ],
+      "tags": ["autoestima", "redes sociales", "validacion", "comparacion", "adolescentes"]
+    },
+    {
+      "rank": 6,
+      "tema": "Autoestima en escuelas",
+      "emoji": "🏫",
+      "interes_promedio": 2.85,
+      "interes_maximo": 100,
+      "tendencia": "emergente",
+      "color": "#f59e0b",
+      "descripcion": "Bajo volumen actual pero creciente: salud mental estudiantil y programas de autoestima escolar",
+      "keywords_top": ["autoestima estudiantes", "autoestima escuela", "salud mental escolar"],
+      "consultas_relacionadas": [
+        { "query": "como mejorar autoestima estudiantes", "valor": 100 },
+        { "query": "autoestima adolescentes escuela", "valor": 58 },
+        { "query": "programas autoestima primaria", "valor": 31 }
+      ],
+      "tags": ["autoestima", "escuela", "estudiantes", "salud mental", "adolescentes"]
+    },
+    {
+      "rank": 7,
+      "tema": "Efectos de dispositivos móviles en niños",
+      "emoji": "📵",
+      "interes_promedio": 1.64,
+      "interes_maximo": 100,
+      "tendencia": "incipiente",
+      "color": "#ef4444",
+      "descripcion": "Tema incipiente: poco volumen de búsqueda sobre restricción de pantallas y desarrollo infantil",
+      "keywords_top": ["tiempo pantallas infantil", "celulares niños", "pantallas niños"],
+      "consultas_relacionadas": [
+        { "query": "limite pantallas niños", "valor": 100 },
+        { "query": "efectos negativos celular niños", "valor": 72 },
+        { "query": "recomendacion tiempo pantallas", "valor": 48 }
+      ],
+      "tags": ["dispositivos", "pantallas", "niños", "restriccion", "desarrollo"]
+    }
+  ],
+  "resumen": {
+    "total_keywords_analizadas": 35,
+    "keywords_con_datos": 15,
+    "tema_dominante": "TDAH en niños (37.6/100)",
+    "tema_mas_nicho": "Efectos de dispositivos móviles en niños (1.6/100)",
+    "promedio_general": 14.5
+  }
+}

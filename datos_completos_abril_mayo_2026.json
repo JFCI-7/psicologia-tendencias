@@ -1,0 +1,331 @@
+{
+  "psicologia_social": [
+    {
+      "keyword": "psicologia social",
+      "interes_promedio": 14.36,
+      "interes_maximo": 100,
+      "consultas_relacionadas": [
+        {
+          "query": "que es psicologia social",
+          "valor": 100
+        },
+        {
+          "query": "que es la psicologia social",
+          "valor": 63
+        },
+        {
+          "query": "libro psicologia social",
+          "valor": 28
+        }
+      ]
+    },
+    {
+      "keyword": "interaccion social",
+      "interes_promedio": 14.0,
+      "interes_maximo": 100,
+      "consultas_relacionadas": [
+        {
+          "query": "que es la interaccion social",
+          "valor": 100
+        }
+      ]
+    },
+    {
+      "keyword": "comportamiento grupal",
+      "interes_promedio": 3.85,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "influencia social",
+      "interes_promedio": 10.61,
+      "interes_maximo": 100,
+      "consultas_relacionadas": [
+        {
+          "query": "que es la influencia social",
+          "valor": 100
+        },
+        {
+          "query": "la influencia social y los medios de comunicación",
+          "valor": 17
+        },
+        {
+          "query": "tipos de influencia social",
+          "valor": 6
+        }
+      ]
+    },
+    {
+      "keyword": "actitudes sociales",
+      "interes_promedio": 9.08,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "redes_sociales_impacto_sociedad": [
+    {
+      "keyword": "redes sociales impacto sociedad",
+      "interes_promedio": 3.13,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "redes sociales mexico",
+      "interes_promedio": 12.72,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "redes_sociales_validacion_personal": [
+    {
+      "keyword": "autoestima redes sociales",
+      "interes_promedio": 7.74,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "autoestima_escuelas": [
+    {
+      "keyword": "autoestima escuela",
+      "interes_promedio": 2.54,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "autoestima estudiantes",
+      "interes_promedio": 2.85,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "bullying autoestima",
+      "interes_promedio": 0.92,
+      "interes_maximo": 30,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "salud mental estudiantes",
+      "interes_promedio": 13.46,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "acoso escolar mexico",
+      "interes_promedio": 6.39,
+      "interes_maximo": 55,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "bienestar estudiantil",
+      "interes_promedio": 1.82,
+      "interes_maximo": 32,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "programas autoestima",
+      "interes_promedio": 2.16,
+      "interes_maximo": 34,
+      "consultas_relacionadas": []
+    }
+  ],
+  "tda_ninos": [
+    {
+      "keyword": "TDAH niños",
+      "interes_promedio": 37.56,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "trastorno deficit atencion",
+      "interes_promedio": 15.57,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "hiperactividad niños",
+      "interes_promedio": 13.0,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "aprendizaje_ninos": [
+    {
+      "keyword": "aprendizaje niños",
+      "interes_promedio": 25.44,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "efectos_dispositivos_ninos": [
+    {
+      "keyword": "tiempo pantallas infantil",
+      "interes_promedio": 1.64,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "redes_validacion": [
+    {
+      "keyword": "comparacion social",
+      "interes_promedio": 0.03,
+      "interes_maximo": 1,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "aceptacion social",
+      "interes_promedio": 0.13,
+      "interes_maximo": 1,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "fomo",
+      "interes_promedio": 56.21,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "tda_aprendizaje": [
+    {
+      "keyword": "sintomas tdah",
+      "interes_promedio": 4.87,
+      "interes_maximo": 78,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "desarrollo cognitivo infantil",
+      "interes_promedio": 1.23,
+      "interes_maximo": 75,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "estilos aprendizaje",
+      "interes_promedio": 10.64,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "habilidades aprendizaje",
+      "interes_promedio": 14.31,
+      "interes_maximo": 92,
+      "consultas_relacionadas": []
+    }
+  ],
+  "dispositivos_ninos": [
+    {
+      "keyword": "celulares niños",
+      "interes_promedio": 2.54,
+      "interes_maximo": 13,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "pantallas niños",
+      "interes_promedio": 5.85,
+      "interes_maximo": 76,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "tabletas niños",
+      "interes_promedio": 8.07,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "embarazo": [
+    {
+      "keyword": "depresion postparto",
+      "interes_promedio": 0.67,
+      "interes_maximo": 6,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "ansiedad prenatal",
+      "interes_promedio": 1.59,
+      "interes_maximo": 97,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "miedo al parto",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "salud mental materna",
+      "interes_promedio": 2.07,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "cambios emocionales embarazo",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
+      "consultas_relacionadas": []
+    }
+  ],
+  "hombres_emocional": [
+    {
+      "keyword": "salud mental masculina",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "depresion hombres",
+      "interes_promedio": 1.23,
+      "interes_maximo": 69,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "suicidio masculino",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "alexitemia",
+      "interes_promedio": 0.07,
+      "interes_maximo": 4,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "roles genero hombres",
+      "interes_promedio": 2.03,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "varios": [
+    {
+      "keyword": "TPM",
+      "interes_promedio": 18.95,
+      "interes_maximo": 47,
+      "consultas_relacionadas": []
+    }
+  ],
+  "menstruacion": [
+    {
+      "keyword": "sindrome premenstrual",
+      "interes_promedio": 0.8,
+      "interes_maximo": 5,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "dismenorrea",
+      "interes_promedio": 7.67,
+      "interes_maximo": 49,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "ciclo menstrual",
+      "interes_promedio": 64.02,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "salud menstrual",
+      "interes_promedio": 0.62,
+      "interes_maximo": 8,
+      "consultas_relacionadas": []
+    }
+  ]
+}
