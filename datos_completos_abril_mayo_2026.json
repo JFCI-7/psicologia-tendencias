@@ -327,5 +327,89 @@
       "interes_maximo": 8,
       "consultas_relacionadas": []
     }
+  ],
+  "sexualidad_pareja": [
+    {
+      "keyword": "baja libido",
+      "interes_promedio": 14.39,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "anorgasmia",
+      "interes_promedio": 2.41,
+      "interes_maximo": 57,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "celos patologicos",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "disfuncion sexual",
+      "interes_promedio": 6.0,
+      "interes_maximo": 64,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "terapia sexual",
+      "interes_promedio": 13.92,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    }
+  ],
+  "identidad_genero": [
+    {
+      "keyword": "disforia de genero",
+      "interes_promedio": 14.07,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "transicion de genero",
+      "interes_promedio": 0.61,
+      "interes_maximo": 37,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "genero no binario",
+      "interes_promedio": 8.05,
+      "interes_maximo": 98,
+      "consultas_relacionadas": []
+    }
+  ],
+  "pornografia": [
+    {
+      "keyword": "efectos pornografia",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "disfuncion erectil",
+      "interes_promedio": 44.64,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "hipersexualizacion",
+      "interes_promedio": 0.25,
+      "interes_maximo": 4,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "pornografia pareja",
+      "interes_promedio": 0.1,
+      "interes_maximo": 6,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "adiccion pornografia",
+      "interes_promedio": 1.13,
+      "interes_maximo": 61,
+      "consultas_relacionadas": []
+    }
   ]
 }
