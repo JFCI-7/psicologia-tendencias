@@ -260,6 +260,18 @@
       "interes_promedio": 0.0,
       "interes_maximo": 0,
       "consultas_relacionadas": []
+    },
+    {
+      "keyword": "efectos embarazo",
+      "interes_promedio": 7.49,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "embarazo adolescente",
+      "interes_promedio": 36.64,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
     }
   ],
   "hombres_emocional": [
@@ -290,6 +302,18 @@
     {
       "keyword": "roles genero hombres",
       "interes_promedio": 2.03,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "salud mental hombres",
+      "interes_promedio": 0.1,
+      "interes_maximo": 6,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "depresion masculina",
+      "interes_promedio": 1.64,
       "interes_maximo": 100,
       "consultas_relacionadas": []
     }
@@ -358,6 +382,12 @@
       "interes_promedio": 13.92,
       "interes_maximo": 100,
       "consultas_relacionadas": []
+    },
+    {
+      "keyword": "deseo sexual pareja",
+      "interes_promedio": 2.64,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
     }
   ],
   "identidad_genero": [
@@ -423,6 +453,24 @@
       "keyword": "estres minoritario",
       "interes_promedio": 0.0,
       "interes_maximo": 0,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "derechos lgbt",
+      "interes_promedio": 7.48,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "identidad lgbt",
+      "interes_promedio": 1.64,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "violencia lgbt",
+      "interes_promedio": 4.77,
+      "interes_maximo": 100,
       "consultas_relacionadas": []
     }
   ]
