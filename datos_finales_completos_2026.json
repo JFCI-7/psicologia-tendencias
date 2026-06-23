@@ -154,12 +154,66 @@
       "interes_promedio": 25.44,
       "interes_maximo": 100,
       "consultas_relacionadas": []
+    },
+    {
+      "keyword": "estimulacion temprana",
+      "interes_promedio": 21.33,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "aprendizaje preescolar",
+      "interes_promedio": 3.95,
+      "interes_maximo": 62,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "juegos educativos niños",
+      "interes_promedio": 0.59,
+      "interes_maximo": 8,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "desarrollo infantil",
+      "interes_promedio": 14.61,
+      "interes_maximo": 48,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "lectura niños",
+      "interes_promedio": 44.89,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "actividades niños aprender",
+      "interes_promedio": 0.2,
+      "interes_maximo": 4,
+      "consultas_relacionadas": []
     }
   ],
   "efectos_dispositivos_ninos": [
     {
       "keyword": "tiempo pantallas infantil",
       "interes_promedio": 1.64,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "adiccion pantallas niños",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "videojuegos niños",
+      "interes_promedio": 3.38,
+      "interes_maximo": 67,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "niños celular",
+      "interes_promedio": 23.85,
       "interes_maximo": 100,
       "consultas_relacionadas": []
     }
@@ -316,6 +370,36 @@
       "interes_promedio": 1.64,
       "interes_maximo": 100,
       "consultas_relacionadas": []
+    },
+    {
+      "keyword": "suicidio hombres mexico",
+      "interes_promedio": 1.64,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "emociones hombres",
+      "interes_promedio": 0.56,
+      "interes_maximo": 7,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "hombres llorar",
+      "interes_promedio": 4.84,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "salud emocional masculina",
+      "interes_promedio": 0.0,
+      "interes_maximo": 0,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "terapia masculina",
+      "interes_promedio": 1.31,
+      "interes_maximo": 80,
+      "consultas_relacionadas": []
     }
   ],
   "varios": [
@@ -408,6 +492,42 @@
       "interes_promedio": 8.05,
       "interes_maximo": 98,
       "consultas_relacionadas": []
+    },
+    {
+      "keyword": "identidad sexual",
+      "interes_promedio": 6.44,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "orientacion sexual",
+      "interes_promedio": 4.13,
+      "interes_maximo": 47,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "genero fluido",
+      "interes_promedio": 2.1,
+      "interes_maximo": 25,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "expresion de genero",
+      "interes_promedio": 0.31,
+      "interes_maximo": 7,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "roles de genero",
+      "interes_promedio": 21.39,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "diversidad sexual",
+      "interes_promedio": 10.26,
+      "interes_maximo": 69,
+      "consultas_relacionadas": []
     }
   ],
   "pornografia": [
@@ -470,6 +590,24 @@
     {
       "keyword": "violencia lgbt",
       "interes_promedio": 4.77,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "lesbianas mexico",
+      "interes_promedio": 0.56,
+      "interes_maximo": 6,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "bisexualidad",
+      "interes_promedio": 0.38,
+      "interes_maximo": 5,
+      "consultas_relacionadas": []
+    },
+    {
+      "keyword": "mujeres trans",
+      "interes_promedio": 49.51,
       "interes_maximo": 100,
       "consultas_relacionadas": []
     }
