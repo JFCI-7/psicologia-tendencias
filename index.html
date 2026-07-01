@@ -1151,11 +1151,11 @@
         { keyword: "disfuncion erectil", interes: 44.64, categoria: "Pornografia", emoji: "📌", color: "#42708A" },
         { keyword: "TDAH niños", interes: 37.56, categoria: "Tda Ninos", emoji: "📌", color: "#42708A" },
         { keyword: "embarazo adolescente", interes: 36.64, categoria: "Embarazo", emoji: "📌", color: "#42708A" },
+        { keyword: "TPM", interes: 35.33, categoria: "Menstruacion", emoji: "📌", color: "#42708A" },
         { keyword: "aprendizaje niños", interes: 25.44, categoria: "Aprendizaje Ninos", emoji: "📌", color: "#42708A" },
         { keyword: "niños celular", interes: 23.85, categoria: "Efectos Dispositivos Ninos", emoji: "📌", color: "#42708A" },
         { keyword: "roles de genero", interes: 21.39, categoria: "Identidad Genero", emoji: "📌", color: "#42708A" },
-        { keyword: "estimulacion temprana", interes: 21.33, categoria: "Aprendizaje Ninos", emoji: "📌", color: "#42708A" },
-        { keyword: "TPM", interes: 18.95, categoria: "Varios", emoji: "📌", color: "#42708A" }
+        { keyword: "estimulacion temprana", interes: 21.33, categoria: "Aprendizaje Ninos", emoji: "📌", color: "#42708A" }
       ],
       detalle: [
         { categoria: "1) Psicología social", keyword: "psicologia social", promedio: 14.36, maximo: 100, relacionadas: ["que es psicologia social (100), que es la psicologia social (63), libro psicologia social (28)"] },
@@ -1210,11 +1210,11 @@
         { categoria: "Hombres Emocional", keyword: "emociones hombres", promedio: 0.56, maximo: 7, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Hombres Emocional", keyword: "hombres llorar", promedio: 4.84, maximo: 100, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Hombres Emocional", keyword: "terapia masculina", promedio: 1.31, maximo: 80, relacionadas: ["Sin datos suficientes"] },
-        { categoria: "Varios", keyword: "TPM", promedio: 18.95, maximo: 47, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Menstruacion", keyword: "sindrome premenstrual", promedio: 0.80, maximo: 5, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Menstruacion", keyword: "dismenorrea", promedio: 7.67, maximo: 49, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Menstruacion", keyword: "ciclo menstrual", promedio: 64.02, maximo: 100, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Menstruacion", keyword: "salud menstrual", promedio: 0.62, maximo: 8, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Menstruacion", keyword: "TPM", promedio: 35.33, maximo: 100, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Sexualidad Pareja", keyword: "baja libido", promedio: 14.39, maximo: 100, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Sexualidad Pareja", keyword: "anorgasmia", promedio: 2.41, maximo: 57, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Sexualidad Pareja", keyword: "disfuncion sexual", promedio: 6.00, maximo: 64, relacionadas: ["Sin datos suficientes"] },
@@ -1241,7 +1241,7 @@
         { categoria: "Mujeres Lgbt", keyword: "bisexualidad", promedio: 0.38, maximo: 5, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Mujeres Lgbt", keyword: "mujeres trans", promedio: 49.51, maximo: 100, relacionadas: ["Sin datos suficientes"] }
       ]
-    };onst trendsRanking = document.getElementById('trendsRanking');
+    };nst trendsRanking = document.getElementById('trendsRanking');
     if (trendsRanking) {
       const maxInteres = Math.max(...TRENDS_DATA.ranking.map(t => t.interes));
       TRENDS_DATA.ranking.forEach((t) => {
