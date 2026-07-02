@@ -434,6 +434,12 @@
       "interes_promedio": 0.62,
       "interes_maximo": 8,
       "consultas_relacionadas": []
+    },
+    {
+      "keyword": "TPM",
+      "interes_promedio": 35.33,
+      "interes_maximo": 100,
+      "consultas_relacionadas": []
     }
   ],
   "sexualidad_pareja": [

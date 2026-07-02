@@ -1210,6 +1210,7 @@
         { categoria: "Hombres Emocional", keyword: "emociones hombres", promedio: 0.56, maximo: 7, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Hombres Emocional", keyword: "hombres llorar", promedio: 4.84, maximo: 100, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Hombres Emocional", keyword: "terapia masculina", promedio: 1.31, maximo: 80, relacionadas: ["Sin datos suficientes"] },
+        { categoria: "Varios", keyword: "TPM", promedio: 18.95, maximo: 47, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Menstruacion", keyword: "sindrome premenstrual", promedio: 0.80, maximo: 5, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Menstruacion", keyword: "dismenorrea", promedio: 7.67, maximo: 49, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Menstruacion", keyword: "ciclo menstrual", promedio: 64.02, maximo: 100, relacionadas: ["Sin datos suficientes"] },
@@ -1241,7 +1242,7 @@
         { categoria: "Mujeres Lgbt", keyword: "bisexualidad", promedio: 0.38, maximo: 5, relacionadas: ["Sin datos suficientes"] },
         { categoria: "Mujeres Lgbt", keyword: "mujeres trans", promedio: 49.51, maximo: 100, relacionadas: ["Sin datos suficientes"] }
       ]
-    };nst trendsRanking = document.getElementById('trendsRanking');
+    };st trendsRanking = document.getElementById('trendsRanking');
     if (trendsRanking) {
       const maxInteres = Math.max(...TRENDS_DATA.ranking.map(t => t.interes));
       TRENDS_DATA.ranking.forEach((t) => {
